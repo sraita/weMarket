@@ -1,0 +1,10 @@
+// Category 产品分类表
+{
+  "_id":"",
+  "name":"",
+  "icon":"" ,
+  // 商家信息写在这里
+  "seller_id": "", // 商家 ID
+  "seller_name": "", // 商家名称
+  "seller_icon": "" // 商家头像
+}
