@@ -1,0 +1,104 @@
+<template name="categoriesList">
+<div class="row">
+  <div class="col-md-12">
+    <!-- TABLE:学生实名认证管理 -->
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <h3 class="box-title">分类管理</h3>
+
+        <div class="box-tools pull-right">
+          <button type="button" class="btn bg-purple" data-toggle="modal" data-target="#addCatalogues">增加分类</button>
+        </div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <div class="table-responsive">
+          <table class="table no-margin">
+            <thead>
+            <tr>
+              <th>分类排序</th>
+              <th>分类名称</th>
+              <th>分类描述</th>
+              <th style="width:160px; text-align:center;">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each lists}}
+            <tr>
+              <td>{{sortIndex}}</td>
+              <td><a href="javascript:void(0);">{{name}}</a></td>
+              <td>{{desc}}</td>
+              <td><img src="{{imgUrl}}" style="height: 64px; object-fit: cover;"/></td>
+              <td style="text-align:center;">
+                <button type="button" class="btn btn-xs bg-purple" data-toggle="modal" data-target="#modifyCatalogues">
+                  修改
+                </button>
+                <button id="{{_id}}" type="button" data-name="{{name}}" class="delCatalogues btn btn-xs bg-red"> 删除</button>
+              </td>
+            </tr>
+            {{/each}}
+            </tbody>
+          </table>
+        </div>
+        <!-- /.table-responsive -->
+      </div>
+      <!-- /.box-body -->
+      <div class="box-footer clearfix">
+        <div class="row">
+          <div class="col-sm-5">
+            <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">每页 50 条， 共 {{total}} 条</div>
+          </div>
+          <div class="col-sm-7">
+            <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+              <ul class="pagination">
+                <li class="paginate_button previous disabled" id="example2_previous"><a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0">上一页</a></li>
+                <li class="paginate_button active"><a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0">1</a></li>
+                <li class="paginate_button next" id="example2_next"><a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0">下一页</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.box-footer -->
+    </div>
+    <!-- /.box -->
+  </div>
+  <!-- /.col -->
+</div>
+
+
+
+
+<!-- Modal 增加分类 -->
+<div class="modal fade" id="addCatalogues" tabindex="-1" role="dialog" aria-labelledby="addCataloguesLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="addCataloguesLabel">增加分类</h4>
+      </div>
+      <div class="modal-body box-body box-profile">
+          <!-- form start -->
+            <form role="form">
+                <div class="form-group">
+                  <label for="name">分类名称</label>
+                  <input type="text" class="form-control" id="name" placeholder="输入分类名称">
+                </div>
+                <div class="form-group">
+                  <label for="sortIndex">分类排序</label>
+                  <input type="number" class="form-control" id="sortIndex" placeholder="eg:1">
+                </div>
+                <div class="form-group">
+                  <label for="desc">分类描述</label>
+                  <input type="text" class="form-control" id="desc" placeholder="输入分类描述">
+                </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button id="add" type="button" class="btn btn-primary">新增</button>
+      </div>
+    </div>
+  </div>
+</div>
+</template>

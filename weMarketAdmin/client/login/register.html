@@ -1,0 +1,31 @@
+<template name="register">
+<style>
+html body {
+    height: 100%;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+}
+</style>
+<div class="login-screen">
+  <div class="login-screen_hd">
+    <div class="login-screen_logo">微商城商家系统</div>
+    <div class="login-screen_help">
+      <a href="/login" class="right-btn">登录</a>
+    </div>
+  </div>
+  <div class="login-screen_bd">
+    <div class="login-screen_title"></div>
+    <form id="login-admin" class="login-screen_form">
+      <input id="account" type="text" placeholder="账号" autocorrect="off" autocapitalize="off" />
+      <input id="pass" type="password" placeholder="密码" autocorrect="off" autocapitalize="off" />
+      <input id="pass-confirm" type="password" placeholder="确认密码" autocorrect="off" autocapitalize="off" />
+    </form>
+    <button id="register">注 册</button>
+  </div>
+  <div class="login-screen_ft">
+    Copyright © 2017 微商城. All rights reserved.
+  </div>
+</div>
+</template>

@@ -4,15 +4,15 @@
 Categories.allow({
   insert: function (userId, doc) {
     // the user must be logged in, and the document must be owned by the user
-    return (userId && doc.owner === userId);
+    return (userId && doc.seller_id === userId);
   },
   update: function (userId, doc, fields, modifier) {
     // can only change your own documents
-    return doc.owner === userId;
+    return doc.seller_id === userId;
   },
   remove: function (userId, doc) {
     // can only remove your own documents
-    return doc.owner === userId;
+    return doc.seller_id === userId;
   }
 });
 
@@ -20,15 +20,15 @@ Categories.allow({
 Products.allow({
   insert: function (userId, doc) {
     // the user must be logged in, and the document must be owned by the user
-    return (userId && doc.owner === userId);
+    return (userId && doc.seller_id === userId);
   },
   update: function (userId, doc, fields, modifier) {
     // can only change your own documents
-    return doc.owner === userId;
+    return doc.seller_id === userId;
   },
   remove: function (userId, doc) {
     // can only remove your own documents
-    return doc.owner === userId;
+    return doc.seller_id === userId;
   }
 });
 

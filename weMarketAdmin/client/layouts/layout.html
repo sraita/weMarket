@@ -1,0 +1,87 @@
+<template name="layout">
+{{#AdminLTE skin="purple" fixed="true" sidebarMini="true"}}
+  <header class="main-header">
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="control-sidebar" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle">
+              <img src="/img/personIcon.jpg" class="user-image" alt="User Image">
+              <span class="hidden-xs">{{userInfo.username}}</span>
+            </a>
+          </li>
+          <li id="quitAdmin">
+            <a href="#"><i class="fa fa-power-off text-red"></i></a>
+          </li>
+        </ul>
+      </div>
+
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar" style="padding-top: 0; overflow-x: hidden;overflow-y: auto;">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- search form -->
+      <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Search...">
+          <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+        </div>
+      </form>
+      <!-- /.search form -->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-home"></i> <span>商品管理</span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/"><i class="fa fa-picture-o text-yellow"></i>商品分类管理</a></li>
+            <li><a href="/productsList"><i class="fa fa-cogs text-yellow"></i>商品管理</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i> <span>订单管理</span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/studentIdentity"><i class="fa fa-circle-o text-yellow"></i>订单管理</a></li>
+            <li><a href="/certificatesLists"><i class="fa fa-circle-o text-yellow"></i>退换货管理</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="/userLists">
+            <i class="fa fa-th"></i> <span>商城设置</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    {{> yield}}
+  </div>
+  <!-- /.content-wrapper -->
+
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+    </div>
+    <strong>Copyright © 2017 <a href="/">微商城</a>.</strong> All rights
+    reserved.
+  </footer>
+{{/AdminLTE}}
+</template>

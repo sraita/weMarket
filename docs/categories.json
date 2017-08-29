@@ -2,7 +2,8 @@
 {
   "_id":"",
   "name":"",
-  "icon":"" ,
+  "sortIndex":"", // 排序
+  "desc":"" ,
   // 商家信息写在这里
   "seller_id": "", // 商家 ID
   "seller_name": "", // 商家名称
