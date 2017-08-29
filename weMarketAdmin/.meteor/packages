@@ -24,3 +24,4 @@ iron:router
 accounts-password
 session
 less
+sraita:ckeditor@4.7.2

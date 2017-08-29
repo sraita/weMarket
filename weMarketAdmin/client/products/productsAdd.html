@@ -1,0 +1,105 @@
+<template name="productsAdd">
+<style>
+.col-md-9{
+  margin: 0;padding-left: 0;
+}.col-md-3{
+  margin: 0;padding-right: 0; border-right: 1px solid #ccc; background: #efefef;
+}
+.box.box-solid{border-top: 1px solid #ccc; min-height: 600px; border-radius: 0;}
+.form-group{margin: 0;border: none}
+/*.form-control{border:none;border-bottom: 1px dotted #ccc;}
+.form-group:first-child{border-top: 1px dotted #ccc;}*/
+</style>
+
+<section class="content">
+  <div style="background: #fff; margin: 0; padding: 10px; min-height: 54px;" class="box box-solid">
+    <h4 class="pull-left">新增商品</h4>
+    <div class="box-tools pull-right">
+      <button type="button" class="btn bg-purple" id="save">保存</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="box box-solid">
+        <div class="box-header with-border">
+          <h3 class="box-title">商品图片列表</h3>
+        </div>
+        <div class="box-body no-padding">
+          <ul class="nav nav-pills nav-stacked">
+            <li class="active ">
+              <a href="/productsList/">全部分类<span class="label label-primary pull-right">12</span></a>
+            </li>
+            <li>
+              <a href="/productsList/all">全部分类<span class="label label-primary pull-right">12</span></a>
+            </li>
+            <li>
+              <a href="/productsList/all">全部分类<span class="label label-primary pull-right">12</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-9">
+      <div class="box box-solid">
+        <div class="box-header with-border">
+          <h3 class="box-title">商品列表</h3>
+        </div>
+        <div class="box-body no-padding">
+          <div class="form-group">
+            <input type="text" name="title" id="title" class="form-control" placeholder="请输入名称">
+          </div>
+          <div class="form-group">
+            <textarea name="desc" id="desc" rows="3" class="form-control" placeholder="请输入简述"></textarea>
+          </div>
+          <div class="form-group">
+            <select class="form-control">
+              <option>选择商品分类</option>
+              <option> 分类1</option>
+              <option>分类2</option>
+            </select>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="input-group">
+                <input type="number" name="title" id="title" class="form-control" placeholder="原价">
+                <span class="input-group-addon">.00</span>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="input-group">
+                <input type="number" name="title" id="title" class="form-control" placeholder="优惠价">
+                <span class="input-group-addon">.00</span>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="input-group">
+                <span class="input-group-addon">库存</span>
+                <input type="number" name="title" id="title" class="form-control" placeholder="库存">
+              </div>
+            </div>
+          </div>
+
+          <!-- CKEDITOR -->
+          <textarea id="editor" name="editor" rows="10" cols="80">
+            this is my textarea to be replaced with CKEDITOR
+          </textarea>
+          <!-- CKEDITOR end-->
+        </div>
+        <div class="box-footer no-padding">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  $(function (){
+    CKEDITOR.replace('editor',{
+      language: 'zh-CN',
+      height: 300,
+      skin:'moono-lisa'
+    });
+  });
+</script>
+</template>

@@ -37,7 +37,12 @@ if(Meteor.isClient){
   // });
 
   // 商品列表
-  Router.route('/productsList',{
+  Router.route('/products/list',{
     name: 'productsList'
+  });
+
+  // 新增商品
+  Router.route('/products/add',{
+    name: 'productsAdd'
   });
 }
