@@ -1,1 +1,1 @@
-Meteor.absoluteUrl.defaultOptions.rootUrl = "http://192.168.0.111:3000"
+Meteor.absoluteUrl.defaultOptions.rootUrl = "http://192.168.0.121:3000"
