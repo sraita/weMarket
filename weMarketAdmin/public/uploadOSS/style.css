@@ -1,33 +1,3 @@
-.box .nav-stacked{
-  padding:0 10px;
-  li.imageLists{
-    height: 90px;line-height: 90px;margin: 16px 0;
-    img{ width: 100%; height: 100%; object-fit: cover;}
-  }
-  li.addImages {
-      width: 100%;
-      height: 80px;
-      border: 1px dashed #ccc;
-      box-sizing: border-box;
-      line-height: 80px;
-      text-align: center;
-      margin-top: 16px;
-  }
-}
-.dashed-input-top{
-  border: none;
-  border-top: 1px dashed #ccc;
-}
-.dashed-input{
-  border: none;
-  border-top: 1px dashed #ccc;
-  border-bottom: 1px dashed #ccc;
-}
-.dashed-input-top:active, .dashed-input-top:focus, .dashed-input:active, .dashed-input:focus{
-  border-top: 1px dashed #00c4ff;
-  border-bottom: 1px dashed #00c4ff;
-}
-
 
 	.btn{
         color: #fff;

@@ -4,13 +4,21 @@
   color: #444;
   background-color: #f7f7f7;
 }
+.col-md-9{
+  margin: 0;padding-left: 0;
+}.col-md-3{
+  margin: 0;padding-right: 0; border-right: 1px solid #ccc; background: #efefef;
+}
+.box.box-solid{border-top: 1px solid #ccc; min-height: 600px; border-radius: 0;}
 </style>
 
-<section class="content-header">
-  <h1>商品管理</h1>
-</section>
-
 <section class="content">
+  <div style="background: #fff; margin: 0; padding: 10px; min-height: 54px;" class="box box-solid">
+    <h4 class="pull-left">商品管理</h4>
+    <div class="box-tools pull-right">
+      <a href="/products/add"><button type="button" class="btn bg-purple">新增</button></a>
+    </div>
+  </div>
   <div class="row">
     <div class="col-md-3">
       <div class="box box-solid">
@@ -22,19 +30,18 @@
             <li class="active ">
               <a href="/productsList/">全部分类<span class="label label-primary pull-right">12</span></a>
             </li>
+            {{#each categories}}
             <li>
-              <a href="/productsList/all">全部分类<span class="label label-primary pull-right">12</span></a>
+              <a href="/productsList/{{_id}}">{{name}}<span class="label label-primary pull-right">12</span></a>
             </li>
-            <li>
-              <a href="/productsList/all">全部分类<span class="label label-primary pull-right">12</span></a>
-            </li>
+            {{/each}}
           </ul>
         </div>
       </div>
     </div>
 
     <div class="col-md-9">
-      <div class="box box-primary">
+      <div class="box box-solid">
         <div class="box-header with-border">
           <h3 class="box-title">商品列表</h3>
           <div class="box-tools pull-right">

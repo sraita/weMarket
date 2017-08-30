@@ -38,11 +38,17 @@ if(Meteor.isClient){
 
   // 商品列表
   Router.route('/products/list',{
-    name: 'productsList'
+    name: 'productsList',
+    waitOn: function(){
+      return  Meteor.subscribe('categories_by_seller',Meteor.userId());
+    }
   });
 
   // 新增商品
   Router.route('/products/add',{
-    name: 'productsAdd'
+    name: 'productsAdd',
+    waitOn: function(){
+      return  Meteor.subscribe('categories_by_seller',Meteor.userId());
+    }
   });
 }

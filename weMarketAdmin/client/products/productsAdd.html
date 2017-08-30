@@ -26,7 +26,7 @@
         </div>
         <div class="box-body no-padding">
           <ul class="nav nav-pills nav-stacked">
-            <li class="addImages">
+            <li class="addImages" id="selectfiles">
               <i class="fa fa-plus"></i>
             </li>
             <li class="imageLists">
@@ -39,6 +39,11 @@
               <img src="https://img.alicdn.com/tps/TB1dDT4LXXXXXabaXXXXXXXXXXX-576-840.jpg"/>
             </li>
           </ul>
+          <div id="container">
+              <a id="selectfiles" href="javascript:void(0);" class="btn">选择文件</a>
+              <a id="postfiles" href="javascript:void(0);" class="btn">上传文件</a>
+          </div>
+          <pre id="console"></pre>
         </div>
       </div>
     </div>
@@ -50,35 +55,36 @@
         </div>
         <div class="box-body no-padding">
           <div class="form-group">
-            <input type="text" name="title" id="title" class="form-control dashed-input-top" placeholder="请输入名称">
+            <input type="text" name="name" id="name" class="form-control dashed-input-top" placeholder="请输入名称">
           </div>
           <div class="form-group">
             <textarea name="desc" id="desc" rows="3" class="form-control dashed-input-top" placeholder="请输入简述"></textarea>
           </div>
           <div class="form-group">
-            <select class="form-control dashed-input">
+            <select class="form-control dashed-input" id="category_id">
               <option>选择商品分类</option>
-              <option> 分类1</option>
-              <option>分类2</option>
+              {{#each categories}}
+              <option id="{{_id}}"> {{name}}</option>
+              {{/each}}
             </select>
           </div>
           <div class="row" style="margin:10px 0">
             <div class="col-md-4">
               <div class="input-group">
-                <input type="number" name="title" id="title" class="form-control" placeholder="原价">
+                <input type="number" name="unit_price" id="unit_price" class="form-control" placeholder="原价">
                 <span class="input-group-addon">.00</span>
               </div>
             </div>
             <div class="col-md-4">
               <div class="input-group">
-                <input type="number" name="title" id="title" class="form-control" placeholder="优惠价">
+                <input type="number" name="sale_price" id="sale_price" class="form-control" placeholder="优惠价">
                 <span class="input-group-addon">.00</span>
               </div>
             </div>
             <div class="col-md-4">
               <div class="input-group">
                 <span class="input-group-addon">库存</span>
-                <input type="number" name="title" id="title" class="form-control" placeholder="库存">
+                <input type="number" name="number" id="number" class="form-control" placeholder="库存">
               </div>
             </div>
           </div>
@@ -96,6 +102,7 @@
     </div>
   </div>
 </section>
+<!--<script type="text/javascript" src="/uploadOSS/upload.js"></script>-->
 <script>
   $(function (){
     CKEDITOR.replace('editor',{
