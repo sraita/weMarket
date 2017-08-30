@@ -22,9 +22,9 @@ if(Meteor.isServer){
       return this.ready();
     }
     if(category_id === "all"){
-      return Products.find({seller_id: seller_id, category_id: category_id},{limit: limit, skip: skip,sort:{createdAt:-1}});
+      return Products.find({seller_id: seller_id},{limit: limit, skip: skip,sort:{createdAt:-1}});
     } 
-    return Products.find({seller_id: seller_id},{limit: limit, skip: skip,sort:{createdAt:-1}});
+    return Products.find({seller_id: seller_id, category_id: category_id},{limit: limit, skip: skip,sort:{createdAt:-1}});
   });
 
   // 发布商品，按照商品ID发布
