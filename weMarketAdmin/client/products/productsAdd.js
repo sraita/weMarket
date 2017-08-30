@@ -1,9 +1,32 @@
+Template.productsAdd.onRendered(function(){
+  var productId = Router.current().params.query.id;
+  if(productId){
+    Meteor.subscribe('product-by-id',productId);
+  }
+});
 Template.productsAdd.helpers({
   categories: function(){
     return Categories.find({seller_id: Meteor.userId()}).fetch();
   },
   images: function(){
     return Session.get('product-info-images'); 
+  },
+  isModify: function(){
+    var type = Router.current().params.query.t;
+    if(type == 'modify'){
+      return true;
+    }
+    return false;
+  },
+  product: function(){
+    var _id = Router.current().params.query.id;
+    return Products.findOne({_id: _id});
+  },
+  optionSelected: function(a,b){
+    if(a == b){
+      return true;
+    }
+    return false;
   }
 });
 
@@ -16,7 +39,7 @@ Template.productsAdd.events({
         sale_price = Number($('#sale_price').val()),
         number = Number($('#number').val()),
         category_id = $('#category_id option:selected').attr('id'),
-        content = $('#editor').val();
+        content = CKEDITOR.instances.editor.getData();
     if(!name || !desc || !unit_price || !sale_price || ! number || !category_id || ! content){
       return alert('请完整填写表单');
     }
@@ -27,6 +50,7 @@ Template.productsAdd.events({
       name: name,
       unit_price: unit_price,
       sale_price: sale_price,
+      number: number,
       mainImage: "",
       images:[],
       desc: desc,
@@ -38,14 +62,26 @@ Template.productsAdd.events({
     };
 
     console.log(obj);
-
-    Products.insert(obj, function(err,_id){
-      if(err){
-        console.log('err');
-        return alert('请重试');
-      }
-      alert('新增商品成功');
-      return Router.go('/products/list/all');
-    });
+    var type = Router.current().params.query.t;
+    if(type == 'modify'){
+      var productId = Router.current().params.query.id;
+      Products.update({_id: productId},{$set:obj},function(err,_id){
+        if(err){
+          console.log('err');
+          return alert('请重试');
+        }
+        alert('修改商品信息成功');
+        return Router.go('/products/list/all');
+      });
+    } else {
+      Products.insert(obj, function(err,_id){
+        if(err){
+          console.log('err');
+          return alert('请重试');
+        }
+        alert('新增商品成功');
+        return Router.go('/products/list/all');
+      });
+    }
   }
 })

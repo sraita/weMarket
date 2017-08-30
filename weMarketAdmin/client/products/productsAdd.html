@@ -13,7 +13,11 @@
 
 <section class="content">
   <div style="background: #fff; margin: 0; padding: 10px; min-height: 54px;" class="box box-solid">
+    {{#if isModify}}
+    <h4 class="pull-left">修改商品信息</h4>
+    {{else}}
     <h4 class="pull-left">新增商品</h4>
+    {{/if}}
     <div class="box-tools pull-right">
       <button type="button" class="btn bg-purple" id="save">保存</button>
     </div>
@@ -51,47 +55,53 @@
     <div class="col-md-9">
       <div class="box box-solid">
         <div class="box-header with-border">
-          <h3 class="box-title">商品列表</h3>
+          <h3 class="box-title">商品信息</h3>
         </div>
         <div class="box-body no-padding">
           <div class="form-group">
-            <input type="text" name="name" id="name" class="form-control dashed-input-top" placeholder="请输入名称">
+            <input type="text" name="name" id="name" class="form-control dashed-input-top" placeholder="请输入名称" value="{{product.name}}">
           </div>
           <div class="form-group">
-            <textarea name="desc" id="desc" rows="3" class="form-control dashed-input-top" placeholder="请输入简述"></textarea>
+            <textarea name="desc" id="desc" rows="3" class="form-control dashed-input-top" placeholder="请输入简述">
+{{product.desc}}
+            </textarea>
           </div>
           <div class="form-group">
             <select class="form-control dashed-input" id="category_id">
               <option>选择商品分类</option>
               {{#each categories}}
+              {{#if optionSelected _id product.category_id}}
+              <option id="{{_id}}" selected> {{name}}</option>
+              {{else}}
               <option id="{{_id}}"> {{name}}</option>
+              {{/if}}
               {{/each}}
             </select>
           </div>
           <div class="row" style="margin:10px 0">
             <div class="col-md-4">
               <div class="input-group">
-                <input type="number" name="unit_price" id="unit_price" class="form-control" placeholder="原价">
+                <input type="number" name="unit_price" id="unit_price" class="form-control" placeholder="原价" value="{{product.unit_price}}">
                 <span class="input-group-addon">.00</span>
               </div>
             </div>
             <div class="col-md-4">
               <div class="input-group">
-                <input type="number" name="sale_price" id="sale_price" class="form-control" placeholder="优惠价">
+                <input type="number" name="sale_price" id="sale_price" class="form-control" placeholder="优惠价" value="{{product.sale_price}}">
                 <span class="input-group-addon">.00</span>
               </div>
             </div>
             <div class="col-md-4">
               <div class="input-group">
                 <span class="input-group-addon">库存</span>
-                <input type="number" name="number" id="number" class="form-control" placeholder="库存">
+                <input type="number" name="number" id="number" class="form-control" placeholder="库存" value="{{product.number}}">
               </div>
             </div>
           </div>
 
           <!-- CKEDITOR -->
           <textarea id="editor" name="editor" rows="10" cols="80">
-            this is my textarea to be replaced with CKEDITOR
+{{product.content}}
           </textarea>
           <!-- CKEDITOR end-->
         </div>

@@ -27,6 +27,13 @@ if(Meteor.isServer){
     return Products.find({seller_id: seller_id},{limit: limit, skip: skip,sort:{createdAt:-1}});
   });
 
+  // 发布商品，按照商品ID发布
+  Meteor.publish('product-by-id',function(_id){
+    if(!this.userId || !_id){
+      return this.ready();
+    }
+    return Products.find({_id: _id});
+  });
 
   // 发布订单信息， 按照用户 和 状态发布
   Meteor.publish('user_orders', function(status, limit){
