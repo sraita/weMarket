@@ -1,0 +1,56 @@
+<template name="product">
+<div class="product">
+  <!-- Swiper start-->
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">Slide 1</div>
+      <div class="swiper-slide">Slide 2</div>
+      <div class="swiper-slide">Slide 3</div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+  <!-- Swiper end -->
+
+  <div class="product-info">
+    <h4 class="name">{{name}}</h4>
+    <div class="sale-price">￥ {{sale_price}}</div>
+    <div class="unit-price">市场价  <del>￥ {{unit_price}}</del></div>
+    <div class="other-info">
+      <span style="text-align: left;">销量： 0</span>
+      <span style="text-align: right;">库存： {{number}}</span>
+    </div>
+  </div>
+
+  <div class="weui-cells">
+    <a class="weui-cell weui-cell_access" href="javascript:;">
+      <div class="weui-cell__bd">
+        <p>已选</p>
+      </div>
+      <div class="weui-cell__ft">请选择</div>
+    </a>
+  </div>
+
+  <div class="weui-cells">
+    <a class="weui-cell weui-cell_access" href="javascript:;">
+      <div class="weui-cell__bd">
+        <p>商品评价</p>
+      </div>
+      <div class="weui-cell__ft">好评率 100%(0 人)</div>
+    </a>
+  </div>
+
+  <ul class="tab-title">
+    <li class="active">商品描述</li>
+    <li>规格参数</li>
+  </ul>
+
+  <div class="filter-btn dis-box">
+    <a href="" class="filter-btn-flow filter-btn-a">
+      <i class="fa fa-shopping-cart"></i>
+      <p>购物车</p>
+    </a>
+    <a type="button" class="btn-cart button">加入购物车</a>
+    <a type="button" class="btn-submit button">立即购买</a>
+  </div>
+</div>
+</template>

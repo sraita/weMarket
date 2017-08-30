@@ -32,3 +32,15 @@ Router.route('/me',{
   name: 'me',
   layoutTemplate: 'headFootLayout'
 });
+
+// 商品详情页
+Router.route('/product/:_id',{
+  name: 'product',
+  layoutTemplate: 'headLayout',
+  waitOn: function(){
+    return Meteor.subscribe('product-by-id', this.params._id);
+  },
+  data: function(){
+    return Products.findOne({_id: this.params._id});
+  }
+})
