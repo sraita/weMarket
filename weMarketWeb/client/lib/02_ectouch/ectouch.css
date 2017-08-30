@@ -1,0 +1,23 @@
+html,body{
+  font-size: 9px;
+  background: #F6F6F9;
+  color: #333;
+}
+.text-c {
+    text-align: center;
+}
+.n-cate-box {
+    background: url(/img/bejing.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0.8rem 0;
+}
+.index-title {
+    color: #444;
+    font-size: 1.6rem;
+}
+
+.index-small-title {
+    font-size: 1.3rem;
+    color: #888;
+}

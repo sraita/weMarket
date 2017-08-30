@@ -4,34 +4,48 @@
   <ul class="fast-nav">
     <li>
       <a href="/categories">
-        <i class="fa fa-user"></i>
+        <img src="/home/nav_0.png"/>
         <p>全部分类</p>
       </a>
     </li>
     <li>
       <a href="/orders">
-        <i class="fa fa-user"></i>
+        <img src="/home/nav_1.png"/>
         <p>我的订单</p>
       </a>
     </li>
     <li>
       <a href="/shopping">
-        <i class="fa fa-shopping-cart"></i>
+        <img src="/home/nav_2.png"/>
         <p>购物车</p>
       </a>
     </li>
     <li>
       <a href="/me">
-        <i class="fa fa-user"></i>
+        <img src="/home/nav_3.png"/>
         <p>个人中心</p>
       </a>
     </li>
   </ul>
   <!-- 快速导航 END -->
   <!-- 产品列表 -->
+  <div class="text-c n-cate-box">
+		<p class="index-title"><i class="iconfont icon-cainixihuan is-cainixihuan"></i>猜你喜欢</p>
+		<p class="index-small-title">实时推荐最适合您的宝贝</p>
+	</div>
+  <ul class="product-list">
   {{#each products}}
-    {{name}}
+    <li class="product-item">
+      <a href="/">
+      <img src="http://shop.ectouch.cn/v2/images/201509/thumb_img/17919_thumb_G_1441858552832.jpg"/>
+      <div class="product-info">
+        <h3 class="product-name">{{name}}</h3>
+        <p class="product-price">￥{{sale_price}}元 </p>
+      </div>
+      </a>
+    </li>
   {{/each}}
+  </ul>
   <!-- 产品列表 END -->
 </div>
 </template>
