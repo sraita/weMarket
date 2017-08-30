@@ -45,7 +45,7 @@ Template.productsAdd.events({
         return alert('请重试');
       }
       alert('新增商品成功');
-      return Router.go('/products/list');
+      return Router.go('/products/list/all');
     });
   }
 })

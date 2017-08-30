@@ -37,7 +37,7 @@ if(Meteor.isClient){
   // });
 
   // 商品列表
-  Router.route('/products/list',{
+  Router.route('/products/list/:category_id',{
     name: 'productsList',
     waitOn: function(){
       return  Meteor.subscribe('categories_by_seller',Meteor.userId());
@@ -45,7 +45,7 @@ if(Meteor.isClient){
   });
 
   // 新增商品
-  Router.route('/products/add',{
+  Router.route('/products/new',{
     name: 'productsAdd',
     waitOn: function(){
       return  Meteor.subscribe('categories_by_seller',Meteor.userId());
