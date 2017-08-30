@@ -1,8 +1,37 @@
 <template name="home">
-
-<!-- 产品列表 -->
-{{#each products}}
-  {{name}}
-{{/each}}
-<!-- 产品列表 END-->
+<div class="home">
+  <!-- 快速导航 -->
+  <ul class="fast-nav">
+    <li>
+      <a href="/categories">
+        <i class="fa fa-user"></i>
+        <p>全部分类</p>
+      </a>
+    </li>
+    <li>
+      <a href="/orders">
+        <i class="fa fa-user"></i>
+        <p>我的订单</p>
+      </a>
+    </li>
+    <li>
+      <a href="/shopping">
+        <i class="fa fa-shopping-cart"></i>
+        <p>购物车</p>
+      </a>
+    </li>
+    <li>
+      <a href="/me">
+        <i class="fa fa-user"></i>
+        <p>个人中心</p>
+      </a>
+    </li>
+  </ul>
+  <!-- 快速导航 END -->
+  <!-- 产品列表 -->
+  {{#each products}}
+    {{name}}
+  {{/each}}
+  <!-- 产品列表 END -->
+</div>
 </template>
