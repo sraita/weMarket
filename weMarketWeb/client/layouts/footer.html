@@ -1,27 +1,32 @@
 <template name="footer">
+  <style>
+  .weui-bar__item--on .weui-tabbar__label,.weui-bar__item--on i.fa{
+    color: deepskyblue !important;
+  }
+  </style>
   <div class="weui-tabbar">
-    <a href="javascript:;" class="weui-tabbar__item weui-bar__item--on">
-      <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>
+    <a href="/" class="weui-tabbar__item {{isCurr 'home'}}">
+      <!--<span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>-->
       <div class="weui-tabbar__icon">
-        <img src="./images/icon_nav_button.png" alt="">
+        <i class="fa fa-home"></i>
       </div>
       <p class="weui-tabbar__label">首页</p>
     </a>
-    <a href="javascript:;" class="weui-tabbar__item">
+    <a href="/categories" class="weui-tabbar__item {{isCurr 'categories'}}">
       <div class="weui-tabbar__icon">
-        <img src="./images/icon_nav_msg.png" alt="">
+        <i class="fa fa-bars"></i>
       </div>
       <p class="weui-tabbar__label">分类</p>
     </a>
-    <a href="javascript:;" class="weui-tabbar__item">
+    <a href="/shopping" class="weui-tabbar__item {{isCurr 'shopping'}}">
       <div class="weui-tabbar__icon">
-        <img src="./images/icon_nav_article.png" alt="">
+        <i class="fa fa-shopping-cart"></i>
       </div>
       <p class="weui-tabbar__label">购物车</p>
     </a>
-    <a href="javascript:;" class="weui-tabbar__item">
+    <a href="/me" class="weui-tabbar__item {{isCurr 'me'}}">
       <div class="weui-tabbar__icon">
-        <img src="./images/icon_nav_cell.png" alt="">
+        <i class="fa fa-user"></i>
       </div>
       <p class="weui-tabbar__label">我</p>
     </a>
