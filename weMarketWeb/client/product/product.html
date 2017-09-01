@@ -22,7 +22,7 @@
   </div>
 
   <div class="weui-cells">
-    <a class="weui-cell weui-cell_access" href="javascript:;">
+    <a class="weui-cell weui-cell_access addToCart" href="javascript:;">
       <div class="weui-cell__bd">
         <p>已选</p>
       </div>
@@ -47,10 +47,38 @@
   <div class="filter-btn dis-box">
     <a href="" class="filter-btn-flow filter-btn-a">
       <i class="fa fa-shopping-cart"></i>
-      <p>购物车</p>
+      <p style="margin: 0;">购物车</p>
     </a>
-    <a type="button" class="btn-cart button">加入购物车</a>
-    <a type="button" class="btn-submit button">立即购买</a>
+    <a type="button" class="btn-cart button addToCart">加入购物车</a>
+    <a type="button" class="btn-submit button addToCart">立即购买</a>
   </div>
 </div>
+<!-- addToCart -->
+<div id="addToCart" class="weui-popup__container popup-bottom">
+  <div class="weui-popup__overlay" style="background: rgba(0,0,0,.13);opacity: 1;"></div>
+  <div class="weui-popup__modal" style="background: #fff;">
+    <div class="product-attr">
+      <div class="title-area">
+        <img src="http://gi1.mlist.alicdn.com/bao/uploaded/i1/1793663235/TB2sP_wXVXXXXaGXXXXXXXXXXXX_!!1793663235.jpg" alt="鲜鱿鱼足片 办公休闲零食 200g  休闲零嘴" class="product-list-img">
+        <div class="close-popup"><i class="weui-icon-cancel"></i></div>
+        <h4>{{name}}</h4>
+        <p class="sale-price">￥ {{sale_price}}</p>
+        <span style="padding-left: 10px;">库存： {{number}}</span>
+      </div>
+
+      <h4 style="font-size: 14px; color: #555; font-weight: normal;">数量</h4>
+      <div class="div-num" style="margin-bottom: 80px;">
+        <a class="num-less" onclick="changePrice('1')"></a>
+        <input type="text" value="1" name="number" id="goods_number" autocomplete="off">
+        <a class="num-plus" onclick="changePrice('3')"></a>
+      </div>
+
+      <div class="filter-btn dis-box" style="display: flex;">
+        <a type="button" class="btn-cart button" style="flex: 1; margin: 0 5px;">加入购物车</a>
+        <a type="button" class="btn-submit button" style="flex: 1; margin: 0 5px;">立即购买</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!---->
 </template>
