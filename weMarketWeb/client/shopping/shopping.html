@@ -1,4 +1,18 @@
 <template name="shopping">
-
-购物车
+<div class="shopping">
+  <ul class="shopping-list">
+  {{#each lists}}
+    <li class="shopping-item">
+      <img src="http://shop.ectouch.cn/v2/images/201509/thumb_img/17919_thumb_G_1441858552832.jpg"/>
+      <h4>{{product_name}}</h4>
+      <p class="price">￥ {{getTotalPrice}}</p>
+      <div class="div-num" style="margin-bottom: 0;">
+        <a class="num-less" onclick="changePrice('1')"></a>
+        <input type="text" value="{{product_num}}" name="number" id="goods_number" autocomplete="off">
+        <a class="num-plus" onclick="changePrice('3')"></a>
+      </div>
+    </li>
+  {{/each}}
+  </ul>
+</div>
 </template>

@@ -1,4 +1,4 @@
-changePrice = function (type) {
+window.changePrice = function (type) {
   var qty = Number($('#goods_number').val()) || 1;
   //var qty = 0;
 

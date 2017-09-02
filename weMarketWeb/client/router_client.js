@@ -24,7 +24,12 @@ Router.route('/categories',{
 // 购物车
 Router.route('/shopping',{
   name: 'shopping',
-  layoutTemplate: 'headFootLayout'
+  layoutTemplate: 'headFootLayout',
+  waitOn: function(){
+    var limit = this.params.query.limit || 10;
+    console.log(limit)
+    Meteor.subscribe('user_shopping',Number(limit));
+  }
 });
 
 // 我
