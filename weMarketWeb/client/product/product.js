@@ -33,8 +33,36 @@ Template.product.helpers({
 });
 
 Template.product.events({
-  // 添加到购物车
+  // 添加到购物车Popup
   'click .addToCart': function(){
     $("#addToCart").popup();
+  },
+  // 添加到购物车
+  'click .btn-addCart': function(){
+    var user = Meteor.user();
+    var obj = {
+      product_id: this._id,
+      product_name: this.name,
+      product_img: this.mainImage,
+      product_num: Number($('#goods_number').val()),
+      product_price: this.sale_price,
+      user_id: user._id,
+      user_name: '',
+      user_icon:'',
+      seller_icon: this.seller_icon,
+      seller_id: this.seller_id,
+      seller_name: this.seller_name
+    }
+    console.log(obj);
+    $.showLoading('正在添加');
+    Shopping.insert(obj, function(err, _id){
+      $.hideLoading();
+      if(err){
+        console.log(err);
+        return $.toast('请重试','cancel');
+      }
+      $.closePopup();
+      return $.toast('添加成功');
+    })
   }
 });
