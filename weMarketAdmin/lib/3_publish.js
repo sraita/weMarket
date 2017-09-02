@@ -43,4 +43,20 @@ if(Meteor.isServer){
     var limit = limit || 10;
     return Orders.find({user_id: this.userId, status: status},{limit: limit});
   });
+
+  // 发布： 按商品id, 和 user_id
+  Meteor.publish('shopping-by-product-id', function(product_id){
+    if(!this.userId || !product_id){
+      return this.ready();
+    }
+    return Shopping.find({user_id: this.userId, product_id: product_id});
+  });
+  // 发布： 我的购物车
+  Meteor.publish('user_shopping', function(limit){
+    if(!this.userId){
+      return this.ready();
+    }
+    var limit = limit || 10;
+    return Shopping.find({user_id: this.userId,},{limit: limit,sort:{createdAt:-1}})
+  })
 }

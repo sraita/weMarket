@@ -26,6 +26,8 @@ Template.product.onRendered(function(){
         return '<span class="swiper-pagination-bullet">' + current + ' / ' + total + '</span>';
       }
   });
+  console.log(this)
+  Meteor.subscribe('shopping-by-product-id', Router.current().params._id);
 });
 
 Template.product.helpers({
@@ -39,6 +41,8 @@ Template.product.events({
   },
   // 添加到购物车
   'click .btn-addCart': function(){
+    var shopping = Shopping.findOne({user_id: Meteor.userId(), product_id: this._id});
+    console.log(shopping)
     var user = Meteor.user();
     var obj = {
       product_id: this._id,
@@ -51,11 +55,12 @@ Template.product.events({
       user_icon:'',
       seller_icon: this.seller_icon,
       seller_id: this.seller_id,
-      seller_name: this.seller_name
+      seller_name: this.seller_name,
+      createdAt: new Date()
     }
     console.log(obj);
     $.showLoading('正在添加');
-    Shopping.insert(obj, function(err, _id){
+    var callback = function(err,_id){
       $.hideLoading();
       if(err){
         console.log(err);
@@ -63,6 +68,14 @@ Template.product.events({
       }
       $.closePopup();
       return $.toast('添加成功');
-    })
+    }
+    if(shopping){
+      obj.product_num += shopping.product_num;
+      Shopping.update({_id: shopping._id},{
+        $set:obj
+      },callback);
+    } else {
+      Shopping.insert(obj, callback);
+    }
   }
 });
