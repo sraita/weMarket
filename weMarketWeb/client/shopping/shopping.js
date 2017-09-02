@@ -8,3 +8,11 @@ Template.shopping.helpers({
     return this.product_price * this.product_num;
   }
 });
+
+
+Template.shopping.events({
+  'click .remove-product': function(e){
+    var _id = e.currentTarget.id;
+    Shopping.remove({_id: _id});
+  }
+})
