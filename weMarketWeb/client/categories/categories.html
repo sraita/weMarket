@@ -1,3 +1,25 @@
 <template name="categories">
-  分类
+<div class="categories">
+<ul class="sort-aside scollabel-y">
+  <li id="all" class="{{currCategory 'all'}} category-item">全部分类</li>
+  {{#each categories}}
+  <li id="{{_id}}" class="{{currCategory _id}} category-item">{{name}}</li>
+  {{/each}}
+</ul>
+  <div class="sort-main scollabel-y">
+    <ul class="product-list">
+  {{#each products}}
+    <li class="product-item">
+      <a href="/product/{{_id}}">
+      <img src="http://shop.ectouch.cn/v2/images/201509/thumb_img/17919_thumb_G_1441858552832.jpg"/>
+      <div class="product-info">
+        <h3 class="product-name">{{name}}</h3>
+        <p class="product-price">￥{{sale_price}}元 </p>
+      </div>
+      </a>
+    </li>
+  {{/each}}
+  </ul>
+  </div>
+</div>
 </template>

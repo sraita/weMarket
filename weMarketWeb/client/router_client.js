@@ -16,9 +16,16 @@ Router.route('/',{
 });
 
 // 分类
-Router.route('/categories',{
+Router.route('/categories/:_id',{
   name: 'categories',
-  layoutTemplate: 'headFootLayout'
+  layoutTemplate: 'headFootLayout',
+  waitOn: function(){
+    var limit = this.params.query.limit || 10;
+    limit = Number('limit');
+    var category_id = this.params._id || 'all';
+    Meteor.subscribe('categories_by_seller',Meteor.userId());
+    return Meteor.subscribe('products_by_category',Meteor.userId(),category_id, limit);
+  }
 });
 
 // 购物车
