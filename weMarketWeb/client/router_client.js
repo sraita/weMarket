@@ -46,7 +46,10 @@ Router.route('/shopping',{
 // 我
 Router.route('/me',{
   name: 'me',
-  layoutTemplate: 'footLayout'
+  layoutTemplate: 'headFootLayout',
+  yieldRegions: {
+    'meHeader': {to: 'header'}
+  },
 });
 
 // 商品详情页

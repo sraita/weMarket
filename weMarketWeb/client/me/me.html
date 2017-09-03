@@ -1,3 +1,37 @@
+<template name="meHeader">
+  <div class="title">我</div>
+</template>
 <template name="me">
-个人中心
+<div class="me">
+  <div class="weui-panel weui-panel_access">
+  <div class="weui-panel__bd">
+    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+      <div class="weui-media-box__hd">
+        <img class="weui-media-box__thumb" src="{{userIcon}}">
+      </div>
+      <div class="weui-media-box__bd">
+        <h4 class="weui-media-box__title">{{userName}}</h4>
+        <p class="weui-media-box__desc">VIP 1</p>
+      </div>
+    </a>
+  </div>
+  </div>
+</div>
+
+<div class="weui-cells">
+  <div class="weui-cell">
+    <div class="weui-cell__hd"><img src=""></div>
+    <div class="weui-cell__bd">
+      <p>我的订单</p>
+    </div>
+    <div class="weui-cell__ft">说明文字</div>
+  </div>
+  <div class="weui-cell">
+    <div class="weui-cell__hd"><img src=""></div>
+    <div class="weui-cell__bd">
+      <p>我的钱包</p>
+    </div>
+    <div class="weui-cell__ft">说明文字</div>
+  </div>
+</div>
 </template>
