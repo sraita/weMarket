@@ -1,9 +1,6 @@
 <template name="headFootLayout">
-<div id="head">
-    <div class="head-search">
-        <i class="weui-icon-search"></i>
-        <input class="search-input" type="text" placeholder="请输入您搜索的关键词!"/>
-    </div>
+<div id="head" class="headLayoutHeader">
+  {{> yield 'header'}}
 </div>
 <div id="container"  style="top: 40px; bottom: 48px;">
     {{> yield}}

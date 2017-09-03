@@ -8,7 +8,9 @@ PUB = {
     var history_view = Session.get('history_view') || [];
     var view = Router.current().originalUrl;
     var scrollTop = $(scrollContainer).scrollTop();
-
+    if(!view){
+      return history.go(-1);
+    }
     history_view.push({
       view: view,
       scrollTop: scrollTop,

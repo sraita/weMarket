@@ -13,13 +13,13 @@ Router.onBeforeAction(function () {
 
 Router.route('/',{
   name: 'home',
-  layoutTemplate: 'headFootLayout'
+  layoutTemplate: 'headSearchLayout'
 });
 
 // 分类
 Router.route('/categories/:_id',{
   name: 'categories',
-  layoutTemplate: 'headFootLayout',
+  layoutTemplate: 'headSearchLayout',
   waitOn: function(){
     var limit = this.params.query.limit || 10;
     limit = Number('limit');
@@ -33,6 +33,9 @@ Router.route('/categories/:_id',{
 Router.route('/shopping',{
   name: 'shopping',
   layoutTemplate: 'headFootLayout',
+  yieldRegions: {
+    'shoppingHeader': {to: 'header'}
+  },
   waitOn: function(){
     var limit = this.params.query.limit || 10;
     console.log(limit)
@@ -43,13 +46,16 @@ Router.route('/shopping',{
 // 我
 Router.route('/me',{
   name: 'me',
-  layoutTemplate: 'headFootLayout'
+  layoutTemplate: 'footLayout'
 });
 
 // 商品详情页
 Router.route('/product/:_id',{
   name: 'product',
   layoutTemplate: 'headLayout',
+  yieldRegions: {
+    'productHeader': {to: 'header'}
+  },
   waitOn: function(){
     return Meteor.subscribe('product-by-id', this.params._id);
   },
