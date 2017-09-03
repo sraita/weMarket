@@ -22,6 +22,6 @@ Template.categories.helpers({
 Template.categories.events({
   'click .category-item': function(e){
     var _id = e.currentTarget.id;
-    Router.go('/categories/'+_id);
+    PUB.page('/categories/'+_id);
   }
 })
