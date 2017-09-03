@@ -1,12 +1,40 @@
 var searchProduct = function(text){
   console.log(text);
   console.log('searching ...');
+  Session.set('showSearchStatus',false);
+  ProductsSearch.search(text);
 };
+
+Template.search.onRendered(function(){
+  Session.set('showSearchStatus', true);
+});
 
 Template.search.helpers({
   history: function(){
     return Session.get('searchHistory');
-  }
+  },
+  showSearchStatus: function(){
+    return Session.get('showSearchStatus');
+  },
+  searchLoading: function(){
+    return Session.get('searchLoading');
+  },
+  getProducts: function(){
+    var productsSearchData = ProductsSearch.getData({
+      transform: function(matchText, regExp) {
+        return matchText;
+      },
+      sort: {createdAt: -1}
+    });
+    if(productsSearchData.length == 0){
+      Meteor.setTimeout (function(){
+        Session.set("searchLoading", false);
+      },500);
+    } else {
+      Session.set("searchLoading", false);
+    }
+    return productsSearchData;
+  },
 });
 
 
@@ -23,6 +51,9 @@ Template.searchHeader.events({
       Session.set('searchHistory',history);
     }
     searchProduct(text);
+  },
+  'focus .search-input': function(){
+    Session.set('showSearchStatus', true);
   }
 })
 Template.search.events({
@@ -32,6 +63,7 @@ Template.search.events({
   },
   'click .search-history-item': function(e){
     var text = $(e.currentTarget).text();
+    $('.search-input').val(text);
     searchProduct(text);
   },
   'click .close-search': function(){

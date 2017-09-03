@@ -26,3 +26,11 @@
     border-radius: 4px;
     padding: 0 8px;
 }
+#head{
+    background: #efefef;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}

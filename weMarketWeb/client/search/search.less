@@ -12,12 +12,12 @@
     .clear-search {font-size: 18px;height: 30px;width: 40px;float: right;color: gray; text-align: right;}
   }
   .letest-search{
-    margin: 10px;
+    margin: 10px;border-top:1px solid #f5f5f5;
     li{
       list-style: none;
-      height: 30px;
-      line-height: 30px;
-      border-bottom: 1px solid #ccc;
+      height: 40px;
+      line-height: 40px;
+      border-bottom: 1px solid #f5f5f5;
     }
   }
   .close-search{
@@ -28,5 +28,21 @@
     line-height: 30px;
     text-align: center;
     cursor: pointer;
+  }
+}
+
+.searchResult{
+  ul.product-list{
+    .product-item{
+      width: 100%; padding: 10px; background: #fff; margin-bottom: 10px;
+      img{ width: 90px; height: 90px; border: 1px solid #ccc; margin-right: 10px; float: left;}
+      .product-info{padding: 0;}
+    }
+  }
+  .noSearchResult{
+    margin: 40px auto;
+    color: gray;
+    font-size: 16px;
+    text-align: center;
   }
 }

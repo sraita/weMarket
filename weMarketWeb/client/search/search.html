@@ -8,6 +8,7 @@
 </div>
 </template>
 <template name="search">
+{{#if showSearchStatus}}
 <div class="search">
   <div class="letest-search-title">最近搜索 <span class="clear-search"><i class="fa fa-trash-o"></i></span></div>
   <ul class="letest-search">
@@ -17,4 +18,32 @@
   </ul>
   <div class="close-search">点击关闭</div>
 </div>
+{{else}}
+  {{#if searchLoading}}
+  <div class="weui-loadmore">
+    <i class="weui-loading"></i>
+    <span class="weui-loadmore__tips">正在搜索</span>
+  </div>
+  {{else}}
+  <div class="searchResult">
+    {{#if getProducts}}
+    <ul class="product-list">
+    {{#each getProducts}}
+      <li class="product-item">
+        <a href="/product/{{_id}}?s={{seller_id}}">
+        <img src="http://shop.ectouch.cn/v2/images/201509/thumb_img/17919_thumb_G_1441858552832.jpg"/>
+        <div class="product-info">
+          <h3 class="product-name">{{name}}</h3>
+          <p class="product-price">￥{{sale_price}}元 </p>
+        </div>
+        </a>
+      </li>
+    {{/each}}
+    </ul>
+    {{else}}
+    <div class="noSearchResult">无记录</div>
+    {{/if}}
+  </div>
+  {{/if}}
+{{/if}}
 </template>
