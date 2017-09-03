@@ -3,35 +3,53 @@
 </template>
 <template name="me">
 <div class="me">
-  <div class="weui-panel weui-panel_access">
-  <div class="weui-panel__bd">
-    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-      <div class="weui-media-box__hd">
-        <img class="weui-media-box__thumb" src="{{userIcon}}">
-      </div>
-      <div class="weui-media-box__bd">
-        <h4 class="weui-media-box__title">{{userName}}</h4>
-        <p class="weui-media-box__desc">VIP 1</p>
-      </div>
-    </a>
+  <!-- userInfo -->
+  <div class="userInfo">
+    <div class="userIcon">
+      <img src="{{userIcon}}" />
+    </div>
+    <div class="userName">{{userName}}</div>
+    <div class="userVip">VIP 1</div>
+    <div class="userSetting"><i class="fa fa-cog"></i><span>设置</span></div>
   </div>
-  </div>
-</div>
+  <!-- userInfo end-->
 
-<div class="weui-cells">
-  <div class="weui-cell">
-    <div class="weui-cell__hd"><img src=""></div>
-    <div class="weui-cell__bd">
-      <p>我的订单</p>
-    </div>
-    <div class="weui-cell__ft">说明文字</div>
+  <div class="my-ul-title">
+    <h4>我的钱包</h4>
+    <span>资金管理<i class="fa fa-angle-right fa-fw"></i></span>
   </div>
-  <div class="weui-cell">
-    <div class="weui-cell__hd"><img src=""></div>
-    <div class="weui-cell__bd">
-      <p>我的钱包</p>
-    </div>
-    <div class="weui-cell__ft">说明文字</div>
+  <ul class="myWallet">
+    <li class="wallet">
+      <h4>0.00</h4>
+      <p>余额</p>
+    </li>
+    <li class="bitCon">
+      <h4>0</h4>
+      <p>积分</p>
+    </li>
+  </ul>
+
+  <div class="my-ul-title">
+    <h4>我的订单</h4>
+    <span>全部订单<i class="fa fa-angle-right fa-fw"></i></span>
   </div>
+  <ul class="myOrder">
+    <li class="wallet">
+      <h4>0</h4>
+      <p>待付款</p>
+    </li>
+    <li class="wallet">
+      <h4>0</h4>
+      <p>待收货</p>
+    </li>
+    <li class="bitCon">
+      <h4>0</h4>
+      <p>待评价</p>
+    </li>
+    <li class="bitCon">
+      <h4>0</h4>
+      <p>退换货</p>
+    </li>
+  </ul>
 </div>
 </template>
