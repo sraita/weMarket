@@ -11,7 +11,9 @@
 <div class="search">
   <div class="letest-search-title">最近搜索 <span class="clear-search"><i class="fa fa-trash-o"></i></span></div>
   <ul class="letest-search">
-    <li>哈哈哈哈</li>
+    {{#each history}}
+    <li class="search-history-item">{{this}}</li>
+    {{/each}}
   </ul>
   <div class="close-search">点击关闭</div>
 </div>
