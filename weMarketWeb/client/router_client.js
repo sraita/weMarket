@@ -56,4 +56,20 @@ Router.route('/product/:_id',{
   data: function(){
     return Products.findOne({_id: this.params._id});
   }
-})
+});
+
+// 搜索页
+Router.route('/search',{
+  name: 'search',
+  layoutTemplate: 'headLayout',
+  yieldRegions: {
+    'searchHeader': {to: 'header'}
+  },
+
+});
+
+// 搜索结果页
+Router.route('/searchReault',{
+  name: 'searchReault',
+  layoutTemplate: 'headLayout'
+});

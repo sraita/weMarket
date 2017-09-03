@@ -18,3 +18,11 @@
     box-shadow: -1px -1px 6px rgba(0, 0, 0, 0.26);
     /*overflow: hidden;*/
 }
+.head-search {
+    margin: 5px;
+    background: #fff;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 4px;
+    padding: 0 8px;
+}
