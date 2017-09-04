@@ -86,5 +86,8 @@ Router.route('/orders/new',{
   layoutTemplate: 'headLayout',
   yieldRegions: {
     'createOrderHeader':{ to: 'header'}
+  },
+  waitOn: function(){
+    return Meteor.subscribe('user_shopping');
   }
 })
