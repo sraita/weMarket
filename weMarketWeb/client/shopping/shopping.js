@@ -14,5 +14,9 @@ Template.shopping.events({
   'click .remove-product': function(e){
     var _id = e.currentTarget.id;
     Shopping.remove({_id: _id});
+  },
+  // 结算
+  'click #createOrder': function(e){
+    return PUB.page('/orders/new');
   }
 })

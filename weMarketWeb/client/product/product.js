@@ -67,7 +67,17 @@ Template.product.events({
         return $.toast('请重试','cancel');
       }
       $.closePopup();
-      return $.toast('添加成功');
+      return $.modal({
+        title: "已添加到购物车",
+        text: "该商品已经添加到购物车，您现在还需要继续购物吗？",
+        buttons: [
+          { text: "继续购物", className: "default", onClick: function(){ $.closeModal(); }},
+          { text: "马上结算", onClick: function(){
+            // goTo
+            return PUB.page('/shopping');
+          }}
+        ]
+      });
     }
     if(shopping){
       obj.product_num += shopping.product_num;

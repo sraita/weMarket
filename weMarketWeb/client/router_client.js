@@ -79,3 +79,12 @@ Router.route('/searchReault',{
   name: 'searchReault',
   layoutTemplate: 'headLayout'
 });
+
+// 确认订单
+Router.route('/orders/new',{
+  name: 'createOrder',
+  layoutTemplate: 'headLayout',
+  yieldRegions: {
+    'createOrderHeader':{ to: 'header'}
+  }
+})
