@@ -24,8 +24,9 @@ Router.route('/categories/:_id',{
     var limit = this.params.query.limit || 10;
     limit = Number('limit');
     var category_id = this.params._id || 'all';
-    Meteor.subscribe('categories_by_seller',Meteor.userId());
-    return Meteor.subscribe('products_by_category',Meteor.userId(),category_id, limit);
+    var seller_id = Router.current().params.query.s || 'RTsZ64Cc8iyoc4BmW';
+    Meteor.subscribe('categories_by_seller',seller_id);
+    return Meteor.subscribe('products_by_category',seller_id,category_id, limit);
   }
 });
 

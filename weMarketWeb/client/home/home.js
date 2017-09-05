@@ -1,5 +1,6 @@
 Template.home.onRendered(function(){
-  Meteor.subscribe('products_by_seller','RTsZ64Cc8iyoc4BmW', 100);
+  var seller_id = Router.current().params.query.s || 'RTsZ64Cc8iyoc4BmW';
+  Meteor.subscribe('products_by_seller',seller_id, 100);
   var swiper = new Swiper('.swiper-container', {
       pagination: '.swiper-pagination',
       autoplay : 5000,
