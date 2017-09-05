@@ -58,5 +58,21 @@ if(Meteor.isServer){
     }
     var limit = limit || 10;
     return Shopping.find({user_id: this.userId,},{limit: limit,sort:{createdAt:-1}})
+  });
+
+  // 发布订单信息
+  Meteor.publish('orderInfo', function(_id){
+    if(!this.userId || !_id){
+      return this.ready();
+    }
+    return Orders.find({_id: _id});
+  });
+
+  // 发布用户的订单列表
+  Meteor.publish('user-orders', function(){
+    if(!this.userId){
+      return this.ready();
+    }
+    return Orders.find({user_id: this.userId});
   })
 }

@@ -10,7 +10,7 @@
   <div class="weui-cells">
       <div class="weui-cell weui-cell_select">
           <div class="weui-cell__bd">
-              <select class="weui-select" name="select1">
+              <select class="weui-select" name="user_addr" id="user_addr">
                   <option selected="" value="1">lalallalaalla</option>
                   <option value="2">kakkakakakaka</option>
               </select>
@@ -44,6 +44,7 @@
       <div class="weui-form-preview__hd">
           <div class="weui-form-preview__item">
               <label class="weui-form-preview__label">付款金额</label>
+              <input style="visibility: hidden;display: none;" id="total_price" value="{{getTotalPrice}}"/>
               <em class="weui-form-preview__value">¥ {{getTotalPrice}}</em>
           </div>
       </div>

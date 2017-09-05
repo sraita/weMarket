@@ -91,4 +91,19 @@ Router.route('/orders/new',{
   waitOn: function(){
     return Meteor.subscribe('user_shopping');
   }
+});
+
+// 订单创建成功
+Router.route('/orders/success/:_id',{
+  name: 'orderSuccess',
+  layoutTemplate: 'headLayout',
+  yieldRegions: {
+    'orderSuccessHeader': {to: 'header'}
+  },
+  waitOn: function(){
+    return Meteor.subscribe('orderInfo', this.params._id);
+  },
+  data: function(){
+    return Orders.findOne({_id: this.params._id});
+  }
 })
