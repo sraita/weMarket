@@ -1,5 +1,18 @@
 Template.addrNew.onRendered(function(){
-  
+  var _id = Router.current().params.query.id
+  if(_id){
+    Meteor.subscribe('contactInfo', _id);
+  }
+});
+
+Template.addrNew.helpers({
+  data: function(){
+    var _id = Router.current().params.query.id
+    if(_id){
+      return Contact.findOne({_id: _id});
+    }
+    return {};
+  }
 });
 
 Template.addrNew.events({
@@ -34,14 +47,20 @@ Template.addrNew.events({
     }
     console.log(obj);
     $.showLoading('处理中');
-    Contact.insert(obj, function(err, result){
+    var callback = function(err, result){
       $.hideLoading();
       if(err){
         console.log(err);
         return $.toast('请重试','cancel');
       }
-      $.toast('添加成功');
+      $.toast('已保存');
       return PUB.back();
-    })
+    };
+    var _id = Router.current().params.query.id
+    if(_id){
+      Contact.update({_id: _id},{$set:obj},callback);
+    } else {
+      Contact.insert(obj, callback);
+    }
   }
 })

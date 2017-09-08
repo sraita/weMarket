@@ -9,7 +9,7 @@
     <div class="weui-cell">
       <div class="weui-cell__hd"><label class="weui-label">联系人</label></div>
       <div class="weui-cell__bd">
-        <input id="contact_name" class="weui-input" type="text"  placeholder="名字">
+        <input id="contact_name" class="weui-input" type="text"  placeholder="名字" value="{{data.contact_name}}">
       </div>
     </div>
     <div class="weui-cell">
@@ -17,7 +17,7 @@
         <label class="weui-label">手机号码</label>
       </div>
       <div class="weui-cell__bd">
-        <input id="contact_mobile" class="weui-input" type="tel" placeholder="请输入手机号">
+        <input id="contact_mobile" class="weui-input" type="tel" placeholder="请输入手机号" value="{{data.contact_mobile}}">
       </div>
     </div>
     <div class="weui-cell">
@@ -25,7 +25,7 @@
         <label class="weui-label">选择地区</label>
       </div>
       <div class="weui-cell__bd">
-        <input class="weui-input" id="contact_city" type="text" placeholder="地区信息">
+        <input class="weui-input" id="contact_city" type="text" placeholder="地区信息" value="{{data.contact_city}}">
       </div>
     </div>
     <div class="weui-cell">
@@ -33,7 +33,7 @@
         <label class="weui-label">邮政编码</label>
       </div>
       <div class="weui-cell__bd">
-        <input id="postal_code" class="weui-input" type="number" placeholder="邮政编码">
+        <input id="postal_code" class="weui-input" type="number" placeholder="邮政编码" value="{{data.postal_code}}">
       </div>
     </div>
   </div>
@@ -41,7 +41,7 @@
   <div class="weui-cells weui-cells_form">
     <div class="weui-cell">
       <div class="weui-cell__bd">
-        <textarea id="contact_street" class="weui-textarea" placeholder="街道门牌信息" rows="2"></textarea>
+        <textarea id="contact_street" class="weui-textarea" placeholder="街道门牌信息" rows="2">{{data.contact_street}}</textarea>
       </div>
     </div>
   </div>

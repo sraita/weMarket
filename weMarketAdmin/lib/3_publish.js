@@ -82,5 +82,12 @@ if(Meteor.isServer){
       return this.ready();
     }
     return Contact.find({user_id: this.userId},{sort:{createdAt: -1}});
+  });
+
+  Meteor.publish('contactInfo', function(_id){
+    if(!this.userId || !_id){
+      return this.ready();
+    }
+    return Contact.find({_id: _id});
   })
 }

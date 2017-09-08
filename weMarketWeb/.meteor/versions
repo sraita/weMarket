@@ -4,6 +4,7 @@ allow-deny@1.0.6
 autoupdate@1.3.12
 babel-compiler@6.19.4
 babel-runtime@1.0.1
+baidu:touch@0.2.11
 base64@1.0.10
 binary-heap@1.0.10
 blaze@2.3.2
