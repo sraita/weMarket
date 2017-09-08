@@ -7,7 +7,7 @@
 <div class="orders">
   <ul class="orderLists">
   {{#each lists}}
-    <li class="orderItem">
+    <li class="orderItem" id="{{_id}}">
       <div class="header">
         <span class="orderNo">订单号：{{order_no}}</span>
         <span class="orderStatus">{{getOrderStatus}}</span>

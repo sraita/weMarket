@@ -118,4 +118,19 @@ Router.route('/orders/list',{
   waitOn: function(){
     return Meteor.subscribe('user-orders');
   }
+});
+
+
+Router.route('/orders/info/:_id',{
+  name: 'orderInfo',
+  layoutTemplate: 'headLayout',
+  yieldRegions:{
+    'orderInfoHeader':{ to : 'header'}
+  },
+  waitOn: function(){
+    return Meteor.subscribe('orderInfo',this.params._id);
+  },
+  data: function(){
+    return Orders.findOne({_id: this.params._id});
+  }
 })

@@ -1,0 +1,65 @@
+<template name="orderInfoHeader">
+  <div class="back"><i class="fa fa-angle-left"></i></div>
+  <div class="title">订单详情</div>
+</template>
+
+<template name="orderInfo">
+  <div class="createOrder">
+  <!-- 配送地址 -->
+  <div class="weui-cells__title">配送地址</div>
+  <div class="weui-cells">
+      <div class="weui-cell weui-cell_select">
+          <div class="weui-cell__bd">
+              <select class="weui-select" name="user_addr" id="user_addr">
+                  <option selected="" value="1">lalallalaalla</option>
+                  <option value="2">kakkakakakaka</option>
+              </select>
+          </div>
+      </div>
+  </div>
+
+  <!-- 商品列表 -->
+  <div class="weui-panel__hd">商品列表</div>
+  <ul class="order-product-lists">
+    {{#each shoppings}}
+    <li>
+      <div class="product-name">{{product_name}}</div>
+      <div class="product-num"> × {{product_num}}</div>
+      <div class="product-price">￥ {{getProductTotalPrice}} 元</div>
+    </li>
+    {{/each}}
+  </ul>
+ 
+  <div class="weui-cells__title">订单备注</div>
+  <div class="weui-cells weui-cells_form">
+      <div class="weui-cell">
+          <div class="weui-cell__bd">
+              <textarea class="weui-textarea" placeholder="输入订单备注" rows="3"></textarea>
+              <div class="weui-textarea-counter"><span>0</span>/200</div>
+          </div>
+      </div>
+  </div>
+  <div class="weui-panel__hd"></div>
+  <div class="weui-form-preview">
+      <div class="weui-form-preview__hd">
+          <div class="weui-form-preview__item">
+              <label class="weui-form-preview__label">付款金额</label>
+              <input style="visibility: hidden;display: none;" id="total_price" value="{{getTotalPrice}}"/>
+              <em class="weui-form-preview__value">¥ {{getTotalPrice}}</em>
+          </div>
+      </div>
+      <div class="weui-form-preview__bd">
+          <div class="weui-form-preview__item">
+              <label class="weui-form-preview__label">折扣</label>
+              <span class="weui-form-preview__value">无折扣</span>
+          </div>
+          <div class="weui-form-preview__item">
+              <label class="weui-form-preview__label">积分</label>
+              <span class="weui-form-preview__value">支付成功后，您将获得 0 积分</span>
+          </div>
+      </div>
+  </div>
+
+  <a id="createOrder" href="javascript:;" class="weui-btn weui-btn_primary">立即支付</a>
+  </div>
+</template>

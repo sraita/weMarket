@@ -30,4 +30,11 @@ Template.orders.helpers({
         return '未支付';
     }
   }
+});
+
+Template.orders.events({
+  'click .orderItem': function(e){
+    var _id = e.currentTarget.id;
+    return PUB.page('/orders/info/'+_id);
+  }
 })
