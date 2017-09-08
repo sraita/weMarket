@@ -1,0 +1,29 @@
+<template name="ordersHeader">
+  <div class="back"><i class="fa fa-angle-left"></i></div>
+  <div class="title">我的订单</div>
+</template>
+
+<template name="orders">
+<div class="orders">
+  <ul class="orderLists">
+  {{#each lists}}
+    <li class="orderItem">
+      <div class="header">
+        <span class="orderNo">订单号：{{order_no}}</span>
+        <span class="orderStatus">{{getOrderStatus}}</span>
+      </div>
+      <div class="ft-rigtht"><i class="fa fa-angle-right fa-fw"></i></div>
+      <div class="body">
+        <div class="productImg">
+          <!--<img src="{{product.product_img}}"/>-->
+          <img src="http://shop.ectouch.cn/v2/images/201509/thumb_img/17919_thumb_G_1441858552832.jpg" />
+        </div>
+        <h4>{{product.product_name}}</h4>
+        <p>商品数量：{{total_num}}</p>
+        <p class="totalPrice">商品总价：{{total_price}}</p>
+      </div>
+    </li>
+  {{/each}}
+  </ul>
+</div>
+</template>

@@ -106,4 +106,16 @@ Router.route('/orders/success/:_id',{
   data: function(){
     return Orders.findOne({_id: this.params._id});
   }
+});
+
+// 订单列表
+Router.route('/orders/list',{
+  name: 'orders',
+  layoutTemplate: 'headLayout',
+  yieldRegions:{
+    'ordersHeader':{ to : 'header'}
+  },
+  waitOn: function(){
+    return Meteor.subscribe('user-orders');
+  }
 })
