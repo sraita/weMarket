@@ -28,5 +28,8 @@ Template.me.helpers({
 Template.me.events({
   'click .goOrderList': function(){
     return PUB.page('/orders/list')
+  },
+  'click .goAddrList': function(){
+    return PUB.page('/addr/list');
   }
 })

@@ -1,0 +1,3 @@
+Template.addrNew.onRendered(function(){
+  
+});

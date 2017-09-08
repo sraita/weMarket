@@ -133,4 +133,24 @@ Router.route('/orders/info/:_id',{
   data: function(){
     return Orders.findOne({_id: this.params._id});
   }
-})
+});
+
+// 收货地址管理
+Router.route('/addr/list',{
+  name: 'addrList',
+  layoutTemplate: 'headLayout',
+  yieldRegions:{
+    'addrListHeader':{ to : 'header'}
+  },
+  // waitOn: function(){
+  //   return Meteor.subscribe('addrList');
+  // }
+});
+
+Router.route('/addr/new',{
+  name: 'addrNew',
+  layoutTemplate: 'headLayout',
+  yieldRegions:{
+    'addrNewHeader':{ to : 'header'}
+  }
+});
