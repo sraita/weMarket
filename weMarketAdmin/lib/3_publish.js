@@ -74,5 +74,13 @@ if(Meteor.isServer){
       return this.ready();
     }
     return Orders.find({user_id: this.userId});
+  });
+
+  // 发布用户收货地址列表
+  Meteor.publish('contact_list', function(){
+    if(!this.userId){
+      return this.ready();
+    }
+    return Contact.find({user_id: this.userId},{sort:{createdAt: -1}});
   })
 }

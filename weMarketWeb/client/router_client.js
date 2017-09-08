@@ -142,9 +142,9 @@ Router.route('/addr/list',{
   yieldRegions:{
     'addrListHeader':{ to : 'header'}
   },
-  // waitOn: function(){
-  //   return Meteor.subscribe('addrList');
-  // }
+  waitOn: function(){
+    return Meteor.subscribe('contact_list');
+  }
 });
 
 Router.route('/addr/new',{
