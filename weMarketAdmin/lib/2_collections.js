@@ -19,6 +19,9 @@ Shopping = new Mongo.Collection('shopping');
 // 微信token
 AccessToken = new Mongo.Collection('access_token');
 
+// 用户商品寄送地址信息
+Contact = new Mongo.Collection('contact');
+
 if(Meteor.isServer){
   // search products
   SearchSource.defineSource('products', function(searchText, options) {

@@ -1,0 +1,12 @@
+// 用户商品寄送地址信息
+{
+  "user_id":"",
+  "user_name":"",
+  "user_icon":"",
+
+  "contact_name":"",
+  "contact_mobile":"",
+  "contact_city":"",
+  "contact_street":"",
+  "postal_code":""
+}
