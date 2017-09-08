@@ -23,4 +23,10 @@ Template.me.helpers({
   orderStatus5Count: function(){
     return Orders.find({user_id: Meteor.userId(), status:5}).count();
   }
+});
+
+Template.me.events({
+  'click .goOrderList': function(){
+    return PUB.page('/orders/list')
+  }
 })
