@@ -35,6 +35,10 @@ Template.createOrder.helpers({
 
 Template.createOrder.events({
   'click #user_addr': function(e){
+    var contactCount = Contact.find({user_id: Meteor.userId()},{sort:{createdAt:-1}}).count();
+    if(contactCount < 1){
+      return PUB.page('/addr/new');
+    }
     return $('#selectAddr').popup();
   },
   'click .selectAddrItem': function(e){
