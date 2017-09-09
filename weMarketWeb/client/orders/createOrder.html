@@ -6,16 +6,11 @@
 <template name="createOrder">
   <div class="createOrder">
   <!-- 配送地址 -->
-  <div class="weui-cells__title">配送地址</div>
-  <div class="weui-cells">
-      <div class="weui-cell weui-cell_select">
-          <div class="weui-cell__bd">
-              <select class="weui-select" name="user_addr" id="user_addr">
-                  <option selected="" value="1">lalallalaalla</option>
-                  <option value="2">kakkakakakaka</option>
-              </select>
-          </div>
-      </div>
+  <div class="weui-panel__hd">配送地址</div>
+  <div id="user_addr">
+    <div class="ft-right"><i class="fa fa-angle-right fa-fw"></i></div>
+    <h4>{{contact.contact_name}}<span>{{contact.contact_mobile}}</span></h4>
+    <p>{{contact.contact_city}} · {{contact.contact_street}}</p>
   </div>
 
   <!-- 商品列表 -->
@@ -30,15 +25,6 @@
     {{/each}}
   </ul>
  
-  <div class="weui-cells__title">订单备注</div>
-  <div class="weui-cells weui-cells_form">
-      <div class="weui-cell">
-          <div class="weui-cell__bd">
-              <textarea class="weui-textarea" placeholder="输入订单备注" rows="3"></textarea>
-              <div class="weui-textarea-counter"><span>0</span>/200</div>
-          </div>
-      </div>
-  </div>
   <div class="weui-panel__hd"></div>
   <div class="weui-form-preview">
       <div class="weui-form-preview__hd">
@@ -60,6 +46,40 @@
       </div>
   </div>
 
-  <a id="createOrder" href="javascript:;" class="weui-btn weui-btn_primary">提交订单</a>
+  <div class="weui-cells__title">订单备注</div>
+  <div class="weui-cells weui-cells_form">
+      <div class="weui-cell">
+          <div class="weui-cell__bd">
+              <textarea class="weui-textarea" placeholder="输入订单备注" rows="3"></textarea>
+              <div class="weui-textarea-counter"><span>0</span>/200</div>
+          </div>
+      </div>
   </div>
+
+  <a id="createOrder" href="javascript:;" class="weui-btn weui-btn_primary">提交订单</a>
+
+  <div id="selectAddr" class="weui-popup__container popup-bottom" style="z-index: 9999;">
+    <div class="weui-popup__overlay" style="background: rgba(0,0,0,.26);opacity: 1;"></div>
+    <div class="weui-popup__modal">
+        <div class="selectAddrHead">
+            <h4>选择配送地址</h4>
+            <div class="selectAddrBtn">完成</div>
+        </div>
+        <ul class="selectAddr">
+            {{#each contacts}}
+            <li class="selectAddrItem">
+                {{#if selectedAddr _id}}
+                <div class="ft-right"><i class="weui-icon-success"></i></div>
+                {{else}}
+                <div class="ft-right"><i class="weui-icon-circle"></i></div>
+                {{/if}}
+                <h4>{{contact_name}}<span>{{contact_mobile}}</span></h4>
+                <p>{{contact_city}} · {{contact_street}}</p>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+    </div>
+
+</div>
 </template>
