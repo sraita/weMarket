@@ -8,7 +8,7 @@ Router.onBeforeAction(function () {
     Router.go('login');
   }
   this.next();
-},{except:['register','forgotpass']});
+},{except:['register','forgotpass','oauth/wechat']});
 
 
 Router.route('/',{

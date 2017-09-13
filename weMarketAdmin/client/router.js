@@ -10,7 +10,7 @@ if(Meteor.isClient){
       Router.go('/login');
     }
     this.next();
-  },{except:['register','forgotpass']});
+  },{except:['register','forgotpass','oauth/wechat']});
 
   // 登录Admin 
   Router.route('/login',{
