@@ -5,6 +5,27 @@
 
 <template name="orders">
 <div class="orders">
+  <!-- 容器 -->
+  <div class="weui-tab">
+    <div class="weui-navbar">
+      <div class="weui-navbar__item weui-bar__item--on" id="all">
+        全部
+      </div>
+      <div class="weui-navbar__item" id="1">
+        待付款
+      </div>
+      <div class="weui-navbar__item" id="2">
+        待发货
+      </div>
+      <div class="weui-navbar__item" id="3">
+        待收货
+      </div>
+      <div class="weui-navbar__item" id="5">
+        待评价
+      </div>
+    </div>
+  </div>
+
   <ul class="orderLists">
   {{#each lists}}
     <li class="orderItem" id="{{_id}}">

@@ -76,8 +76,21 @@
 }
 
 .orders{
+  .weui-navbar{
+    position: fixed;
+    top: 40px;
+    .weui-navbar__item{font-size: 14px;}
+    .weui-navbar__item:after{
+      border: none;
+    }
+    .weui-navbar__item.weui-bar__item--on{
+      color: #1cbb7f;
+      background: none;
+      border-bottom: 2px solid #1cbb7f;
+    }
+  }
   .orderLists{
-    
+    margin-top: 55px;
   }
   .orderItem{
     list-style: none;
