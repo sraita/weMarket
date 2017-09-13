@@ -1,5 +1,5 @@
-var appid = 'wx5ca4836ebbda7287';
-var app_secret = 'afd33592eb230c2f8f9936881b2383ba';
+var appid = 'wxf5fdcd705a634bc9';
+var app_secret = 'e1d302d0e7f91b7d989eb42ddbc2ab5e';
 var scope = 'snsapi_userinfo';
 var state = Date.now();
 
@@ -78,3 +78,8 @@ window.loginByOpenId = function(){
 //         getWeXinUserInfo(access_token,openId);
 //     }
 // }
+=======
+var code = '081ClKxr1ar6zq0wtwwr1O4Pxr1ClKxb';
+var token_url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='+appid+
+                '&secret='+app_secret+'&code='+code+'&grant_type=authorization_code';
+>>>>>>> Stashed changes

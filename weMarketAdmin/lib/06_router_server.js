@@ -13,12 +13,13 @@ if(Meteor.isServer){
     var self = this;
     HTTP.get(token_url, function(error, result){
       if(!error){
-        var resp = result.content;
-        console.log(resp);
+        var resp = JSON.parse(result.content);
+        console.log(JSON.stringify(resp));
         var access_token = resp.access_token;
         var openId = resp.openid;
 
         var user_info_url = 'https://api.weixin.qq.com/sns/userinfo?access_token='+ access_token +'&openid='+ openId +'&lang=zh_CN';
+        console.log(user_info_url);
 
         HTTP.get(user_info_url, function(error, result){
           if(!error){
