@@ -1,11 +1,31 @@
+var appid = 'wx5ca4836ebbda7287';
+var app_secret = 'afd33592eb230c2f8f9936881b2383ba';
+var scope = 'snsapi_userinfo';
+var state = Date.now();
+
+var redirect_uri = encodeURIComponent('market.raidcdn.cn/oauth/wexhat');
+var auth_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+appid+
+               '&redirect_uri='+redirect_uri+
+               '&response_type=code&scope='+scope+
+               '&state='+state+'#wechat_redirect';
+
 Router.configure({
   loadingTemplate: 'loading',
   notFoundTemplate: 'notFound'
 });
 
 Router.onBeforeAction(function () {
-  if (!Meteor.userId() && Session.equals('pageNeedLogin',true)) {
-    Router.go('login');
+  // if (!Meteor.userId() && Session.equals('pageNeedLogin',true)) {
+  //   Router.go('login');
+  // }
+  if(!Meteor.userId() || !localStorage.getItem('user-openid')){
+    console.log('user not login');
+
+    // 跳转到微信用户授权登录页面
+    window.open(auth_url,'_self');
+  }
+  if(!Meteor.userId() && localStorage.getItem('user-openid')){
+    loginByOpenId();
   }
   this.next();
 },{except:['register','forgotpass','oauth/wechat']});
