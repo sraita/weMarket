@@ -64,16 +64,17 @@ window.loginByOpenId = function(){
     });
 }
 
-if(Meteor.isClient){
-    // 检查用户是否登录
-    if(!Meteor.userId()){
-        console.log('user not login');
-        var openId = Router.current().params.openId;
-        var access_token = Router.current().params.acccess_token;
+// if(Meteor.isClient){
+//     // 检查用户是否登录
+//     if(!Meteor.userId()){
+//         console.log('user not login');
+//         Meteor.SET
+//         var openId = Router.current().params.openId;
+//         var access_token = Router.current().params.acccess_token;
     
-        if(!openId && !access_token){
-            return;
-        }
-        getWeXinUserInfo(access_token,openId);
-    }
-}
+//         if(!openId && !access_token){
+//             return;
+//         }
+//         getWeXinUserInfo(access_token,openId);
+//     }
+// }
