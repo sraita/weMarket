@@ -18,6 +18,9 @@ Router.onBeforeAction(function () {
   // if (!Meteor.userId() && Session.equals('pageNeedLogin',true)) {
   //   Router.go('login');
   // }
+  if(Router.current().params.query.s){
+    localStorage.setItem('seller_id',Router.current().params.query.s);
+  }
   if(!Meteor.userId() || !localStorage.getItem('user-openid')){
     console.log('user not login');
 

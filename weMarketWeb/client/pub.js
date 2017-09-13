@@ -17,8 +17,12 @@ PUB = {
       scrollContainer: scrollContainer
     });
     Session.set('history_view', history_view);
-    var seller_id = Router.current().params.query.s || 'RTsZ64Cc8iyoc4BmW';
-    page = page + '?s='+seller_id 
+    var seller_id = Router.current().params.query.s || localStorage.getItem('seller_id') || 'RTsZ64Cc8iyoc4BmW';
+    if(Object.keys(Router.current().params.query).length === 0){
+      page = page + '?s='+seller_id 
+    } else {
+      page = page +'&s='+seller_id;
+    }
     return Router.go(page);
   },
   // 页面切换 ， 返回（配合PUB.page 使用)
