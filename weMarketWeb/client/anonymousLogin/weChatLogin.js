@@ -78,8 +78,3 @@ window.loginByOpenId = function(){
 //         getWeXinUserInfo(access_token,openId);
 //     }
 // }
-=======
-var code = '081ClKxr1ar6zq0wtwwr1O4Pxr1ClKxb';
-var token_url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='+appid+
-                '&secret='+app_secret+'&code='+code+'&grant_type=authorization_code';
->>>>>>> Stashed changes
