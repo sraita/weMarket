@@ -28,3 +28,4 @@ sraita:ckeditor@4.7.2
 meteorhacks:search-source
 percolate:synced-cron
 http
+meteorhacks:ssr

@@ -35,4 +35,29 @@ if(Meteor.isServer){
     });
     
   });
+
+  Router.route('restapi/qr-company',{where: 'server'})
+  .get(function() {
+    var companyId = this.params.query.id; Router.route('/reporter/:_id', function(req, res, next){
+      var data = {
+        companyId: this.params._id
+      }
+      if(Company.find({_id:this.params._id}).count() === 0){
+        res.writeHead(404, {
+          'Content-Type': 'text/html'
+        });
+        res.end('<head>\
+          <meta charset="utf-8">\
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">\
+          <title>没有查询到相关信息</title>\
+        </head>\
+        <body><h1 style="text-align:center">没有查询到相关信息</h1><hr/></body>', data);
+      }
+      var reporterHTML = SSR.render('dailyRepoter',data);
+      res.writeHead(200, {
+        'Content-Type': 'text/html'
+      });
+      res.end(reporterHTML, data)
+    },{where: 'server'});
+  });
 }
