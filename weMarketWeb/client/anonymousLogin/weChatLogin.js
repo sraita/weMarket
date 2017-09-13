@@ -3,7 +3,7 @@ var app_secret = 'e1d302d0e7f91b7d989eb42ddbc2ab5e';
 var scope = 'snsapi_userinfo';
 var state = Date.now();
 
-var redirect_uri = encodeURIComponent('market.raidcdn.cn/oauth/wechat');
+var redirect_uri = encodeURIComponent('http://market.raidcdn.cn/oauth/wechat');
 var auth_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+appid+
                '&redirect_uri='+redirect_uri+
                '&response_type=code&scope='+scope+
