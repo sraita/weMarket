@@ -9,7 +9,7 @@ Template.productsAdd.helpers({
     return Categories.find({seller_id: Meteor.userId()}).fetch();
   },
   images: function(){
-    return Session.get('product-info-images'); 
+    return Session.get('uploadedImages'); 
   },
   isModify: function(){
     var type = Router.current().params.query.t;
@@ -84,4 +84,8 @@ Template.productsAdd.events({
       });
     }
   }
+});
+
+Template.productsAdd.onDestroyed(function(){
+  clearPluploadSession();
 })

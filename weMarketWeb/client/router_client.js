@@ -27,10 +27,10 @@ Router.onBeforeAction(function () {
     console.log('user not login');
 
     // 跳转到微信用户授权登录页面
-    window.open(auth_url,'_self');
+    // window.open(auth_url,'_self');
   }
   if(!Meteor.userId() && localStorage.getItem('user-openid')){
-    loginByOpenId();
+    // loginByOpenId();
   }
   this.next();
 },{except:['register','forgotpass','oauth/wechat']});

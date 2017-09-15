@@ -33,21 +33,17 @@
             <li class="addImages" id="selectfiles">
               <i class="fa fa-plus"></i>
             </li>
-            <li class="imageLists">
-              <img src="https://img.alicdn.com/tps/TB1dDT4LXXXXXabaXXXXXXXXXXX-576-840.jpg"/>
+            {{#if preUploadingImg}}
+            <li class="uploading" id="{{preUploadingImg.id}}">
+             
             </li>
+            {{/if}}
+            {{#each images}}
             <li class="imageLists">
-              <img src="https://img.alicdn.com/tps/TB1dDT4LXXXXXabaXXXXXXXXXXX-576-840.jpg"/>
+              <img src="{{imgUrl}}"/>
             </li>
-            <li class="imageLists">
-              <img src="https://img.alicdn.com/tps/TB1dDT4LXXXXXabaXXXXXXXXXXX-576-840.jpg"/>
-            </li>
+            {{/each}}
           </ul>
-          <div id="container">
-              <a id="selectfiles" href="javascript:void(0);" class="btn">选择文件</a>
-              <a id="postfiles" href="javascript:void(0);" class="btn">上传文件</a>
-          </div>
-          <pre id="console"></pre>
         </div>
       </div>
     </div>
@@ -121,5 +117,7 @@
       skin:'moono-lisa'
     });
   });
+  var uploader = createPlupload('selectfiles');
+  uploader.init();
 </script>
 </template>
