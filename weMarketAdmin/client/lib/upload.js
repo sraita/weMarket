@@ -141,10 +141,7 @@ createPlupload = function (id) {
 				if (info.status == 200)
 				{
 					log = 'upload to oss success, object name:' + get_uploaded_object_name(file.name) + ' 回调服务器返回的内容是:' + info.response;
-					uploadedImages.push({
-						id: file.id,
-						imgUrl: host + '/' + get_uploaded_object_name(file.name)
-					});
+					uploadedImages.push( host + '/' + get_uploaded_object_name(file.name));
 				}
 				else if (info.status == 203)
 				{

@@ -1,7 +1,14 @@
 Template.productsAdd.onRendered(function(){
   var productId = Router.current().params.query.id;
   if(productId){
-    Meteor.subscribe('product-by-id',productId);
+    Meteor.subscribe('product-by-id',productId, function(){
+      var product = Products.findOne({_id: productId});
+      var images = [];
+      if(product && product.images){
+        images = product.images;
+      }
+      Session.set('uploadedImages', images);
+    });
   }
 });
 Template.productsAdd.helpers({
@@ -40,10 +47,14 @@ Template.productsAdd.events({
         number = Number($('#number').val()),
         category_id = $('#category_id option:selected').attr('id'),
         content = CKEDITOR.instances.editor.getData();
+    var images = Session.get('uploadedImages') || [];
     if(!name || !desc || !unit_price || !sale_price || ! number || !category_id || ! content){
       return alert('请完整填写表单');
     }
 
+    if(images.length < 1){
+      return alert('请添加商品图片');
+    }
     var user = Meteor.user();
     
     var obj = {
@@ -51,8 +62,8 @@ Template.productsAdd.events({
       unit_price: unit_price,
       sale_price: sale_price,
       number: number,
-      mainImage: "",
-      images:[],
+      mainImage: images[0],
+      images:images,
       desc: desc,
       content: content,
       category_id: category_id,
@@ -71,6 +82,7 @@ Template.productsAdd.events({
           return alert('请重试');
         }
         alert('修改商品信息成功');
+        clearPluploadSession();
         return Router.go('/products/list/all');
       });
     } else {
@@ -80,6 +92,7 @@ Template.productsAdd.events({
           return alert('请重试');
         }
         alert('新增商品成功');
+        clearPluploadSession();
         return Router.go('/products/list/all');
       });
     }
