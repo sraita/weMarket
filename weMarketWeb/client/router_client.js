@@ -26,14 +26,18 @@ Router.onBeforeAction(function () {
   if(Router.current().params.query.s){
     localStorage.setItem('seller_id',Router.current().params.query.s);
   }
-  // if(!Meteor.userId() && localStorage.getItem('user-openid')){
-  //   loginByOpenId();
-  // }
-  if(!Meteor.userId() || !localStorage.getItem('user-openid')){
+  if(!Meteor.userId()){
+    if(localStorage.getItem('Meteor.userId')){
+      loginByOpenId();
+    } else {
+      window.open(auth_url,'_self');
+    }
+  } 
+  if(!Meteor.userId() || !localStorage.getItem('Meteor.userId')){
     console.log('user not login');
 
     // 跳转到微信用户授权登录页面
-    window.open(auth_url,'_self');
+    
   }
   this.next();
 },{except:['register','forgotpass','oauth/wechat']});

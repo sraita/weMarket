@@ -55,8 +55,8 @@ getWeXinUserInfo = function(acccess_token, openId){
 }
 
 window.loginByOpenId = function(){
-    var openid = localStorage.getItem('user-openid');
-    Meteor.loginWithPassword(openId, '123456', function(error){
+    var userId = localStorage.getItem('Meteor.userId');
+    Meteor.loginWithPassword(userId, '123456', function(error){
         if(error){
           console.log(error)
         }

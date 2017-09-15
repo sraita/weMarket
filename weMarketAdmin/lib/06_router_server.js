@@ -6,6 +6,9 @@ if(Meteor.isServer){
     var app_secret = 'e1d302d0e7f91b7d989eb42ddbc2ab5e';
     var userInfo = {};
 
+    var request = this.request;
+    var response = this.response;
+
     // var returnUrl = decodeURIComponent(this.request.query.currUrl);
     var returnUrl = '/';
 
@@ -87,10 +90,9 @@ if(Meteor.isServer){
                 country: resp.country,
                 sex: (resp.sex === '1' || resp.sex === 1) ? '男' : (resp.sex === 2 || resp.sex === 2 ? '女' : undefined)
               }
-              if(user){
 
-              }
               Accounts.updateOrCreateUserFromExternalService('wechat', {
+                id: resp.openid,
                 openid: resp.openid,
                 nickname: resp.nickname,
                 sex: resp.sex,
