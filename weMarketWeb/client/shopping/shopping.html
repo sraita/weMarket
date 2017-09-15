@@ -3,6 +3,7 @@
 </template>
 <template name="shopping">
 <div class="shopping">
+  {{#if lists}}
   <ul class="shopping-list">
   {{#each lists}}
     <li class="shopping-item">
@@ -20,5 +21,11 @@
   </ul>
   
   <a id="createOrder" href="javascript:;" class="weui-btn weui-btn_primary">立即结算</a>
+  {{else}}
+  <div style="margin-top: 80px; text-align: center; font-size: 14px;">
+    <p>购物车是空的</p>
+    <a href="/categories/all?s={{seller_id}}">立即购物</a>
+  </div>
+  {{/if}}
 </div>
 </template>
