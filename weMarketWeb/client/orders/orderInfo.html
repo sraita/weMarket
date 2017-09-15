@@ -6,22 +6,17 @@
 <template name="orderInfo">
   <div class="createOrder">
   <!-- 配送地址 -->
-  <div class="weui-cells__title">配送地址</div>
-  <div class="weui-cells">
-      <div class="weui-cell weui-cell_select">
-          <div class="weui-cell__bd">
-              <select class="weui-select" name="user_addr" id="user_addr">
-                  <option selected="" value="1">lalallalaalla</option>
-                  <option value="2">kakkakakakaka</option>
-              </select>
-          </div>
-      </div>
+  <div class="weui-panel__hd">配送地址</div>
+  <div id="user_addr">
+    <!--<div class="ft-right"><i class="fa fa-angle-right fa-fw"></i></div>-->
+    <h4>{{user_addr.contact_name}}<span>{{user_addr.contact_mobile}}</span></h4>
+    <p>{{user_addr.contact_city}} · {{user_addr.contact_street}}</p>
   </div>
 
   <!-- 商品列表 -->
   <div class="weui-panel__hd">商品列表</div>
   <ul class="order-product-lists">
-    {{#each shoppings}}
+    {{#each products}}
     <li>
       <div class="product-name">{{product_name}}</div>
       <div class="product-num"> × {{product_num}}</div>
@@ -30,7 +25,7 @@
     {{/each}}
   </ul>
  
-  <div class="weui-cells__title">订单备注</div>
+  <!--<div class="weui-cells__title">订单备注</div>
   <div class="weui-cells weui-cells_form">
       <div class="weui-cell">
           <div class="weui-cell__bd">
@@ -38,14 +33,14 @@
               <div class="weui-textarea-counter"><span>0</span>/200</div>
           </div>
       </div>
-  </div>
+  </div>-->
   <div class="weui-panel__hd"></div>
   <div class="weui-form-preview">
       <div class="weui-form-preview__hd">
           <div class="weui-form-preview__item">
               <label class="weui-form-preview__label">付款金额</label>
               <input style="visibility: hidden;display: none;" id="total_price" value="{{getTotalPrice}}"/>
-              <em class="weui-form-preview__value">¥ {{getTotalPrice}}</em>
+              <em class="weui-form-preview__value">¥ {{total_price}}</em>
           </div>
       </div>
       <div class="weui-form-preview__bd">
@@ -61,5 +56,6 @@
   </div>
 
   <a id="createOrder" href="javascript:;" class="weui-btn weui-btn_primary">立即支付</a>
+  <a id="cancelOrder" href="javascript:;" class="weui-btn weui-btn_default">取消订单</a>
   </div>
 </template>
