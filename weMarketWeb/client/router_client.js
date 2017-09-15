@@ -9,6 +9,9 @@ var auth_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+appi
                '&response_type=code&scope='+scope+
                '&state='+state+'#wechat_redirect';
 
+ACCOUNT_ROUTER = [
+  '/shopping'
+];
 Router.configure({
   loadingTemplate: 'loading',
   notFoundTemplate: 'notFound'
@@ -23,14 +26,14 @@ Router.onBeforeAction(function () {
   if(Router.current().params.query.s){
     localStorage.setItem('seller_id',Router.current().params.query.s);
   }
+  // if(!Meteor.userId() && localStorage.getItem('user-openid')){
+  //   loginByOpenId();
+  // }
   if(!Meteor.userId() || !localStorage.getItem('user-openid')){
     console.log('user not login');
 
     // 跳转到微信用户授权登录页面
-    // window.open(auth_url,'_self');
-  }
-  if(!Meteor.userId() && localStorage.getItem('user-openid')){
-    // loginByOpenId();
+    window.open(auth_url,'_self');
   }
   this.next();
 },{except:['register','forgotpass','oauth/wechat']});

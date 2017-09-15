@@ -29,3 +29,4 @@ meteorhacks:search-source
 percolate:synced-cron
 http
 meteorhacks:ssr
+accounts-base
