@@ -19,6 +19,13 @@ Template.createOrder.helpers({
     });
     return price.toFixed(2);
   },
+  getTotalNum: function(){
+    var num = 0;
+    Shopping.find({}).forEach(function(item){
+      num += item.product_num;
+    });
+    return num;
+  },
   contact: function(){
     return Session.get('selectedAddr');
   },
@@ -69,8 +76,8 @@ Template.createOrder.events({
 
         order_no: order_no,
         status: 1,
-        total_price: $('#total_price').val(),
-        total_num: Number($('#total_num').val()),
+        total_price: Number($('#total_price').data('price')),
+        total_num: Number($('#total_num').data('num')),
         createdAt: new Date()
       }
       var shoppingIds = [];
@@ -78,7 +85,7 @@ Template.createOrder.events({
         obj.products.push(item);
         shoppingIds.push(item._id);
       });
-
+      return console.log(obj)
       Orders.insert(obj, function(err, _id){
         if(err){
           console.log(err);
