@@ -85,7 +85,7 @@ Template.createOrder.events({
         obj.products.push(item);
         shoppingIds.push(item._id);
       });
-      return console.log(obj)
+
       Orders.insert(obj, function(err, _id){
         if(err){
           console.log(err);
