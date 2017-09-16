@@ -51,4 +51,9 @@ if(Meteor.isClient){
       return  Meteor.subscribe('categories_by_seller',Meteor.userId());
     }
   });
+
+  // 商城设置
+  Router.route('settings',{
+    name: 'settings'
+  });
 }
