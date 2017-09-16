@@ -44,6 +44,22 @@ if(Meteor.isServer){
     return Orders.find({user_id: this.userId, status: status},{limit: limit});
   });
 
+  // 发布订单信息， 按照商家 和 状态发布
+  Meteor.publish('seller_orders', function(seller_id,status, limit,skip){
+    if(!seller_id || !status){
+      return this.ready();
+    }
+    var limit = limit || 20;
+    var skip = skip || 0;
+    if(status == 'all'){
+      console.log(Orders.find({seller_id: seller_id},{limit: limit,skip: skip}).count())
+      return Orders.find({seller_id: seller_id},{limit: limit,skip: skip});
+    } else {
+       status = parseInt(status)
+      return Orders.find({seller_id: seller_id, status: status},{limit: limit,skip: skip});
+    }
+  });
+
   // 发布： 按商品id, 和 user_id
   Meteor.publish('shopping-by-product-id', function(product_id){
     if(!this.userId || !product_id){

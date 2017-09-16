@@ -53,7 +53,21 @@ if(Meteor.isClient){
   });
 
   // 商城设置
-  Router.route('settings',{
+  Router.route('/settings',{
     name: 'settings'
+  });
+
+  // 商家查看订单
+  Router.route('/orders/:_status',{
+    name: 'orders',
+    waitOn: function(){
+      var status = this.params._status;
+      var limit = this.params.query.limit || 20;
+      limit = parseInt(limit)
+      var page = this.params.query.page || 1;
+      page = parseInt(page - 1);
+      var skip = parseInt(page * limit);
+      return Meteor.subscribe('seller_orders', Meteor.userId(),status, limit,skip);
+    }
   });
 }

@@ -1,0 +1,103 @@
+<template name="orders">
+<style>
+.nav-pills>li.active>a, .nav-pills>li.active a:hover, .nav-pills>li.active a:focus{
+  color: #444;
+  background-color: #f7f7f7;
+}
+.col-md-9{
+  margin: 0;padding-left: 0;
+}.col-md-3{
+  margin: 0;padding-right: 0; border-right: 1px solid #ccc; background: #efefef;
+}
+.box.box-solid{border-top: 1px solid #ccc; min-height: 600px; border-radius: 0;}
+</style>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-solid">
+        <div class="box-header with-border">
+          <h3 class="box-title">订单管理</h3>
+          <div class="box-tools pull-right">
+            <div class="btn-group">
+              <button id="all" type="button" class="changeStatus btn {{currStatus 'all'}}">全部</button>
+              <button id="1" type="button" class="changeStatus btn {{currStatus '1'}}">待付款</button>
+              <button id="2" type="button" class="changeStatus btn {{currStatus '2'}}">待发货</button>
+              <button id="3" type="button" class="changeStatus btn {{currStatus '3'}}">待收货</button>
+              <button id="5" type="button" class="changeStatus btn {{currStatus '5'}}">已完成</button>
+              <button id="0" type="button" class="changeStatus btn {{currStatus '0'}}">已取消</button>
+            </div>
+          </div>
+        </div>
+        <div class="box-body no-padding">
+          <div class="mailbox-controls">
+            <button type="button" class="btn btn-danger btn-sm">批量删除</button>
+            <div class="pull-right">
+              <div class="btn-group">
+                <button id="prevPage" type="button" class="btn btn-default btn-sm checkbox-toggle">
+                  <i class="fa fa-chevron-left"></i>
+                </button>
+                <button id="nextPage" type="button" class="btn btn-default btn-sm checkbox-toggle">
+                  <i class="fa fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-responsive mailbox-messages">
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th>
+                      <input type="checkbox"/>
+                  </th>
+                  <th>订单号</th>
+                  <th>状态</th>
+                  <th>下单用户</th>
+                  <th>收件地址</th>
+                  <th>订单商品信息</th>
+                  <th>订单总价</th>
+                  <th>下单时间</th>
+                  <th style="width:160px; text-align:center;">操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each lists}}
+                <tr>
+                  <td><input type="checkbox"/></td>
+                  <td>{{order_no}}</td>
+                  <td>
+                    <span class="btn btn-xs bg-purple">{{getOrderStatus}}</span>
+                  </td>
+                  <td style="max-width: 200px;overflow: hidden;">{{user_name}}</td>
+                  <td>
+                    <h4>{{user_addr.contact_name}} · {{user_addr.contact_mobile}}</h4>
+                    <p>{{user_addr.contact_city}} {{user_addr.contact_street}}</p>
+                  </td>
+                  <td>
+                    <dl>
+                    {{#each products}}
+                      <dt>{{product_name}}</dt>
+                      <dd>￥{{product_price}}.00 * {{product_num}}</dd>
+                    {{/each}}
+                    </dl>
+                  </td>
+                  <td>￥{{total_price}}.00</td>
+                  <td>{{createdAt}}</td>
+                  <td style="text-align: center;">
+                    <button id="{{_id}}" type="button" class="viewOrder btn btn-xs bg-purple"> 查看</button>
+                  </td>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="box-footer no-padding">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</template>
