@@ -1,0 +1,135 @@
+<template name="home">
+  <section class="content">
+    <!-- Info boxes -->
+    <div class="row">
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+          <span class="info-box-icon bg-aqua"><i class="fa fa-bar-chart"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">订单总数</span>
+            <span class="info-box-number">90</span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+          <span class="info-box-icon bg-red"><i class="fa fa-file-text-o"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">成交订单</span>
+            <span class="info-box-number">41,410</span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+
+      <!-- fix for small devices only -->
+      <div class="clearfix visible-sm-block"></div>
+
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+          <span class="info-box-icon bg-green"><i class="fa fa-shopping-cart"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">销售商品</span>
+            <span class="info-box-number">760</span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+          <span class="info-box-icon bg-yellow"><i class="fa fa-rmb"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">销售总额</span>
+            <span class="info-box-number">2,000</span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+
+    <!-- Main row -->
+    <div class="row">
+      <div class="col-md-12">
+        <!-- USERS LIST -->
+        <div class="box box-danger">
+          <div class="box-header with-border">
+            <h3 class="box-title">退换货申请</h3>
+            <div class="box-tools pull-right"></div>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body no-padding">
+            
+          </div>
+          <!-- /.box-body -->
+          <div class="box-footer text-center">
+            <a href="javascript:void(0)" class="uppercase">查看全部</a>
+          </div>
+          <!-- /.box-footer -->
+        </div>
+        <!--/.box -->
+      </div>
+      <!-- Left col -->
+      <div class="col-md-12">
+        <!-- TABLE: LATEST ORDERS -->
+        <div class="box box-info">
+          <div class="box-header with-border">
+            <h3 class="box-title">待处理订单</h3>
+            <div class="box-tools pull-right"></div>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <div class="table-responsive">
+              <table class="table no-margin">
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Item</th>
+                    <th>Status</th>
+                    <th>Popularity</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#each orderLists}}
+                  <tr>
+                    <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                    <td>Call of Duty IV</td>
+                    <td><span class="label label-success">Shipped</span></td>
+                    <td>
+                      <div class="sparkbar" data-color="#00a65a" data-height="20">
+                        <canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas>
+                      </div>
+                    </td>
+                  </tr>
+                  {{/each}}
+                </tbody>
+              </table>
+            </div>
+            <!-- /.table-responsive -->
+          </div>
+          <!-- /.box-body -->
+          <div class="box-footer clearfix text-center">
+            <a href="javascript:void(0)" class="uppercase">查看全部</a>
+          </div>
+          <!-- /.box-footer -->
+        </div>
+        <!-- /.box -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </section>
+</template>

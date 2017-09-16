@@ -52,7 +52,6 @@ if(Meteor.isServer){
     var limit = limit || 20;
     var skip = skip || 0;
     if(status == 'all'){
-      console.log(Orders.find({seller_id: seller_id},{limit: limit,skip: skip}).count())
       return Orders.find({seller_id: seller_id},{limit: limit,skip: skip});
     } else {
        status = parseInt(status)

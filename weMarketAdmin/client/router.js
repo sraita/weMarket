@@ -24,17 +24,22 @@ if(Meteor.isClient){
   });
 
   Router.route('/', {
-    name: 'categoriesList',
+    name: 'home',
     waitOn: function(){
-      return  Meteor.subscribe('categories_by_seller',Meteor.userId());
+      return  [
+        // Meteor.subscribe('admin_home_counts',Meteor.userId()),
+        Meteor.subscribe('seller_orders', Meteor.userId(),'2', 5,0)
+      ];
     }
   });
 
   // 商品分类管理
-  // Router.route('/categoriesList',{
-  //   name: "categoriesList",
-
-  // });
+  Router.route('/categories',{
+    name: "categoriesList",
+    waitOn: function(){
+      return  Meteor.subscribe('categories_by_seller',Meteor.userId());
+    }
+  });
 
   // 商品列表
   Router.route('/products/list/:category_id',{
