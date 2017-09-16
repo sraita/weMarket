@@ -17,7 +17,7 @@ PUB = {
       scrollContainer: scrollContainer
     });
     Session.set('history_view', history_view);
-    var seller_id = Router.current().params.query.s || localStorage.getItem('seller_id') || 'RTsZ64Cc8iyoc4BmW';
+    var seller_id = Router.current().params.query.s || localStorage.getItem('seller_id') || 'JWyJfabzzpq9grw4Q';
     if(page.lastIndexOf("?") >= 0){
       page = page + '&s='+seller_id 
     } else {
