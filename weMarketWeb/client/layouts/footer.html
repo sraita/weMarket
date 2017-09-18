@@ -4,6 +4,7 @@
     color: #1cbb7f !important;
   }
   </style>
+  {{#if isDistributor}}
   <div class="weui-tabbar">
     <a href="/?s={{seller_id}}" class="weui-tabbar__item {{isCurr 'home'}}">
       <!--<span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>-->
@@ -31,4 +32,27 @@
       <p class="weui-tabbar__label">我</p>
     </a>
   </div>
+  {{else}}
+  <div class="weui-tabbar">
+    <a href="/shareProduct/{{shareProductId}}?s={{seller_id}}" class="weui-tabbar__item {{isCurr 'home'}}">
+      <!--<span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>-->
+      <div class="weui-tabbar__icon">
+        <i class="fa fa-home"></i>
+      </div>
+      <p class="weui-tabbar__label">首页</p>
+    </a>
+    <a href="/shopping?s={{seller_id}}" class="weui-tabbar__item {{isCurr 'shopping'}}">
+      <div class="weui-tabbar__icon">
+        <i class="fa fa-shopping-cart"></i>
+      </div>
+      <p class="weui-tabbar__label">购物车</p>
+    </a>
+    <a href="/me?s={{seller_id}}" class="weui-tabbar__item {{isCurr 'me'}}">
+      <div class="weui-tabbar__icon">
+        <i class="fa fa-user"></i>
+      </div>
+      <p class="weui-tabbar__label">我</p>
+    </a>
+  </div>
+  {{/if}}
 </template>

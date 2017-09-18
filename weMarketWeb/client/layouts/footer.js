@@ -5,5 +5,8 @@ Template.footer.helpers({
     } else {
       return '';
     }
+  },
+  shareProductId: function(){
+    return Session.get('shareProductId');
   }
 });

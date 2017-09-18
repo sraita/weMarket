@@ -9,11 +9,15 @@
       <img src="{{userIcon}}" />
     </div>
     <div class="userName">{{userName}}</div>
+    {{#if isDistributor}}
     <div class="userVip">VIP 1</div>
-    <div class="userSetting"><i class="fa fa-cog"></i><span>设置</span></div>
+    {{/if}}
+    <!--<div class="userSetting"><i class="fa fa-cog"></i><span>设置</span></div>-->
   </div>
   <!-- userInfo end-->
-
+  
+  <!-- 分销商专属 START-->
+  {{#if isDistributor}}
   <div class="my-ul-title">
     <h4>我的钱包</h4>
     <span>资金管理<i class="fa fa-angle-right fa-fw"></i></span>
@@ -28,6 +32,22 @@
       <p>积分</p>
     </li>
   </ul>
+  <div class="my-ul-title">
+    <h4>我的钱包</h4>
+    <span>资金管理<i class="fa fa-angle-right fa-fw"></i></span>
+  </div>
+  <ul class="myWallet">
+    <li class="wallet">
+      <h4>0.00</h4>
+      <p>余额</p>
+    </li>
+    <li class="bitCon">
+      <h4>0</h4>
+      <p>积分</p>
+    </li>
+  </ul>
+  {{/if}}
+  <!-- 分销商专属 END -->
 
   <div class="my-ul-title goOrderList">
     <h4>我的订单</h4>

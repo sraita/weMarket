@@ -26,13 +26,13 @@ Router.onBeforeAction(function () {
   if(Router.current().params.query.s){
     localStorage.setItem('seller_id',Router.current().params.query.s);
   }
-  if(!Meteor.userId()){
-    if(localStorage.getItem('Meteor.userId')){
-      loginByOpenId();
-    } else {
-      window.open(auth_url,'_self');
-    }
-  } 
+  // if(!Meteor.userId()){
+  //   if(localStorage.getItem('Meteor.userId')){
+  //     loginByOpenId();
+  //   } else {
+  //     window.open(auth_url,'_self');
+  //   }
+  // } 
   if(!Meteor.userId() || !localStorage.getItem('Meteor.userId')){
     console.log('user not login');
 
@@ -184,5 +184,21 @@ Router.route('/addr/new',{
   layoutTemplate: 'headLayout',
   yieldRegions:{
     'addrNewHeader':{ to : 'header'}
+  }
+});
+
+
+// 分享出去的商品
+Router.route('/shareProduct/:_id', {
+  name: 'shareProduct',
+  layoutTemplate: 'headLayout',
+  yieldRegions: {
+    'shareProductHeader': {to: 'header'}
+  },
+  waitOn: function(){
+    return Meteor.subscribe('product-by-id', this.params._id);
+  },
+  data: function(){
+    return Products.findOne({_id: this.params._id});
   }
 });

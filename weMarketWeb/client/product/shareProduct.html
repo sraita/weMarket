@@ -1,0 +1,105 @@
+<template name="shareProductHeader">
+  <style>
+  .right{float: right;width: 40px;text-align: right;padding-right: 10px;font-size: 20px;cursor: pointer;}
+  </style>
+  {{#unless isDistributor}}
+  <div class="right">
+    <i class="fa fa-th-large"></i>
+  </div>
+  <ul class="productDropdown">
+    <li class="dropdownItem" id="/shareProduct/{{_id}}"><i class="fa fa-home"></i><p>主页</p></li>
+    <li class="dropdownItem" id="/shopping"><i class="fa fa-shopping-cart"></i><p>购物车</p></li>
+    <li class="dropdownItem" id="/orders/list"><i class="fa fa-file-text-o"></i><p>我的订单</p></li>
+    <li class="dropdownItem" id="/me"><i class="fa fa-user"></i><p>个人中心</p></li>
+  </ul>
+  {{/unless}}
+  <div class="title">首页</div>
+</template>
+<template name="shareProduct">
+<div class="product">
+  <!-- Swiper start-->
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      {{#each images}}
+      <div class="swiper-slide">
+        <img src="{{this}}" style="width: 100%; height: 100%; object-fit: cover;"/></div>
+      {{/each}}
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+  <!-- Swiper end -->
+
+  <div class="product-info">
+    <h4 class="name">{{name}}</h4>
+    <div class="sale-price">￥ {{sale_price}}</div>
+    <div class="unit-price">市场价  <del>￥ {{unit_price}}</del></div>
+    <div class="other-info">
+      <span style="text-align: left;">销量： 0</span>
+      <span style="text-align: right;">库存： {{number}}</span>
+    </div>
+  </div>
+
+  <div class="weui-cells">
+    <a class="weui-cell weui-cell_access addToCart" href="javascript:;">
+      <div class="weui-cell__bd">
+        <p>已选</p>
+      </div>
+      <div class="weui-cell__ft">请选择</div>
+    </a>
+  </div>
+
+  <div class="weui-cells">
+    <a class="weui-cell weui-cell_access" href="javascript:;">
+      <div class="weui-cell__bd">
+        <p>商品评价</p>
+      </div>
+      <div class="weui-cell__ft">好评率 100%(0 人)</div>
+    </a>
+  </div>
+
+  <ul class="tab-title">
+    <li class="active">商品描述</li>
+    <li>规格参数</li>
+  </ul>
+  <div class="product-content">
+    {{{content}}}
+  </div>
+
+  <div class="filter-btn dis-box">
+    <a href="/shopping?s={{seller_id}}" class="filter-btn-flow filter-btn-a">
+      <i class="fa fa-shopping-cart"></i>
+      <p style="margin: 0;">购物车</p>
+    </a>
+    <a type="button" class="btn-cart button addToCart">加入购物车</a>
+    <a type="button" class="btn-submit button addToCart">立即购买</a>
+  </div>
+</div>
+<!-- addToCart -->
+<div id="addToCart" class="weui-popup__container popup-bottom">
+  <div class="weui-popup__overlay" style="background: rgba(0,0,0,.13);opacity: 1;"></div>
+  <div class="weui-popup__modal" style="background: #fff;">
+    <div class="product-attr">
+      <div class="title-area">
+        <img src="{{mainImage}}" alt="鲜鱿鱼足片 办公休闲零食 200g  休闲零嘴" class="product-list-img">
+        <div class="close-popup"><i class="weui-icon-cancel"></i></div>
+        <h4>{{name}}</h4>
+        <p class="sale-price">￥ {{sale_price}}</p>
+        <span style="padding-left: 10px;">库存： {{number}}</span>
+      </div>
+
+      <h4 style="font-size: 14px; color: #555; font-weight: normal;">数量</h4>
+      <div class="div-num" style="margin-bottom: 80px;">
+        <a class="num-less" onclick="changePrice('1')"></a>
+        <input type="text" value="1" name="number" id="goods_number" autocomplete="off">
+        <a class="num-plus" onclick="changePrice('3')"></a>
+      </div>
+
+      <div class="filter-btn dis-box" style="display: flex;">
+        <a type="button" class="btn-cart button btn-addCart" style="flex: 1; margin: 0 5px;">加入购物车</a>
+        <a type="button" class="btn-submit button btn-Buy" style="flex: 1; margin: 0 5px;">立即购买</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!---->
+</template>
