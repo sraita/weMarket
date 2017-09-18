@@ -104,5 +104,14 @@ if(Meteor.isServer){
       return this.ready();
     }
     return Contact.find({_id: _id});
+  });
+
+  // 经销商销售情况统计 ，按经销商id
+  Meteor.publish('saleOrders', function(){
+    if(!this.userId){
+      return this.ready();
+    } else {
+      return SalesOrders.find({seller_id: this.userId});
+    }
   })
 }

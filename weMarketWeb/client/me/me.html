@@ -2,7 +2,7 @@
   <div class="title">我</div>
 </template>
 <template name="me">
-<div class="me">
+<div class="me" style="padding-bottom: 40px;">
   <!-- userInfo -->
   <div class="userInfo">
     <div class="userIcon">
@@ -32,18 +32,18 @@
       <p>积分</p>
     </li>
   </ul>
-  <div class="my-ul-title">
-    <h4>我的钱包</h4>
-    <span>资金管理<i class="fa fa-angle-right fa-fw"></i></span>
+  <div class="my-ul-title goSaleOrdersList">
+    <h4>我的分销</h4>
+    <span>查看全部<i class="fa fa-angle-right fa-fw"></i></span>
   </div>
-  <ul class="myWallet">
-    <li class="wallet">
-      <h4>0.00</h4>
-      <p>余额</p>
-    </li>
-    <li class="bitCon">
+  <ul class="mySale goSaleOrdersList">
+    <li class="complate">
       <h4>0</h4>
-      <p>积分</p>
+      <p>已完成</p>
+    </li>
+    <li class="waiting">
+      <h4>0</h4>
+      <p>进行中</p>
     </li>
   </ul>
   {{/if}}

@@ -1,0 +1,24 @@
+// 分销商销售情况统计
+{
+  "_id": "", // 订单id
+  "order_no": "", // 订单号
+  "product_id": "", // 订单商品id
+  "product_name": "", // 订单商品名称
+   // 经销商信息
+  "seller_id": "", // 商家 ID
+  "seller_name": "", // 商家名称
+  "seller_icon": "", // 商家头像
+
+  // 订单信息
+  "price": "", // 订单单价
+  "product_number": "", // 订单商品数量
+  "total_price": "", // 订单总价
+  "createdAt": "", // 下单时间
+  
+  "status": "", // 状态： 'complate'(已完成) || 'waiting'(进行中)
+
+  // 下单人信息
+  "user_id": "", // 下单人id,
+  "user_name": "", // 下单人名称
+  "user_icon": "" // 下单人ICON
+}

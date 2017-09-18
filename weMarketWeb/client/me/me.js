@@ -31,5 +31,8 @@ Template.me.events({
   },
   'click .goAddrList': function(){
     return PUB.page('/addr/list');
+  },
+  'click .goSaleOrdersList': function(){
+    return PUB.page('/saleOrders/list');
   }
 })

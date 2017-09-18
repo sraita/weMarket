@@ -22,6 +22,10 @@ AccessToken = new Mongo.Collection('access_token');
 // 用户商品寄送地址信息
 Contact = new Mongo.Collection('contact');
 
+// 分销商销售情况统计
+SalesOrders = new Mongo.Collection('salesOrders');
+
+
 if(Meteor.isServer){
   // search products
   SearchSource.defineSource('products', function(searchText, options) {

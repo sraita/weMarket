@@ -4,7 +4,6 @@ Template.registerHelper('seller_id', function(){
 
 // 是否是分销商
 Template.registerHelper('isDistributor', function(){
-  return false;
   var user = Meteor.user();
   if(user && user.profile && user.profile.role && user.profile.role.indexOf('distributor') >= 0){
     return true;

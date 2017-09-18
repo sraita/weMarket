@@ -21,8 +21,6 @@ Router.onBeforeAction(function () {
   // if (!Meteor.userId() && Session.equals('pageNeedLogin',true)) {
   //   Router.go('login');
   // }
-  console.log(Router)
-  console.log(Router.current())
   if(Router.current().params.query.s){
     localStorage.setItem('seller_id',Router.current().params.query.s);
   }
@@ -200,5 +198,18 @@ Router.route('/shareProduct/:_id', {
   },
   data: function(){
     return Products.findOne({_id: this.params._id});
+  }
+});
+
+
+// 经销商销售情况统计
+Router.route('/saleOrders/list',{
+  name: 'saleOrders',
+  layoutTemplate: 'headLayout',
+  yieldRegions:{
+    'saleOrdersHeader':{ to : 'header'}
+  },
+  waitOn: function(){
+    return Meteor.subscribe('saleOrders');
   }
 });
