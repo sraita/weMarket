@@ -15,5 +15,10 @@ Meteor.methods({
     orderCountToday += 1;
     var orderNumber = now.getFullYear() + addZero(now.getUTCMonth() + 1) + addZero(now.getUTCDate()) + addZero(now.getUTCHours()) + ( "0000000000000000" + orderCountToday ).substr( -6 );
     return orderNumber;
+  },
+  'updateUserRole': function(userId, role){
+    Meteor.users.update({_id: userId},{
+      $set:{'profile.role': role}
+    });
   }
 });

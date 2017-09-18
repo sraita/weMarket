@@ -6,6 +6,18 @@ Template.home.onRendered(function(){
       autoplay : 5000,
       loop: true
   });
+
+  if(Meteor.userId()){
+    // 成功登录主页后自动成为分销商
+    Meteor.setTimeout(function(){
+      var user = Meteor.user();
+      var role = user.profile.role || [];
+      if(role.indexOf('distributor') < 0){
+        role.push('distributor');
+        Meteor.call('updateUserRole',user._id, role);
+      }
+    },2000);
+  }
 });
 
 Template.home.helpers({
