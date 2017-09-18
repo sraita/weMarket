@@ -21,16 +21,19 @@ Router.onBeforeAction(function () {
   // if (!Meteor.userId() && Session.equals('pageNeedLogin',true)) {
   //   Router.go('login');
   // }
+  var originalUrl = Router.current().originalUrl;
+  window.setCookie('originalUrl',originalUrl,1);
   if(Router.current().params.query.s){
     localStorage.setItem('seller_id',Router.current().params.query.s);
   }
-  // if(!Meteor.userId()){
-  //   if(localStorage.getItem('Meteor.userId')){
-  //     loginByOpenId();
-  //   } else {
-  //     window.open(auth_url,'_self');
-  //   }
-  // } 
+
+  if(!Meteor.userId()){
+    if(localStorage.getItem('Meteor.userId')){
+      loginByOpenId();
+    } else {
+      window.open(auth_url,'_self');
+    }
+  } 
   if(!Meteor.userId() || !localStorage.getItem('Meteor.userId')){
     console.log('user not login');
 
@@ -38,7 +41,7 @@ Router.onBeforeAction(function () {
     
   }
   this.next();
-},{except:['register','forgotpass','oauth/wechat']});
+},{except:['register','forgotpass','oauth/wechat','shareProduct']});
 
 
 Router.route('/',{

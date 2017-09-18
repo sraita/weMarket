@@ -9,8 +9,19 @@ if(Meteor.isServer){
     var request = this.request;
     var response = this.response;
 
-    // var returnUrl = decodeURIComponent(this.request.query.currUrl);
     var returnUrl = '/';
+
+    var Cookies = {};
+    this.request.headers.cookie && this.request.headers.cookie.split(';').forEach(function(Cookie){
+      var parts = Cookie.split("=");
+      Cookies[ parts[0].trim() ] = ( parts[1] || '').trim();
+    });
+
+    if(Cookies.originalUrl){
+      returnUrl = Cookies.originalUrl;
+    }
+
+    returnUrl = decodeURIComponent(returnUrl);
 
     var code = this.request.query.code;
     var token_url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='+appid+'&secret='+app_secret+'&code='+code+'&grant_type=authorization_code';
