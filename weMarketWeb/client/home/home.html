@@ -40,9 +40,10 @@
   <!-- 快速导航 END -->
   <!-- 产品列表 -->
   <div class="text-c n-cate-box">
-		<p class="index-title"><i class="iconfont icon-cainixihuan is-cainixihuan"></i>猜你喜欢</p>
-		<p class="index-small-title">实时推荐最适合您的宝贝</p>
+		<p class="index-title"><i class="iconfont icon-cainixihuan is-cainixihuan"></i>我分销的商品</p>
+		<p class="index-small-title">分销开店，0成本！</p>
 	</div>
+  {{#if products}}
   <ul class="product-list">
   {{#each products}}
     <li class="product-item">
@@ -56,6 +57,9 @@
     </li>
   {{/each}}
   </ul>
+  {{else}}
+  <div id="selectProducts" class="weui-btn weui-btn_primary">选择商品</div>
+  {{/if}}
   <!-- 产品列表 END -->
 </div>
 </template>

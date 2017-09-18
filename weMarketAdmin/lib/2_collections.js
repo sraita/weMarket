@@ -25,6 +25,8 @@ Contact = new Mongo.Collection('contact');
 // 分销商销售情况统计
 SalesOrders = new Mongo.Collection('salesOrders');
 
+// 分销商选中的分销商品列表
+DistributorProducts = new Mongo.Collection('distributorProducts');
 
 if(Meteor.isServer){
   // search products

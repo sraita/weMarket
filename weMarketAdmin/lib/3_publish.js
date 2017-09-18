@@ -13,7 +13,11 @@ if(Meteor.isServer){
     return Products.find({seller_id: seller_id},{limit: limit});
   });
 
-
+  // 发布商品， 按分销商发布
+  Meteor.publish("products_by_distributor", function(distributor_id, limit){
+    var limit = limit || 10;
+    return DistributorProducts.find({distributor_id: distributor_id}, {limit: limit});
+  })
   // 发布商品， 按商家和分类发布
   Meteor.publish('products_by_category', function(seller_id, category_id, limit,skip){
     var limit = limit || 20;

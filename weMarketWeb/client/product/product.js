@@ -87,5 +87,25 @@ Template.product.events({
     } else {
       Shopping.insert(obj, callback);
     }
+  },
+
+  // 加入到分销列表
+  'click #selectToSale': function(){
+    var product = Products.findOne({_id: Router.current().params._id});
+    var user = Meteor.user();
+    product.distributor_id = user._id;
+    product.distributor_name = user.profile.name;
+    product.distributor_icon = user.profile.icon;
+
+    DistributorProducts.insert(product, function(err, result){
+      if(err){
+        console.log(err);
+        return $.toast('请重试','cancel');
+      }
+      $.toast('已添加');
+      Meteor.setTimeout(function(){
+        return PUB.back();
+      },500);
+    })
   }
 });
