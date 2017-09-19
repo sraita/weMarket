@@ -1,27 +1,24 @@
 Template.saleOrders.onRendered(function(){
-  Session.set('orders-tab-active','all');
+  Session.set('orders-tab-active','waiting');
 });
 Template.saleOrders.helpers({
   lists: function(){
     var status = Session.get('orders-tab-active');
-    if(status == 'all'){
-      return SalesOrders.find({distributor_id: Meteor.userId()},{sort:{created:-1}}).fetch()
-    } else {
-      status = Number(status);
-      return SalesOrders.find({distributor_id: Meteor.userId(),status: status},{sort:{created:-1}}).fetch()
-    }
+    return SalesOrders.find({distributor_id: Meteor.userId(),status: status},{sort:{created:-1}}).fetch()
   },
-  product: function(){
-    return this.products[0];
-  },
+  // product: function(){
+  //   return this.products[0];
+  // },
   getTabActive: function(){
     return Session.get('orders-tab-active');
   },
   getOrderStatus: function(){
-    if(this.status){
+    if(this.status === 'complate'){
       return '已完成';
-    } else {
+    } else if(this.status === 'waiting'){
       return '进行中';
+    } else {
+      return '失败';
     }
   }
 });
