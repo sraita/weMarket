@@ -94,6 +94,8 @@ Template.product.events({
   'click #selectToSale': function(){
     var product = Products.findOne({_id: Router.current().params._id});
     var user = Meteor.user();
+    var product_id = Router.current().params._id;
+    product.product_id = product_id;
     product._id = new Mongo.ObjectID()._str;
     product.distributor_id = user._id;
     product.distributor_name = user.profile.name;
