@@ -99,7 +99,7 @@ Router.route('/product/:_id',{
     if(DistributorProducts.find({product_id: this.params._id, distributor_id: Meteor.userId()}).count() > 0){
       return DistributorProducts.findOne({product_id: this.params._id, distributor_id: Meteor.userId()});
     }
-    Products.findOne({_id: this.params._id});
+    return Products.findOne({_id: this.params._id});
   }
 });
 
