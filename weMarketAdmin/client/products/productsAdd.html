@@ -75,22 +75,28 @@
             </select>
           </div>
           <div class="row" style="margin:10px 0">
-            <div class="col-md-4">
+            <div class="col-md-3">
               <div class="input-group">
                 <input type="number" name="unit_price" id="unit_price" class="form-control" placeholder="原价" value="{{product.unit_price}}">
                 <span class="input-group-addon">.00</span>
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
               <div class="input-group">
                 <input type="number" name="sale_price" id="sale_price" class="form-control" placeholder="优惠价" value="{{product.sale_price}}">
                 <span class="input-group-addon">.00</span>
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
               <div class="input-group">
                 <span class="input-group-addon">库存</span>
                 <input type="number" name="number" id="number" class="form-control" placeholder="库存" value="{{product.number}}">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="input-group">
+                <input type="number" name="profit_price" id="profit_price" class="form-control" placeholder="分成金额" value="{{product.profit_price}}">
+                <span class="input-group-addon">.00</span>
               </div>
             </div>
           </div>

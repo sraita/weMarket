@@ -44,11 +44,12 @@ Template.productsAdd.events({
         desc = $('#desc').val(),
         unit_price = Number($('#unit_price').val()),
         sale_price = Number($('#sale_price').val()),
+        profit_price = Number($('#profit_price').val()),
         number = Number($('#number').val()),
         category_id = $('#category_id option:selected').attr('id'),
         content = CKEDITOR.instances.editor.getData();
     var images = Session.get('uploadedImages') || [];
-    if(!name || !desc || !unit_price || !sale_price || ! number || !category_id || ! content){
+    if(!name || !desc || !unit_price || !sale_price || !profit_price || ! number || !category_id || ! content){
       return alert('请完整填写表单');
     }
 
@@ -61,6 +62,7 @@ Template.productsAdd.events({
       name: name,
       unit_price: unit_price,
       sale_price: sale_price,
+      profit_price:profit_price,
       number: number,
       mainImage: images[0],
       images:images,

@@ -75,9 +75,9 @@
                       <input type="checkbox"/>
                   </th>
                   <th>商品名称</th>
-                  <th>商品描述</th>
                   <th>单价</th>
                   <th>优惠价</th>
+                  <th>分成金额</th>
                   <th>库存</th>
                   <th style="width:160px; text-align:center;">操作</th>
                 </tr>
@@ -87,9 +87,9 @@
                 <tr>
                   <td><input type="checkbox"/></td>
                   <td>{{name}}</td>
-                  <td style="max-width: 200px;overflow: hidden;">{{desc}}</td>
                   <td>￥{{unit_price}}.00</td>
                   <td>￥{{sale_price}}.00</td>
+                  <td>￥{{profit_price}}.00</td>
                   <td>{{number}}</td>
                   <td style="text-align: center;">
                     <button id="{{_id}}" type="button" class="modifyProduct btn btn-xs bg-purple"> 修改</button>
