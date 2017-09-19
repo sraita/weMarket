@@ -42,6 +42,7 @@ Router.onBeforeAction(function () {
     // 跳转到微信用户授权登录页面
     
   }
+  registerWeChatShare();
   this.next();
 },{except:['register','forgotpass','oauth/wechat','shareProduct']});
 

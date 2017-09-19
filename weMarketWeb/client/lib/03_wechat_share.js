@@ -121,5 +121,15 @@ if(Meteor.isClient){
       }
     }
 
+    window.registerWeChatShare = function(){
+      Meteor.setTimeout(function(){
+        var shareUrl = window.location.href;
+        shareUrl = shareUrl.split('#')[0];
+        if(shareUrl.indexOf('product') && Session.get('productContent')){
+          shareUrl = shareUrl.replace(/(\/product\/)[a-zA-Z0-9]{1,}/,'/shareProduct/'+Session.get('productContent')._id);
+        }
+        calcWeChatSignature(shareUrl);
+      },300);
+    }
   });
 }
