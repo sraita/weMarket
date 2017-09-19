@@ -1,5 +1,6 @@
 Template.me.onRendered(function(){
   Meteor.subscribe('user-orders');
+  Meteor.subscribe('distributorUserCounts');
 });
 
 Template.me.helpers({
@@ -22,6 +23,12 @@ Template.me.helpers({
   },
   orderStatus5Count: function(){
     return Orders.find({user_id: Meteor.userId(), status:5}).count();
+  },
+  saleOrderComplateCounts: function(){
+    return Counts.get('distributorSaleOrderCounts-complate') || '0'
+  },
+  saleOrderWaitingCounts: function(){
+    return Counts.get('distributorSaleOrderCounts-waiting') || '0'
   }
 });
 
