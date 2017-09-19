@@ -1,7 +1,10 @@
 if(Meteor.isClient){
   Meteor.startup(function(){
     Meteor.setTimeout(function(){
-      calcWeChatSignature(window.location.href.split('#')[0]);
+      var shareUrl = window.location.href;
+      shareUrl = shareUrl.split('#')[0];
+      shareUrl = shareUrl.replace('/product/','/shareProduct/');
+      calcWeChatSignature(shareUrl);
     },300);
     
     window.isWeiXinFunc = function(){
@@ -26,7 +29,7 @@ if(Meteor.isClient){
     var wechatSetup = function(signatureResult){
       console.log('wechat sign=',signatureResult);
       wx.config({
-        debug: true,
+        debug: false,
         appId: signatureResult.appid,
         timestamp: signatureResult.timestamp,
         nonceStr: signatureResult.nonceStr,
@@ -45,11 +48,19 @@ if(Meteor.isClient){
     var wechatReady = function(testing){
       var title = Session.get('documentTitle') || '微商传播机';
       var description = '0成本快速开店';
+      var shareUrl = window.location.href;
+      shareUrl = shareUrl.split('#')[0];
+      shareUrl = shareUrl.replace('/product/','/shareProduct/');
+      
+      if(Session.get('productContent') && Session.get('productContent').desc){
+        description = Session.get('productContent').desc;
+      }
+      description = description.slice(0,90);
       var timelineData = {
         title: Session.get('documentTitle'),
         desc: description,
-        link: window.location.href,
-        imgUrl: Session.get('mainImage'),
+        link: shareUrl,
+        imgUrl: Session.get('mainImage') || '/home/nav_4.png',
         success: function(){
           console.log('share success!');
         },

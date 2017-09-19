@@ -21,6 +21,8 @@ Router.onBeforeAction(function () {
   // if (!Meteor.userId() && Session.equals('pageNeedLogin',true)) {
   //   Router.go('login');
   // }
+  Session.set("DocumentTitle",'微商传播机');
+
   var originalUrl = Router.current().originalUrl;
   window.setCookie('originalUrl',originalUrl,1);
   if(Router.current().params.query.s){

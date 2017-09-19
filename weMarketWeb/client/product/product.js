@@ -27,7 +27,10 @@ Template.product.onRendered(function(){
       }
   });
   console.log(this)
-  Session.set('mainImage',this.mainImage);
+  Session.set('mainImage',this.data.mainImage);
+  Session.set("DocumentTitle",'微商传播机-'+this.data.name);
+  Session.set('productContent', this.data);
+
   Meteor.subscribe('shopping-by-product-id', Router.current().params._id);
   Meteor.subscribe('userDistributorProductInfo', Router.current().params._id);
 });
