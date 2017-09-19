@@ -7,6 +7,7 @@ var orderInsertHookHandle = function(doc){
         "order_no": doc.order_no, // 订单号
         "product_id": item.product_id, // 订单商品id
         "product_name": item.product_name, // 订单商品名称
+        "product_img": item.product_img,
         // 商家信息
         "seller_id": item.seller_id, // 商家 ID
         "seller_name": item.seller_name, // 商家名称
