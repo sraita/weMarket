@@ -59,7 +59,11 @@
     </a>
     <a type="button" class="btn-cart button addToCart">加入购物车</a>
     <a type="button" class="btn-submit button addToCart">立即购买</a>-->
+    {{#if isInDistributo}}
+    <div id="shareTheProduct">分享此商品</div>
+    {{else}}
     <div id="selectToSale">加入分销列表</div>
+    {{/if}}
   </div>
 </div>
 <!-- addToCart -->

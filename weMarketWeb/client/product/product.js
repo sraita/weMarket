@@ -29,10 +29,16 @@ Template.product.onRendered(function(){
   console.log(this)
   Session.set('mainImage',this.mainImage);
   Meteor.subscribe('shopping-by-product-id', Router.current().params._id);
+  Meteor.subscribe('userDistributorProductInfo', Router.current().params._id);
 });
 
 Template.product.helpers({
-
+  isInDistributo: function(){
+    if(DistributorProducts.find({product_id: Router.current().params._id, distributor_id: Meteor.userId()}).count() > 0){
+      return true;
+    }
+    return false;
+  }
 });
 
 Template.product.events({
@@ -111,5 +117,9 @@ Template.product.events({
         return PUB.back();
       },500);
     })
+  },
+  // 分享商品
+  'click #shareTheProduct': function(e){
+    $.toast('点击右上角分享');
   }
 });

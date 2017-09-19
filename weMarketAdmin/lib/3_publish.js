@@ -39,6 +39,13 @@ if(Meteor.isServer){
     return Products.find({_id: _id});
   });
 
+  Meteor.publish('userDistributorProductInfo', function(_id){
+    if(!this.userId || !_id){
+      return this.ready();
+    }
+    return DistributorProducts.find({product_id: _id, distributor_id: this.userId});
+  });
+
   // 发布订单信息， 按照用户 和 状态发布
   Meteor.publish('user_orders', function(status, limit){
     if(!this.userId || !status ){
