@@ -9,6 +9,13 @@
   "seller_name": "", // 商家名称
   "seller_icon": "", // 商家头像
 
+   // 分销商信息
+  "distributor_id":"",
+  "distributor_name":"",
+  "distributor_icon":"",
+
+  "profit_price": "", // 分销商每销售成功一件可获利金额
+  
   // 订单信息
   "price": "", // 订单单价
   "product_number": "", // 订单商品数量

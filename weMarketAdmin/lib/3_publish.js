@@ -122,7 +122,7 @@ if(Meteor.isServer){
     if(!this.userId){
       return this.ready();
     } else {
-      return SalesOrders.find({seller_id: this.userId});
+      return SalesOrders.find({distributor_id: this.userId});
     }
   })
 }

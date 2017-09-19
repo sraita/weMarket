@@ -5,10 +5,10 @@ Template.saleOrders.helpers({
   lists: function(){
     var status = Session.get('orders-tab-active');
     if(status == 'all'){
-      return Orders.find({user_id: Meteor.userId()},{sort:{created:-1}}).fetch()
+      return SalesOrders.find({distributor_id: Meteor.userId()},{sort:{created:-1}}).fetch()
     } else {
       status = Number(status);
-      return Orders.find({user_id: Meteor.userId(),status: status},{sort:{created:-1}}).fetch()
+      return SalesOrders.find({distributor_id: Meteor.userId(),status: status},{sort:{created:-1}}).fetch()
     }
   },
   product: function(){
