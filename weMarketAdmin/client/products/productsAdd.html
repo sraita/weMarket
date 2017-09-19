@@ -95,8 +95,8 @@
             </div>
             <div class="col-md-3">
               <div class="input-group">
-                <input type="number" name="profit_price" id="profit_price" class="form-control" placeholder="分成金额" value="{{product.profit_price}}">
-                <span class="input-group-addon">.00</span>
+                <span class="input-group-addon">分成</span>
+                <input type="number" name="profit_price" id="profit_price" class="form-control" placeholder="分成金额" value="{{getDefaultProfitPrice product.profit_price product.sale_price}}">
               </div>
             </div>
           </div>

@@ -34,6 +34,14 @@ Template.productsAdd.helpers({
       return true;
     }
     return false;
+  },
+  getDefaultProfitPrice: function(profit_price, sale_price){
+    if(profit_price){
+      return profit_price;
+    }
+    var user = Meteor.user();
+    var profit = user.profile.profit || 0;
+    return parseFloat(sale_price * profit / 1000).toFixed(2);
   }
 });
 

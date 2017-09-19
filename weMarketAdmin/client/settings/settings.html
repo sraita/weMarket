@@ -1,7 +1,7 @@
 <template name="settings">
 <section class="content">
   <div class="row">
-    <div class="col-md-9">
+    <div class="col-sm-offset-2 col-sm-8">
       <div class="box box-solid">
         <div class="box-header with-border">
           <h3 class="box-title">商城设置</h3>
@@ -11,11 +11,11 @@
         </div>
         <div class="box-body">
           <form class="form-horizontal">
-                  <div class="form-group">
+                  <!--<div class="form-group">
                     <label for="seller-name" class="col-sm-2 control-label">商城名称</label>
 
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" id="seller-name" placeholder="商城名称">
+                      <input type="name" class="form-control" id="seller-name" placeholder="商城名称">
                     </div>
                   </div>
                   <div class="form-group">
@@ -24,17 +24,17 @@
                     <div class="col-sm-10">
                       <input type="text" class="form-control" id="seller-doman" placeholder="自定义域名">
                     </div>
-                  </div>
+                  </div>-->
                   <div class="form-group">
-                    <label for="seller-doman" class="col-sm-2 control-label">分成模式</label>
+                    <label for="seller-doman" class="col-sm-4 control-label">分成比例（‰）</label>
 
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="seller-doman" placeholder="设置下级分销商分成比例（如1）">
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="profit" placeholder="设置下级分销商分成比例" value="{{profitVal}}">
                     </div>
                   </div>
                   <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" class="btn btn-primary">保存</button>
+                    <div class="col-sm-offset-4 col-sm-8">
+                      <button type="button" id="save" class="btn btn-primary" style="width: 80px;">保存</button>
                     </div>
                   </div>
                 </form>

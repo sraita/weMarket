@@ -14,6 +14,14 @@ Template.productsList.helpers({
       return Products.find({seller_id: Meteor.userId()},{sort:{createdAt:-1}}).fetch();
     }
     return Products.find({seller_id: Meteor.userId(),category_id: category_id},{sort:{createdAt:-1}}).fetch();
+  },
+  getDefaultProfitPrice: function(profit_price, sale_price){
+    if(profit_price){
+      return profit_price;
+    }
+    var user = Meteor.user();
+    var profit = user.profile.profit || 0;
+    return parseFloat(sale_price * profit / 1000).toFixed(2);
   }
 });
 
