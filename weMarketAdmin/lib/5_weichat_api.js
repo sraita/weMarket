@@ -69,9 +69,11 @@ if(Meteor.isServer){
   },60 * 60 * 1000);
 
   Router.route('/sign/:url',{ where: 'server'}).get(function(){
-    var url = decodeURIComponent(this.request.params.url);
+    var originalUrl = this.request.originalUrl;
+    var url = originalUrl.slice(6,originalUrl.length);
+    url = decodeURIComponent(url);
     console.log('To sign this url: '+url);
     var result = generateSignture(url);
-    this.request.end(result);
+    this.response.end(JSON.stringify(result));
   });
 }
