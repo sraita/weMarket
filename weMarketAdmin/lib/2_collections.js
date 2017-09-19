@@ -28,8 +28,6 @@ SalesOrders = new Mongo.Collection('salesOrders');
 // 分销商选中的分销商品列表
 DistributorProducts = new Mongo.Collection('distributorProducts');
 
-// 微信access_token 
-AccessToken = new Mongo.Collection('access_token');
 if(Meteor.isServer){
   // search products
   SearchSource.defineSource('products', function(searchText, options) {
