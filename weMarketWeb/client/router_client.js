@@ -199,10 +199,10 @@ Router.route('/shareProduct/:_id', {
     'shareProductHeader': {to: 'header'}
   },
   waitOn: function(){
-    return Meteor.subscribe('product-by-id', this.params._id);
+    return Meteor.subscribe('distributorProductById', this.params._id);
   },
   data: function(){
-    return Products.findOne({_id: this.params._id});
+    return DistributorProducts.findOne({_id: this.params._id});
   }
 });
 

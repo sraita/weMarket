@@ -52,6 +52,13 @@ Template.shareProduct.events({
       seller_icon: this.seller_icon,
       seller_id: this.seller_id,
       seller_name: this.seller_name,
+
+      distributor_id: this.distributor_id,
+      distributor_name: this.distributor_name,
+      distributor_icon: this.distributor_icon,
+      
+      profit_price: this.profit_price,
+
       createdAt: new Date()
     }
     console.log(obj);
