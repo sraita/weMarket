@@ -18,8 +18,8 @@
 
   <div class="product-info">
     <h4 class="name">{{name}}</h4>
-    <div class="sale-price">￥ {{sale_price}}</div>
-    <div class="unit-price">市场价  <del>￥ {{unit_price}}</del></div>
+    <div class="sale-price">￥ {{sale_price}}.00</div>
+    <div class="unit-price">可分成  <span>￥ {{profit_price}}.00元</span></div>
     <div class="other-info">
       <span style="text-align: left;">销量： 0</span>
       <span style="text-align: right;">库存： {{number}}</span>
@@ -60,7 +60,7 @@
     <a type="button" class="btn-cart button addToCart">加入购物车</a>
     <a type="button" class="btn-submit button addToCart">立即购买</a>-->
     {{#if isInDistributo}}
-    <div id="shareTheProduct">分享此商品</div>
+    <div id="shareTheProduct">分 享 (分成￥{{profit_price}}.00元)</div>
     {{else}}
     <div id="selectToSale">加入分销列表</div>
     {{/if}}
