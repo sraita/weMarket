@@ -37,6 +37,7 @@ if(Meteor.isServer){
     var returnSignatures = {
       nonceStr: nonceStr,
       appid: appId,
+      timestamp: ts,
       signature: signature,
       url: url
     };
