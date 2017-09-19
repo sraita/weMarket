@@ -12,6 +12,9 @@ Template.registerHelper('isDistributor', function(){
   }
 });
 
+Template.registerHelper('shareProductId', function(){
+  return Session.get('shareProductId');
+});
 
 if (Meteor.isClient) {
   Session.set("DocumentTitle",'微商传播机');
