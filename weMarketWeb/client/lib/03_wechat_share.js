@@ -3,7 +3,9 @@ if(Meteor.isClient){
     Meteor.setTimeout(function(){
       var shareUrl = window.location.href;
       shareUrl = shareUrl.split('#')[0];
-      shareUrl = shareUrl.replace('/product/','/shareProduct/');
+      if(shareUrl.indexOf('product') && Session.get('productContent')){
+        shareUrl = shareUrl.replace(/(\/product\/)[a-zA-Z0-9]{1,}/,'/shareProduct/'+Session.get('productContent')._id);
+      }
       calcWeChatSignature(shareUrl);
     },300);
     
@@ -50,7 +52,9 @@ if(Meteor.isClient){
       var description = '0成本快速开店';
       var shareUrl = window.location.href;
       shareUrl = shareUrl.split('#')[0];
-      shareUrl = shareUrl.replace('/product/','/shareProduct/');
+      if(shareUrl.indexOf('product') && Session.get('productContent')){
+        shareUrl = shareUrl.replace(/(\/product\/)[a-zA-Z0-9]{1,}/,'/shareProduct/'+Session.get('productContent')._id);
+      }
       
       if(Session.get('productContent') && Session.get('productContent').desc){
         description = Session.get('productContent').desc;

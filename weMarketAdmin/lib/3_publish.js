@@ -36,7 +36,10 @@ if(Meteor.isServer){
     if(!this.userId || !_id){
       return this.ready();
     }
-    return Products.find({_id: _id});
+    return [
+      DistributorProducts.find({product_id: _id, distributor_id: this.userId}),
+      Products.find({_id: _id})
+    ];
   });
 
   Meteor.publish('userDistributorProductInfo', function(_id){
