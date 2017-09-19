@@ -27,6 +27,7 @@ Template.product.onRendered(function(){
       }
   });
   console.log(this)
+  Session.set('mainImage',this.mainImage);
   Meteor.subscribe('shopping-by-product-id', Router.current().params._id);
 });
 
