@@ -24,10 +24,6 @@ Template.saleOrders.helpers({
 });
 
 Template.saleOrders.events({
-  'click .orderItem': function(e){
-    var _id = e.currentTarget.id;
-    return PUB.page('/orders/info/'+_id);
-  },
   'click .weui-navbar__item': function(e){
     var status = e.currentTarget.id;
     $('.weui-navbar__item').removeClass('weui-bar__item--on');
