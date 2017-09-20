@@ -21,5 +21,11 @@ Template.orderInfo.events({
         PUB.back()
       },1000);
     })
+  },
+  showActionBtn: function(){
+    if(this.status == 1){
+      return true;
+    }
+    return false;
   }
 })
