@@ -5,7 +5,7 @@ if(Meteor.isClient){
       shareUrl = shareUrl.split('#')[0];
       if(Session.get('productContent')){
         var seller_id = Router.current().params.query.s || localStorage.getItem('seller_id') || 'JWyJfabzzpq9grw4Q';
-        shareUrl = 'http://market.aridcdn.cn/shareProduct/'+Session.get('productContent')._id +'/?s='+ seller_id;
+        shareUrl = 'http://market.raidcdn.cn/shareProduct/'+Session.get('productContent')._id +'/?s='+ seller_id;
       }
       calcWeChatSignature(shareUrl);
     },300);
@@ -55,7 +55,7 @@ if(Meteor.isClient){
       shareUrl = shareUrl.split('#')[0];
       if(Session.get('productContent')){
         var seller_id = Router.current().params.query.s || localStorage.getItem('seller_id') || 'JWyJfabzzpq9grw4Q';
-        shareUrl = 'http://market.aridcdn.cn/shareProduct/'+Session.get('productContent')._id+'/?s=' + seller_id;
+        shareUrl = 'http://market.raidcdn.cn/shareProduct/'+Session.get('productContent')._id+'/?s=' + seller_id;
       }
       
       if(Session.get('productContent') && Session.get('productContent').desc){
