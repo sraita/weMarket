@@ -24,6 +24,11 @@ Template.shareProduct.onRendered(function(){
   Session.set("DocumentTitle",'微商传播机-'+this.data.name);
   Session.set('productContent', this.data);
   Meteor.subscribe('shopping-by-product-id', Router.current().params._id);
+  var shareUrl = 'http://market.raidcdn.cn/shareProduct/';
+  var seller_id = Router.current().params.query.s || localStorage.getItem('seller_id') || 'JWyJfabzzpq9grw4Q';
+  shareUrl += this.data._id;
+  shareUrl = shareUrl + 's?=' + seller_id;
+  calcWeChatSignature(shareUrl);
 });
 
 Template.shareProduct.helpers({

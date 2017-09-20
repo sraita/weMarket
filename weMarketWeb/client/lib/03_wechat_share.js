@@ -3,8 +3,9 @@ if(Meteor.isClient){
     Meteor.setTimeout(function(){
       var shareUrl = window.location.href;
       shareUrl = shareUrl.split('#')[0];
-      if(shareUrl.indexOf('product') && Session.get('productContent')){
-        shareUrl = shareUrl.replace(/(\/product\/)[a-zA-Z0-9]{1,}/,'/shareProduct/'+Session.get('productContent')._id);
+      if(Session.get('productContent')){
+        var seller_id = Router.current().params.query.s || localStorage.getItem('seller_id') || 'JWyJfabzzpq9grw4Q';
+        shareUrl = 'http://market.aridcdn.cn/shareProduct/'+Session.get('productContent')._id + seller_id;
       }
       calcWeChatSignature(shareUrl);
     },300);
@@ -52,8 +53,9 @@ if(Meteor.isClient){
       var description = '0成本快速开店';
       var shareUrl = window.location.href;
       shareUrl = shareUrl.split('#')[0];
-      if(shareUrl.indexOf('product') && Session.get('productContent')){
-        shareUrl = shareUrl.replace(/(\/product\/)[a-zA-Z0-9]{1,}/,'/shareProduct/'+Session.get('productContent')._id);
+      if(Session.get('productContent')){
+        var seller_id = Router.current().params.query.s || localStorage.getItem('seller_id') || 'JWyJfabzzpq9grw4Q';
+        shareUrl = 'http://market.aridcdn.cn/shareProduct/'+Session.get('productContent')._id + seller_id;
       }
       
       if(Session.get('productContent') && Session.get('productContent').desc){
@@ -121,15 +123,5 @@ if(Meteor.isClient){
       }
     }
 
-    window.registerWeChatShare = function(){
-      Meteor.setTimeout(function(){
-        var shareUrl = window.location.href;
-        shareUrl = shareUrl.split('#')[0];
-        if(shareUrl.indexOf('product') && Session.get('productContent')){
-          shareUrl = shareUrl.replace(/(\/product\/)[a-zA-Z0-9]{1,}/,'/shareProduct/'+Session.get('productContent')._id);
-        }
-        calcWeChatSignature(shareUrl);
-      },300);
-    }
   });
 }

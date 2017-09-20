@@ -40,7 +40,9 @@ PUB = {
         $(scrollContainer).scrollTop(scrollTop);
       },100);
       return Router.go(view);
-    } 
+    } else {
+      return history.go(-1);
+    }
     return Router.go('/');
   }
 }
