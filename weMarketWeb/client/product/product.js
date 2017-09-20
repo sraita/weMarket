@@ -36,7 +36,7 @@ Template.product.onRendered(function(){
   var shareUrl = 'http://market.raidcdn.cn/shareProduct/';
   var seller_id = Router.current().params.query.s || localStorage.getItem('seller_id') || 'JWyJfabzzpq9grw4Q';
   shareUrl += this.data._id;
-  shareUrl = shareUrl + 's?=' + seller_id;
+  shareUrl = shareUrl + '/?s=' + seller_id;
   calcWeChatSignature(shareUrl);
 });
 

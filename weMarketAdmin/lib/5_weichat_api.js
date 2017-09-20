@@ -49,7 +49,7 @@ if(Meteor.isServer){
     HTTP.get('https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=' + access_token +'&type=jsapi', function(error, result){
       if(!error){
         var resp = result.data;
-        var ticket = resp.ticket;
+        ticket = resp.ticket;
         console.log('Ticket is '+ ticket);
       }
     });
