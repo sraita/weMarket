@@ -50,7 +50,7 @@ if(Meteor.isServer){
   });
 
   Meteor.publish('distributorProductById', function(_id){
-    if(!this.userId || !_id){
+    if(!_id){
       return this.ready();
     }
     return DistributorProducts.find({_id: _id});
