@@ -252,3 +252,15 @@ Router.route('/shop/c/:shopId/:_id',{
   }
 });
 
+// 店铺销售商品选择
+Router.route('/addCategories/:shopId',{
+  name: 'addCategories',
+  layoutTemplate: 'headLayout',
+  yieldRegions:{
+    'addCategoriesHeader': {to:'header'}
+  },
+  waitOn: function(){
+    return Meteor.subscribe('all-categories');
+  }
+});
+

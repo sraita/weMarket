@@ -1,0 +1,39 @@
+.addCategories{
+  .weui-cells_checkbox{background: #f6f6f9;}
+  .weui-cells_checkbox:before,.weui-cells_checkbox:after{
+    border: none;
+  }
+  .categoriesLists{
+    margin: 10px 0;
+    li {
+      width: 50%;
+      float: left;
+      list-style: none;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    li{padding-bottom: 10px; padding-left: 10px;}
+    li:nth-child(2n){padding-right: 10px;}
+    li.selected .categorieInfo{background: #1cbb7f; color: #fff;}
+    .categorieInfo{
+      height: 64px;
+      background: #e8e8e8;
+      border-radius: 4px;
+      padding: 16px;
+      box-sizing: border-box;
+      h4{font-size: 16px;}
+    }
+
+  }
+  #confirm{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #1cbb7f;
+    color: #fff;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+  }
+}

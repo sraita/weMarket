@@ -44,5 +44,8 @@ Template.me.events({
   },
   'click .goMyShop': function(){
     return PUB.page('/myShop/'+Meteor.userId());
+  },
+  'click .myProduct': function(){
+    return PUB.page('/addCategories/'+Meteor.userId());
   }
 });

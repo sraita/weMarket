@@ -1,0 +1,33 @@
+<template name="addCategoriesHeader">
+  <div class="back"><i class="fa fa-angle-left"></i></div>
+  <div class="title">我的商品</div>
+</template>
+
+<template name="addCategories">
+<div class="addCategories">
+
+  <div class="weui-cells__title">选择商品</div>
+  <div class="weui-cells weui-cells_checkbox">
+    <label class="weui-cell weui-check__label" for="selectAll">
+      <div class="weui-cell__hd">
+        <input type="checkbox" class="weui-check" name="selectAll" id="selectAll">
+        <i class="weui-icon-checked"></i>
+      </div>
+      <div class="weui-cell__bd">
+        <p>全选</p>
+      </div>
+    </label>
+  </div>
+  
+  <ul class="categoriesLists">
+    {{#each categories}}
+    <li class="categoriesItem curr">
+      <div class="categorieInfo">
+      {{name}}
+      </div>
+    </li>
+    {{/each}}
+  </ul>
+  <div id="confirm">完成</div>
+</div>
+</template>

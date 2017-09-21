@@ -72,8 +72,8 @@
     </li>
   </ul>
 
+  {{#if isDistributor}}
   <div class="weui-cells">
-    {{#if isDistributor}}
     <div class="weui-cell goMyShop">
       <div class="weui-cell__hd"><img src=""></div>
       <div class="weui-cell__bd">
@@ -81,7 +81,16 @@
       </div>
       <div class="weui-cell__ft"><i class="fa fa-angle-right fa-fw"></i></div>
     </div>
-    {{/if}}
+    <div class="weui-cell myProduct">
+      <div class="weui-cell__hd"><img src=""></div>
+      <div class="weui-cell__bd">
+        <p>我的商品</p>
+      </div>
+      <div class="weui-cell__ft"><i class="fa fa-angle-right fa-fw"></i></div>
+    </div>
+  </div>
+  {{/if}}
+  <div class="weui-cells">
     <div class="weui-cell goAddrList">
       <div class="weui-cell__hd"><img src=""></div>
       <div class="weui-cell__bd">
