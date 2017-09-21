@@ -221,3 +221,11 @@ Router.route('/saleOrders/list',{
     return Meteor.subscribe('saleOrders');
   }
 });
+
+
+// 店铺首页
+Router.route('/shop/:_id',{
+  name: 'myShop',
+  layoutTemplate: 'footLayout',
+
+})

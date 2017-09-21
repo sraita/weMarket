@@ -8,5 +8,8 @@ Template.footer.helpers({
   },
   shareProductId: function(){
     return Session.get('shareProductId');
+  },
+  userId: function(){
+    return Meteor.userId()
   }
 });

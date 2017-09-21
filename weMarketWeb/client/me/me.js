@@ -41,5 +41,8 @@ Template.me.events({
   },
   'click .goSaleOrdersList': function(){
     return PUB.page('/saleOrders/list');
+  },
+  'click .goMyShop': function(){
+    return PUB.page('/shop/'+Meteor.userId());
   }
 })
