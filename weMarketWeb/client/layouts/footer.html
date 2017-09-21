@@ -40,14 +40,14 @@
   </div>
   {{else}}
   <div class="weui-tabbar">
-    <a href="/shop/{{seller_id}}" class="weui-tabbar__item {{isCurr 'home'}}">
+    <a href="/shop/{{seller_id}}" class="weui-tabbar__item {{isCurr 'shopHome'}}">
       <!--<span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>-->
       <div class="weui-tabbar__icon">
         <i class="iconfont icon-shouye"></i>
       </div>
       <p class="weui-tabbar__label">首页</p>
     </a>
-    <a href="/categories/all?s={{seller_id}}" class="weui-tabbar__item {{isCurr 'categories'}}">
+    <a href="/shop/c/{{seller_id}}/all?s={{seller_id}}" class="weui-tabbar__item {{isCurr 'shopCategories'}}">
       <div class="weui-tabbar__icon">
         <i class="iconfont icon-fenlei"></i>
       </div>

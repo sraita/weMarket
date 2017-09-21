@@ -12,6 +12,15 @@ Template.registerHelper('isDistributor', function(){
   }
 });
 
+// 是否是分销商
+isDistributor = function(){
+  var user = Meteor.user();
+  if(user && user.profile && user.profile.role && user.profile.role.indexOf('distributor') >= 0){
+    return true;
+  }
+  return false;
+}
+
 Template.registerHelper('shareProductId', function(){
   return Session.get('shareProductId');
 });

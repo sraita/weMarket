@@ -223,9 +223,32 @@ Router.route('/saleOrders/list',{
 });
 
 
-// 店铺首页
-Router.route('/shop/:_id',{
+// 我的店铺
+Router.route('/myShop/:_id',{
   name: 'myShop',
   layoutTemplate: 'footLayout',
 
 })
+
+// 店铺主页
+Router.route('/shop/:_id',{
+  name: 'shopHome',
+  layoutTemplate: 'footLayout',
+
+});
+
+
+// 店铺分类
+Router.route('/shop/c/:shopId/:_id',{
+  name: 'shopCategories',
+  layoutTemplate: 'headSearchLayout',
+  waitOn: function(){
+    var limit = this.params.query.limit || 10;
+    limit = Number('limit');
+    var category_id = this.params._id || 'all';
+    var seller_id = Router.current().params.query.s || 'RTsZ64Cc8iyoc4BmW';
+    Meteor.subscribe('categories_by_seller',seller_id);
+    return Meteor.subscribe('products_by_category',seller_id,category_id, limit);
+  }
+});
+
