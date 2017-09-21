@@ -43,6 +43,6 @@ Template.me.events({
     return PUB.page('/saleOrders/list');
   },
   'click .goMyShop': function(){
-    return PUB.page('/shop/'+Meteor.userId());
+    return PUB.page('/myShop/'+Meteor.userId());
   }
-})
+});
