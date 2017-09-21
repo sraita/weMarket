@@ -1199,6 +1199,7 @@ button.weui-vcode-btn {
   display: inline-block;
   width: 27px;
   height: 27px;
+  line-height: 27px;
 }
 i.weui-tabbar__icon,
 .weui-tabbar__icon > i {
