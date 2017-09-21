@@ -6,6 +6,11 @@ if(Meteor.isServer){
     return Categories.find({seller_id: seller_id});
   });
 
+  // 发布所有商品
+  Meteor.publish('all-products', function(limit){
+    var limit = limit || 10;
+    return Products.find({},{limit: limit},{sort:{createdAt:-1}});
+  });
 
   // 发布商品， 按商家发布
   Meteor.publish("products_by_seller", function(seller_id, limit){

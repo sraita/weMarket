@@ -40,14 +40,12 @@
   <!-- 快速导航 END -->
   <!-- 产品列表 -->
   <div class="text-c n-cate-box">
-		<p class="index-title"><i class="iconfont icon-cainixihuan is-cainixihuan"></i>我分销的商品</p>
-		<p class="index-small-title">分销开店，0成本！</p>
+		<p class="index-title"><i class="iconfont icon-cainixihuan is-cainixihuan"></i>猜您喜欢</p>
+		<p class="index-small-title">根据您的兴趣，实时推荐商品</p>
 	</div>
-  {{#if products}}
   <ul class="product-list">
   {{#each products}}
-    <li class="product-item">
-      <!--<a href="/product/{{_id}}?s={{seller_id}}">-->
+    <!--<li class="product-item">
       <a href="/product/{{product_id}}?s={{seller_id}}">
       <img src="{{mainImage}}"/>
       <div class="product-info">
@@ -56,12 +54,20 @@
         <p class="profit-price">可获利：￥ {{profit_price}}.00元</p>
       </div>
       </a>
+    </li>-->
+    <li class="product-item">
+      <a href="/product/{{product_id}}?s={{seller_id}}">
+      <img src="{{mainImage}}"/>
+      <div class="product-info">
+        <h3 class="product-name">{{name}}</h3>
+        <p class="product-price">￥{{sale_price}} </p>
+        <p class="unit_price"><del>￥{{unit_price}}</del></p>
+        <!--<p class="profit-price">可获利：￥ {{profit_price}}.00元</p>-->
+      </div>
+      </a>
     </li>
   {{/each}}
   </ul>
-  {{else}}
-  <div id="selectProducts" class="weui-btn weui-btn_primary">选择商品</div>
-  {{/if}}
   <!-- 产品列表 END -->
 </div>
 </template>
