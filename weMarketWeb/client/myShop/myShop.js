@@ -1,6 +1,6 @@
 Template.myShop.onRendered(function(){
-  var seller_id = Router.current().params.query.s || 'RTsZ64Cc8iyoc4BmW';
-  Meteor.subscribe('all-products');
+  var shopId = Router.current().params._id;
+  Meteor.subscribe('shop_products',shopId,'all');
   var swiper = new Swiper('.swiper-container', {
       pagination: '.swiper-pagination',
       autoplay : 5000,
@@ -10,8 +10,8 @@ Template.myShop.onRendered(function(){
 
 Template.myShop.helpers({
   products: function(){
-    // return DistributorProducts.find({distributor_id: Meteor.userId()}, {limit: 100}).fetch();
-    return Products.find({},{sort:{createdAt:-1}}).fetch();
+    var categories = this.categories || [];
+    return Products.find({category_id:{$in:categories}},{sort:{createdAt:-1}}).fetch();
   },
   shopName: function(){
     var user = Meteor.user();

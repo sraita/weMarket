@@ -254,7 +254,12 @@ Router.route('/myShop/setting/:_id',{
 Router.route('/shop/:_id',{
   name: 'shopHome',
   layoutTemplate: 'footLayout',
-
+  waitOn: function(){
+    return Meteor.subscribe('shopInfo',this.params._id);
+  },
+  data: function(){
+    return Shops.findOne({_id: this.params._id});
+  }
 });
 
 
