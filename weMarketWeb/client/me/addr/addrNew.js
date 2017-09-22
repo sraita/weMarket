@@ -1,3 +1,13 @@
+Template.addrNewHeader.helpers({
+  title: function(){
+    var _id = Router.current().params.query.id
+    if(_id){
+      return '编辑收货地址';
+    }
+    return '新增收货地址';
+  }
+})
+
 Template.addrNew.onRendered(function(){
   var _id = Router.current().params.query.id
   if(_id){
