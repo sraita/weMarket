@@ -24,7 +24,11 @@
   {{else}}
   <div style="margin-top: 80px; text-align: center; font-size: 14px;">
     <p>购物车是空的</p>
-    <a href="/shareProduct/{{shareProductId}}?s={{seller_id}}">立即购物</a>
+    {{#if isDistributor}}
+    <a href="/">立即购物</a>
+    {{else}}
+    <a href="/shop/{{shopId}}">立即购物</a>
+    {{/if}}
   </div>
   {{/if}}
 </div>

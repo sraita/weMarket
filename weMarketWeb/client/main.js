@@ -2,6 +2,10 @@ Template.registerHelper('seller_id', function(){
   return Router.current().params.query.s || localStorage.getItem('seller_id') || 'JWyJfabzzpq9grw4Q';
 });
 
+Template.registerHelper('shopId', function(){
+  return localStorage.getItem('shopId');
+});
+
 // 是否是分销商
 Template.registerHelper('isDistributor', function(){
   var user = Meteor.user();

@@ -29,6 +29,10 @@ Router.onBeforeAction(function () {
     localStorage.setItem('seller_id',Router.current().params.query.s);
   }
 
+  if(Router.current().route.getName() == 'shopHome' ){
+    localStorage.setItem('shopId', Router.current().params._id)
+  }
+
   if(!Meteor.userId()){
     if(localStorage.getItem('Meteor.userId')){
       loginByOpenId();

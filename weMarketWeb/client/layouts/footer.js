@@ -11,5 +11,8 @@ Template.footer.helpers({
   },
   userId: function(){
     return Meteor.userId()
+  },
+  shopId: function(){
+    return localStorage.getItem('shopId')
   }
 });

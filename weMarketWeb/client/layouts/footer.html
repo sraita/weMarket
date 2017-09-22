@@ -6,14 +6,14 @@
   </style>
   {{#if isDistributor}}
   <div class="weui-tabbar">
-    <a href="/?s={{seller_id}}" class="weui-tabbar__item {{isCurr 'home'}}">
+    <a href="/" class="weui-tabbar__item {{isCurr 'home'}}">
       <!--<span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>-->
       <div class="weui-tabbar__icon">
         <i class="iconfont icon-shouye"></i>
       </div>
       <p class="weui-tabbar__label">首页</p>
     </a>
-    <a href="/categories/all?s={{seller_id}}" class="weui-tabbar__item {{isCurr 'categories'}}">
+    <a href="/categories/all" class="weui-tabbar__item {{isCurr 'categories'}}">
       <div class="weui-tabbar__icon">
         <i class="iconfont icon-fenlei"></i>
       </div>
@@ -25,13 +25,13 @@
       </div>
       <p class="weui-tabbar__label">我的店铺</p>
     </a>
-    <a href="/shopping?s={{seller_id}}" class="weui-tabbar__item {{isCurr 'shopping'}}">
+    <a href="/shopping" class="weui-tabbar__item {{isCurr 'shopping'}}">
       <div class="weui-tabbar__icon">
         <i class="iconfont icon-gouwuche"></i>
       </div>
       <p class="weui-tabbar__label">购物车</p>
     </a>
-    <a href="/me?s={{seller_id}}" class="weui-tabbar__item {{isCurr 'me'}}">
+    <a href="/me" class="weui-tabbar__item {{isCurr 'me'}}">
       <div class="weui-tabbar__icon">
         <i class="iconfont icon-wo"></i>
       </div>
@@ -40,26 +40,26 @@
   </div>
   {{else}}
   <div class="weui-tabbar">
-    <a href="/shop/{{seller_id}}" class="weui-tabbar__item {{isCurr 'shopHome'}}">
+    <a href="/shop/{{shopId}}" class="weui-tabbar__item {{isCurr 'shopHome'}}">
       <!--<span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>-->
       <div class="weui-tabbar__icon">
         <i class="iconfont icon-shouye"></i>
       </div>
       <p class="weui-tabbar__label">首页</p>
     </a>
-    <a href="/shop/c/{{seller_id}}/all?s={{seller_id}}" class="weui-tabbar__item {{isCurr 'shopCategories'}}">
+    <a href="/shop/c/{{shopId}}/all" class="weui-tabbar__item {{isCurr 'shopCategories'}}">
       <div class="weui-tabbar__icon">
         <i class="iconfont icon-fenlei"></i>
       </div>
       <p class="weui-tabbar__label">分类</p>
     </a>
-    <a href="/shopping?s={{seller_id}}" class="weui-tabbar__item {{isCurr 'shopping'}}">
+    <a href="/shopping" class="weui-tabbar__item {{isCurr 'shopping'}}">
       <div class="weui-tabbar__icon">
         <i class="iconfont icon-gouwuche"></i>
       </div>
       <p class="weui-tabbar__label">购物车</p>
     </a>
-    <a href="/me?s={{seller_id}}" class="weui-tabbar__item {{isCurr 'me'}}">
+    <a href="/me" class="weui-tabbar__item {{isCurr 'me'}}">
       <div class="weui-tabbar__icon">
         <i class="iconfont icon-wo"></i>
       </div>
