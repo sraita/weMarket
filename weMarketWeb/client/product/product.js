@@ -73,6 +73,11 @@ Template.product.events({
       seller_name: this.seller_name,
       createdAt: new Date()
     }
+
+    // 如果不是分销商
+    if(!isDistributor()){
+      obj.shopId = localStorage.getItem('shopId');
+    }
     console.log(obj);
     $.showLoading('正在添加');
     var callback = function(err,_id){

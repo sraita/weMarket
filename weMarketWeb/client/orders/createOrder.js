@@ -71,7 +71,6 @@ Template.createOrder.events({
 
         user_addr: addr,
 
-        seller_id: Router.current().params.query.s || 'RTsZ64Cc8iyoc4BmW',
         products: [],
 
         order_no: order_no,
