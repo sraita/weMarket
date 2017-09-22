@@ -12,6 +12,15 @@ Template.myShop.helpers({
   products: function(){
     // return DistributorProducts.find({distributor_id: Meteor.userId()}, {limit: 100}).fetch();
     return Products.find({},{sort:{createdAt:-1}}).fetch();
+  },
+  shopName: function(){
+    var user = Meteor.user();
+    if(user){
+      userName = user.profile.nickname || user.username;
+      shopName = this.name || user.profile.shopName || userName + '的店铺';
+      return shopName;
+    }
+    return '';
   }
 });
 

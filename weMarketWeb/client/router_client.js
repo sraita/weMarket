@@ -227,7 +227,12 @@ Router.route('/saleOrders/list',{
 Router.route('/myShop/:_id',{
   name: 'myShop',
   layoutTemplate: 'footLayout',
-
+  waitOn: function(){
+    return Meteor.subscribe('shopInfo',this.params._id);
+  },
+  data: function(){
+    return Shops.findOne({_id: this.params._id});
+  }
 });
 
 // 我的店铺设置
