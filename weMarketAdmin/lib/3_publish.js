@@ -145,6 +145,13 @@ if(Meteor.isServer){
     }
   })
 
+  // 发布店铺信息
+  Meteor.publish('shopInfo', function(_id){
+    if(!_id){
+      return this.ready();
+    }
+    return Shops.find({_id: _id});
+  });
 
   Meteor.publish('distributorUserCounts', function(){
     Counts.publish(this,'distributorSaleOrderCounts-complate', SalesOrders.find({'distributor_id': this.userId,'status': 'complate'}));

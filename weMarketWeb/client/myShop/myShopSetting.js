@@ -3,13 +3,10 @@ Template.myShopSetting.helpers({
     var user = Meteor.user();
     if(user){
       userName = user.profile.nickname || user.username;
-      shopName = user.profile.shopName || userName + '的店铺';
+      shopName = this.name || user.profile.shopName || userName + '的店铺';
       return shopName;
     }
     return '';
-  },
-  user: function(){
-    return Meteor.user();
   }
 });
 
@@ -28,12 +25,12 @@ Template.myShopSetting.events({
     }
 
     $.showLoading('处理中')
-    Meteor.users.update({_id: Meteor.userId()},{
+    Shops.update({_id: Router.current().params._id},{
       $set:{
-        'profile.shopName':shopName,
-        'profile.name':name,
-        'profile.mobile':mobile,
-        'profile.alipay':alipay
+        'name':shopName,
+        'user.name':name,
+        'user.mobile':mobile,
+        'user.alipay':alipay
       }
     },function(error, result){
       $.hideLoading();
@@ -43,8 +40,16 @@ Template.myShopSetting.events({
       }
       $.toast('已保存');
       Meteor.setTimeout(function(){
+        Meteor.users.update({_id: Meteor.userId()},{
+          $set:{
+            'profile.shopName':shopName,
+            'profile.name':name,
+            'profile.mobile':mobile,
+            'profile.alipay':alipay
+          }
+        });
         PUB.back();
       },500);
-    });
+    })
   }
 })

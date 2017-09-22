@@ -28,6 +28,10 @@ SalesOrders = new Mongo.Collection('salesOrders');
 // 分销商选中的分销商品列表
 DistributorProducts = new Mongo.Collection('distributorProducts');
 
+
+// shops 存储店铺表
+Shops = new Mongo.Collection('shops');
+
 if(Meteor.isServer){
   // search products
   SearchSource.defineSource('products', function(searchText, options) {

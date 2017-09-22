@@ -87,3 +87,16 @@ Orders.allow({
     return doc.owner === userId;
   }
 });
+
+// 店铺信息权限， 只有店铺创建者才有相关权限
+Shops.allow({
+  insert: function(userId,doc){
+    return userId == doc._id;
+  },
+  update: function(userId,doc){
+    return userId == doc._id;
+  },
+  remove: function(userId,doc){
+    return userId == doc._id;
+  }
+});

@@ -236,6 +236,12 @@ Router.route('/myShop/setting/:_id',{
   layoutTemplate: 'headLayout',
   yieldRegions:{
     'myShopSettingHeader':{to :'header'}
+  },
+  waitOn: function(){
+    return Meteor.subscribe('shopInfo',this.params._id);
+  },
+  data: function(){
+    return Shops.findOne({_id: this.params._id});
   }
 });
 
