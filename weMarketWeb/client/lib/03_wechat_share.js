@@ -4,8 +4,11 @@ if(Meteor.isClient){
       var shareUrl = window.location.href;
       shareUrl = shareUrl.split('#')[0];
       if(Session.get('productContent')){
-        var seller_id = Router.current().params.query.s || localStorage.getItem('seller_id') || 'JWyJfabzzpq9grw4Q';
-        shareUrl = 'http://market.raidcdn.cn/shareProduct/'+Session.get('productContent')._id +'/?s='+ seller_id;
+        var shopId = localStorage.getItem('shopId');
+        shareUrl = 'http://market.raidcdn.cn/product/'+Session.get('productContent')._id;
+        if(shopId){
+          shareUrl = shareUrl + '?s='+ shopId;
+        }
       }
       calcWeChatSignature(shareUrl);
     },300);

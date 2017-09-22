@@ -6,6 +6,10 @@ Template.shopHome.onRendered(function(){
       autoplay : 5000,
       loop: true
   });
+  var shareUrl = 'http://market.raidcdn.cn/shop/';
+  shareUrl += shopId;
+  console.log(shareUrl);
+  calcWeChatSignature(shareUrl);
 });
 
 Template.shopHome.helpers({

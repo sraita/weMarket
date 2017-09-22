@@ -33,10 +33,14 @@ Template.product.onRendered(function(){
 
   Meteor.subscribe('shopping-by-product-id', Router.current().params._id);
   // Meteor.subscribe('userDistributorProductInfo', Router.current().params._id);
-  var shareUrl = 'http://market.raidcdn.cn/shareProduct/';
-  var seller_id = Router.current().params.query.s || localStorage.getItem('seller_id') || 'JWyJfabzzpq9grw4Q';
-  shareUrl += this.data._id;
-  shareUrl = shareUrl + '/?s=' + seller_id;
+  var shopId = localStorage.getItem('shopId') || Router.current.params.query.s;
+
+  shareUrl = 'http://market.raidcdn.cn/product/' + Router.current().params._id;
+  if(shopId){
+    shareUrl = shareUrl + '?s='+shopId;
+    localStorage.setItem('shopId',shopId);
+  }
+  console.log(shareUrl);
   calcWeChatSignature(shareUrl);
 });
 
