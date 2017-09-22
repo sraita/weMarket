@@ -21,7 +21,7 @@
   
   <ul class="categoriesLists">
     {{#each categories}}
-    <li class="categoriesItem curr">
+    <li id="{{_id}}" class="categoriesItem {{isSelected _id}}">
       <div class="categorieInfo">
       {{name}}
       </div>

@@ -2,20 +2,16 @@ Template.addCategories.helpers({
   categories: function(){
     return Categories.find({}).fetch();
   },
-  products: function(){
-    var limit = Router.current().params.query.limit || 10;
-    limit = Number(limit);
-    var category_id = Router.current().params._id || 'all';
-    if(category_id === 'all'){
-      return Products.find({},{limit: limit}).fetch();
+  isSelected: function(id){
+    var categories = [];
+    var user = Meteor.user()
+    if(user && user.profile && user.profile.categories){
+      categories = user.profile.categories;
     }
-    return Products.find({category_id: category_id},{limit:limit}).fetch();
-  },
-  currCategory: function(_id){
-    if(_id ==  Router.current().params._id ){
-      return 'curr';
+    if(categories.indexOf(id) > -1){
+      return 'selected'
     }
-    return '';
+    return ''
   }
 });
 
@@ -33,5 +29,33 @@ Template.addCategories.events({
     } else {
       $(e.currentTarget).addClass('selected');
     }
+  },
+  // 存储我的商品
+  'click #confirm': function(){
+    var categories = [];
+    $('.categoriesItem').each(function(item){
+      if($(this).hasClass('selected')){
+        categories.push($(this).attr('id'));
+      }
+    });
+    console.log(categories);
+    // update user categories
+    $.showLoading('处理中')
+    Meteor.users.update({_id: Meteor.userId()},{
+      $set:{
+        'profile.categories':categories
+      }
+    },function(error, result){
+      $.hideLoading();
+      if(error){
+        console.log(error);
+        return $.toast('请重试','cancel');
+      }
+      $.toast('已添加');
+      Meteor.setTimeout(function(){
+        PUB.back();
+      },500)
+    });
   }
+
 })
