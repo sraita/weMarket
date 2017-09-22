@@ -4,9 +4,9 @@ Template.addCategories.helpers({
   },
   isSelected: function(id){
     var categories = [];
-    var user = Meteor.user()
-    if(user && user.profile && user.profile.categories){
-      categories = user.profile.categories;
+    var shop = Shops.findOne({_id: Router.current().params._id});
+    if(shop && shop.categories){
+      categories = shop.categories;
     }
     if(categories.indexOf(id) > -1){
       return 'selected'
@@ -41,9 +41,9 @@ Template.addCategories.events({
     console.log(categories);
     // update user categories
     $.showLoading('处理中')
-    Meteor.users.update({_id: Meteor.userId()},{
+    Shops.update({_id: Router.current().params._id},{
       $set:{
-        'profile.categories':categories
+        'categories':categories
       }
     },function(error, result){
       $.hideLoading();

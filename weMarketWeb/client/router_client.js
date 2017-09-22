@@ -266,21 +266,26 @@ Router.route('/shop/c/:shopId/:_id',{
     var limit = this.params.query.limit || 10;
     limit = Number('limit');
     var category_id = this.params._id || 'all';
-    var seller_id = Router.current().params.query.s || 'RTsZ64Cc8iyoc4BmW';
-    Meteor.subscribe('categories_by_seller',seller_id);
-    return Meteor.subscribe('products_by_category',seller_id,category_id, limit);
+    var shopId = this.params.shopId;
+    return [
+      Meteor.subscribe('shop_categories',shopId),
+      Meteor.subscribe('shop_products',shopId,category_id, limit)
+    ];
   }
 });
 
 // 店铺销售商品选择
-Router.route('/addCategories/:shopId',{
+Router.route('/addCategories/:_id',{
   name: 'addCategories',
   layoutTemplate: 'headLayout',
   yieldRegions:{
     'addCategoriesHeader': {to:'header'}
   },
   waitOn: function(){
-    return Meteor.subscribe('all-categories');
+    return [
+      Meteor.subscribe('all-categories'),
+      Meteor.subscribe('shopInfo',this.params._id)
+    ];
   }
 });
 

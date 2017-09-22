@@ -10,6 +10,17 @@ if(Meteor.isServer){
     return Categories.find({});
   });
   
+  Meteor.publish("categories_by_shop",function(shopId){
+    if(!shopId){
+      return this.ready();
+    }
+    var ids = [];
+    var shop = Shops.findOne({_id: shopId});
+    if(shop && shop.categories){
+      ids = shop.categories;
+    }
+    return Categories.find({_id: {$in:ids}},{sort:{createdAt:-1}});
+  })
   // 发布所有商品
   Meteor.publish('all-products', function(limit){
     var limit = limit || 10;
@@ -38,6 +49,33 @@ if(Meteor.isServer){
       return Products.find({seller_id: seller_id},{limit: limit, skip: skip,sort:{createdAt:-1}});
     } 
     return Products.find({seller_id: seller_id, category_id: category_id},{limit: limit, skip: skip,sort:{createdAt:-1}});
+  });
+
+  Meteor.publish('shop_categories',function(shopId){
+    if(!shopId){
+      return this.ready();
+    }
+    var shop = Shops.findOne({_id: shopId});
+    if(!shop){
+      return this.ready();
+    }
+    return Categories.find({_id:{$in: shop.categories}});
+  });
+
+  Meteor.publish('shop_products', function(shopId, category_id, limit,skip){
+    var limit = limit || 20;
+    var skip = skip || 0;
+    if(!shopId || !category_id){
+      return this.ready();
+    }
+    var shop = Shops.findOne({_id: shopId});
+    if(!shop){
+      return this.ready();
+    }
+    if(category_id === "all"){
+      return Products.find({category_id: {$in:shop.categories}},{limit: limit, skip: skip,sort:{createdAt:-1}});
+    } 
+    return Products.find({category_id: category_id},{limit: limit, skip: skip,sort:{createdAt:-1}});
   });
 
   // 发布商品，按照商品ID发布
