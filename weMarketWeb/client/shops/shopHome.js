@@ -14,3 +14,10 @@ Template.shopHome.helpers({
     return Products.find({},{sort:{createdAt:-1}}).fetch();
   }
 });
+
+Template.shopHome.events({
+  // 分享店铺提示
+  'click #share': function(e){
+    $("#shopShareTip").popup();
+  }
+})

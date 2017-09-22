@@ -14,3 +14,14 @@ Template.myShop.helpers({
     return Products.find({},{sort:{createdAt:-1}}).fetch();
   }
 });
+
+Template.myShop.events({
+  // 分享店铺提示
+  'click #share': function(e){
+    $("#myShopShareTip").popup();
+  },
+  // 店铺设置
+  'click #setting': function(e){
+
+  }
+})

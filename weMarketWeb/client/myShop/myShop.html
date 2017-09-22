@@ -22,34 +22,7 @@
     <div class="swiper-pagination"></div>
   </div>
   <!-- Swiper end -->
-  <!-- 快速导航 -->
-  <ul class="fast-nav">
-    <li>
-      <a href="/categories/all?s={{seller_id}}">
-        <img src="/home/nav_0.png"/>
-        <p>全部分类</p>
-      </a>
-    </li>
-    <li>
-      <a href="/orders/list?s={{seller_id}}">
-        <img src="/home/nav_1.png"/>
-        <p>我的订单</p>
-      </a>
-    </li>
-    <li>
-      <a href="/shopping?s={{seller_id}}">
-        <img src="/home/nav_2.png"/>
-        <p>购物车</p>
-      </a>
-    </li>
-    <li>
-      <a href="/me?s={{seller_id}}">
-        <img src="/home/nav_3.png"/>
-        <p>个人中心</p>
-      </a>
-    </li>
-  </ul>
-  <!-- 快速导航 END -->
+
   <!-- 产品列表 -->
   <ul class="product-list">
   {{#each products}}
@@ -67,5 +40,16 @@
   {{/each}}
   </ul>
   <!-- 产品列表 END -->
+
+
+  <!--分享提示 START-->
+
+  <div id="myShopShareTip" class="weui-popup__container close-popup" style="z-index:9999;">
+    <div class="weui-popup__overlay"></div>
+    <div class="weui-popup__modal" style="background:rgba(0,0,0,.78); color:#fff; text-align:right;">
+      <img src="/img/share-tips.png" style="width:60%; margin:16px;"/>
+    </div>
+  </div>
+  <!-- 分享提示 END -->
 </div>
 </template>
