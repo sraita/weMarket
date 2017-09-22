@@ -39,14 +39,30 @@ Template.productsAdd.helpers({
     if(profit_price){
       return profit_price;
     }
+    var category_id = Session.get('category_id');
+    var category = Categories.findOne({_id: category_id});
     var user = Meteor.user();
-    var profit = user.profile.profit || 0;
+    var profit = 0;
+    if(category && category.profit){
+      profit = category.profit;
+    } else {
+      profit = user.profile.profit || 0;
+    }
+    if(!sale_price){
+      sale_price = Session.get('sale_price') || 0;
+    }
     return parseFloat(sale_price * profit / 1000).toFixed(2);
   }
 });
 
 
 Template.productsAdd.events({
+  'change #category_id':function(){
+    Session.set('category_id',$('#category_id option:selected').attr('id'));
+  },
+  'change #sale_price': function(){
+    Session.set('sale_price',Number($('#sale_price').val()))
+  },
   'click #save': function(){
     var name = $('#name').val(),
         desc = $('#desc').val(),

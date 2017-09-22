@@ -7,7 +7,7 @@
         <h3 class="box-title">分类管理</h3>
 
         <div class="box-tools pull-right">
-          <button type="button" class="btn bg-purple" data-toggle="modal" data-target="#addCatalogues">增加分类</button>
+          <button id="addCategory" type="button" class="btn bg-purple">增加分类</button>
         </div>
       </div>
       <!-- /.box-header -->
@@ -19,6 +19,7 @@
               <th>分类排序</th>
               <th>分类名称</th>
               <th>分类描述</th>
+              <th>分成比例</th>
               <th style="width:160px; text-align:center;">操作</th>
             </tr>
             </thead>
@@ -28,8 +29,9 @@
               <td>{{sortIndex}}</td>
               <td><a href="javascript:void(0);">{{name}}</a></td>
               <td>{{desc}}</td>
+              <td>{{profit}} ‰</td>
               <td style="text-align:center;">
-                <button type="button" class="btn btn-xs bg-purple" data-toggle="modal" data-target="#modifyCatalogues">
+                <button id="{{_id}}" type="button" class="btn btn-xs bg-purple modifyCatalogues">
                   修改
                 </button>
                 <button id="{{_id}}" type="button" data-name="{{name}}" class="delCatalogues btn btn-xs bg-red"> 删除</button>
@@ -74,28 +76,36 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        {{#if categoryInfo}}
+        <h4 class="modal-title" id="addCataloguesLabel">修改分类</h4>
+        {{else}}
         <h4 class="modal-title" id="addCataloguesLabel">增加分类</h4>
+        {{/if}}
       </div>
       <div class="modal-body box-body box-profile">
           <!-- form start -->
             <form role="form">
                 <div class="form-group">
                   <label for="name">分类名称</label>
-                  <input type="text" class="form-control" id="name" placeholder="输入分类名称">
+                  <input type="text" class="form-control" id="name" placeholder="输入分类名称" value="{{categoryInfo.name}}">
                 </div>
                 <div class="form-group">
                   <label for="sortIndex">分类排序</label>
-                  <input type="number" class="form-control" id="sortIndex" placeholder="eg:1">
+                  <input type="number" class="form-control" id="sortIndex" placeholder="eg:1" value="{{categoryInfo.sortIndex}}">
                 </div>
                 <div class="form-group">
                   <label for="desc">分类描述</label>
-                  <input type="text" class="form-control" id="desc" placeholder="输入分类描述">
+                  <input type="text" class="form-control" id="desc" placeholder="输入分类描述" value="{{categoryInfo.desc}}">
+                </div>
+                <div class="form-group">
+                  <label for="desc">分成比例（‰）</label>
+                  <input type="text" class="form-control" id="profit" placeholder="输入分成比例" value="{{getProfit categoryInfo.profit}}">
                 </div>
             </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-        <button id="add" type="button" class="btn btn-primary">新增</button>
+        <button id="add" type="button" class="btn btn-primary">保存</button>
       </div>
     </div>
   </div>
