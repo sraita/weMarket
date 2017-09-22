@@ -38,17 +38,17 @@ if(Meteor.isServer){
     var limit = limit || 10;
     return DistributorProducts.find({distributor_id: distributor_id}, {limit: limit});
   })
-  // 发布商品， 按商家和分类发布
-  Meteor.publish('products_by_category', function(seller_id, category_id, limit,skip){
+  // 发布商品， 按分类发布
+  Meteor.publish('products_by_category', function(category_id, limit,skip){
     var limit = limit || 20;
     var skip = skip || 0;
-    if(!seller_id || !category_id){
+    if(!category_id){
       return this.ready();
     }
     if(category_id === "all"){
-      return Products.find({seller_id: seller_id},{limit: limit, skip: skip,sort:{createdAt:-1}});
+      return Products.find({},{limit: limit, skip: skip,sort:{createdAt:-1}});
     } 
-    return Products.find({seller_id: seller_id, category_id: category_id},{limit: limit, skip: skip,sort:{createdAt:-1}});
+    return Products.find({category_id: category_id},{limit: limit, skip: skip,sort:{createdAt:-1}});
   });
 
   Meteor.publish('shop_categories',function(shopId){
