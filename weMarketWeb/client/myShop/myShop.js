@@ -22,6 +22,7 @@ Template.myShop.events({
   },
   // 店铺设置
   'click #setting': function(e){
-
+    var _id = Router.current().params._id;
+    return PUB.page('/myShop/setting/'+_id);
   }
 })

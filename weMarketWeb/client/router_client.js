@@ -228,7 +228,16 @@ Router.route('/myShop/:_id',{
   name: 'myShop',
   layoutTemplate: 'footLayout',
 
-})
+});
+
+// 我的店铺设置
+Router.route('/myShop/setting/:_id',{
+  name: 'myShopSetting',
+  layoutTemplate: 'headLayout',
+  yieldRegions:{
+    'myShopSettingHeader':{to :'header'}
+  }
+});
 
 // 店铺主页
 Router.route('/shop/:_id',{
