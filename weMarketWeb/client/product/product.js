@@ -1,5 +1,7 @@
 window.changePrice = function (type) {
   var qty = Number($('#goods_number').val()) || 1;
+  var sale_price = parseFloat($('#salePrice').data('price'));
+  var stock = parseInt($('#productStock').data('stock')); // 库存
   //var qty = 0;
 
   if (type == 1) {
@@ -11,10 +13,16 @@ window.changePrice = function (type) {
   if (qty <= 0) {
     qty = 1;
   }
+  if(qty >= stock){
+    qty = stock;
+  }
   if (!/^[0-9]*$/.test(qty)) {
     qty = 1;
   }
+  var totalPrice = parseFloat(qty * sale_price);
   $('#goods_number').val(qty);
+  // 同时增减相应的总价
+  $('#totalSalePrice').html('￥ '+totalPrice);
 }
 Template.product.onRendered(function(){
   var swiper = new Swiper('.swiper-container', {

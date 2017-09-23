@@ -18,12 +18,12 @@
 
   <div class="product-info">
     <h4 class="name">{{name}}</h4>
-    <div class="sale-price">￥ {{sale_price}}.00</div>
+    <div class="sale-price" id="salePrice" data-price="{{sale_price}}">￥ {{sale_price}}.00</div>
     <p class="unit_price"><del>￥{{unit_price}}</del></p>
     <!--<div class="unit-price">可分成  <span>￥ {{profit_price}}.00元</span></div>-->
     <div class="other-info">
       <span style="text-align: left;">销量： 0</span>
-      <span style="text-align: right;">库存： {{number}}</span>
+      <span style="text-align: right;" id="productStock" data-stock="{{number}}">库存： {{number}}</span>
     </div>
   </div>
 
@@ -71,7 +71,7 @@
         <img src="{{mainImage}}" alt="鲜鱿鱼足片 办公休闲零食 200g  休闲零嘴" class="product-list-img">
         <div class="close-popup"><i class="weui-icon-cancel"></i></div>
         <h4>{{name}}</h4>
-        <p class="sale-price">￥ {{sale_price}}</p>
+        <p class="sale-price" id="totalSalePrice">￥ {{sale_price}}</p>
         <span style="padding-left: 10px;">库存： {{number}}</span>
       </div>
 
