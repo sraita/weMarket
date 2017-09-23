@@ -69,6 +69,7 @@ Template.product.events({
       product_img: this.mainImage,
       product_num: Number($('#goods_number').val()),
       product_price: this.sale_price,
+      profit_price: this.profit_price, // 分成佣金
       user_id: user._id,
       user_name: '',
       user_icon:'',
