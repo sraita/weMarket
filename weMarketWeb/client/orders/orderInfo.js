@@ -1,6 +1,13 @@
 Template.orderInfo.helpers({
   getProductTotalPrice: function(){
     return (this.product_num * this.product_price).toFixed(2);
+  },
+  showActionBtn: function(){
+    console.log(this);
+    if(this.status == 1){
+      return true;
+    }
+    return false;
   }
 });
 
@@ -21,11 +28,5 @@ Template.orderInfo.events({
         PUB.back()
       },1000);
     })
-  },
-  showActionBtn: function(){
-    if(this.status == 1){
-      return true;
-    }
-    return false;
   }
 })
