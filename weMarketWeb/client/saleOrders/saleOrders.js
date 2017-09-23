@@ -4,7 +4,7 @@ Template.saleOrders.onRendered(function(){
 Template.saleOrders.helpers({
   lists: function(){
     var status = Session.get('orders-tab-active');
-    return SalesOrders.find({distributor_id: Meteor.userId(),status: status},{sort:{created:-1}}).fetch()
+    return SalesOrders.find({shop_id: Meteor.userId(),status: status},{sort:{created:-1}}).fetch()
   },
   // product: function(){
   //   return this.products[0];
@@ -18,8 +18,21 @@ Template.saleOrders.helpers({
     } else if(this.status === 'waiting'){
       return '进行中';
     } else {
-      return '失败';
+      return '异常';
     }
+  },
+  isComplate: function(){
+    return this.status === 'complate';
+  },
+  isWaiting: function(){
+    return this.status === 'waiting';
+  },
+  isFailed: function(){
+    return this.status === 'failed';
+  },
+  formatTime:function(date){
+    var d = new Date(date);
+    return d.parseDate('YYYY-MM-DD');
   }
 });
 

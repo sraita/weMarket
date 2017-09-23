@@ -1,4 +1,4 @@
-// 创建新订单同时， 创建分销商相应记录
+// 创建新订单同时， 创建分销商相应佣金记录
 var orderInsertHookHandle = function(doc){
   console.log(JSON.stringify(doc));
   Meteor.defer(function(){
@@ -14,9 +14,7 @@ var orderInsertHookHandle = function(doc){
         "seller_icon": item.seller_icon, // 商家头像
       
         // 分销商信息
-        "distributor_id":item.distributor_id,
-        "distributor_name":item.distributor_name,
-        "distributor_icon":item.distributor_icon,
+        "shop_id": item.shopId,
 
         "profit_price": item.profit_price, // 分销商每销售成功一件可获利金额
         // 订单信息
@@ -36,6 +34,29 @@ var orderInsertHookHandle = function(doc){
     });
   });
 }
+// 更新订单的同时，更新分销商相应的佣金记录
+var orderUpdateHookHandle = function(doc,fieldNames,modifier){
+  console.log(JSON.stringify(doc));
+  var fail_reson = '';
+  var status = '';
+  if(modifier.$set.status == 0){
+    status = 'failed';
+    fail_reson = '用户取消了订单';
+  }
+  if(modifier.$set.status == 5){
+    status = 'complate';
+    fail_reson = '';
+  }
+  Meteor.defer(function(){
+    SalesOrders.update({order_no: doc.order_no},{
+      $set:{
+        'status':status,
+        'fail_reson':fail_reson
+      }
+    },{multi: true});
+  })
+};
+
 // 数据权限
 
 // 商品分类权限， 只有商家可以修改
@@ -78,8 +99,12 @@ Orders.allow({
     orderInsertHookHandle(doc);
     return true;
   },
-  update: function (userId, doc, fields, modifier) {
+  update: function (userId, doc, fieldNames, modifier) {
     // can only change your own documents
+    if(fieldNames && fieldNames.indexOf('status') > -1){
+      console.log(modifier.$set.status)
+      orderUpdateHookHandle(doc,fieldNames,modifier);
+    }
     return true;
   },
   remove: function (userId, doc) {

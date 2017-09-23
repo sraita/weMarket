@@ -179,7 +179,7 @@ if(Meteor.isServer){
     if(!this.userId){
       return this.ready();
     } else {
-      return SalesOrders.find({distributor_id: this.userId});
+      return SalesOrders.find({shop_id: this.userId});
     }
   })
 
@@ -192,7 +192,7 @@ if(Meteor.isServer){
   });
 
   Meteor.publish('distributorUserCounts', function(){
-    Counts.publish(this,'distributorSaleOrderCounts-complate', SalesOrders.find({'distributor_id': this.userId,'status': 'complate'}));
-    Counts.publish(this,'distributorSaleOrderCounts-waiting', SalesOrders.find({'distributor_id': this.userId,'status': 'waiting'}));
+    Counts.publish(this,'distributorSaleOrderCounts-complate', SalesOrders.find({'shop_id': this.userId,'status': 'complate'}));
+    Counts.publish(this,'distributorSaleOrderCounts-waiting', SalesOrders.find({'shop_id': this.userId,'status': 'waiting'}));
   });
 }

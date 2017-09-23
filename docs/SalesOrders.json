@@ -10,9 +10,7 @@
   "seller_icon": "", // 商家头像
  
   // 分销商信息
-  "distributor_id":"",
-  "distributor_name":"",
-  "distributor_icon":"",
+  "shop_id": "",
 
   "profit_price": "", // 分销商每销售成功一件可获利金额
   // 订单信息
@@ -22,6 +20,7 @@
   "createdAt": "", // 下单时间
   
   "status": "", // 状态： 'complate'(已完成) || 'waiting'(进行中) || 'failed'(用户退款)
+  "fail_reson": "", // 如果失败， 列明失败原因， "用户取消" || "用户退货"
 
   // 下单人信息
   "user_id": "", // 下单人id,

@@ -1,6 +1,6 @@
 <template name="saleOrdersHeader">
   <div class="back"><i class="fa fa-angle-left"></i></div>
-  <div class="title">我的分销</div>
+  <div class="title">佣金明细</div>
 </template>
 
 <template name="saleOrders">
@@ -9,29 +9,40 @@
   <div class="weui-tab">
     <div class="weui-navbar">
       <div class="weui-navbar__item weui-bar__item--on" id="waiting">
-        进行中
+        处理中
       </div>
       <div class="weui-navbar__item" id="complate">
-        已完成
+        已分成
+      </div>
+      <div class="weui-navbar__item" id="failed">
+        失败
       </div>
     </div>
   </div>
 
-  <ul class="orderLists">
+  <ul class="saleOrderLists">
   {{#each lists}}
-    <li class="orderItem" id="{{_id}}">
-      <div class="header">
-        <span class="orderNo">订单号：{{order_no}}</span>
-        <span class="orderStatus">{{getOrderStatus}}</span>
+    <li class="saleOrderItem" id="{{_id}}">
+      <div class="ft-rigtht">
+        <p class="profit_price">￥{{profit_price}}</p>
+        {{#if isComplate}}
+        <p class="status" style="color: #1cbb7f">已分成</p>
+        {{/if}}
+        {{#if isWaiting}}
+        <p class="status" style="color: orange;">等待处理</p>
+        {{/if}}
+        {{#if isFailed}}
+        <p class="status" style="color: red;">分成失败</p>
+        {{/if}}
       </div>
-      <div class="ft-rigtht"><i class="fa fa-angle-right fa-fw"></i></div>
       <div class="body">
-        <div class="productImg">
-          <img src="{{product_img}}"/>
-        </div>
-        <h4>{{product_name}}</h4>
-        <p>商品数量：{{total_num}}</p>
-        <p class="totalPrice">分成：￥ {{profit_price}}元</p>
+        <h4>佣金分成</h4>
+        <p class="time">{{formatTime createdAt}}</p>
+        <p>订单号: {{order_no}}</p>
+        <p>分成金额: ￥{{profit_price}}</p>
+        {{#if isFailed}}
+        <p class="fail_reson" style="color: red;">原因：{{fail_reson}}</p>
+        {{/if}}
       </div>
     </li>
   {{/each}}
