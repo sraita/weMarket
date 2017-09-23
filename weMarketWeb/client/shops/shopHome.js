@@ -6,6 +6,13 @@ Template.shopHome.onRendered(function(){
       autoplay : 5000,
       loop: true
   });
+
+  console.log(this.data)
+    
+  localStorage.setItem('shopName',this.data.name + '店');
+  localStorage.setItem('shopIcon',this.data.icon);
+  Session.set('documentTitle',this.data.name + '店');
+
   var shareUrl = 'http://market.raidcdn.cn/shop/';
   shareUrl += shopId;
   console.log(shareUrl);

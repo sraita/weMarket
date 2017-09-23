@@ -1,17 +1,17 @@
 if(Meteor.isClient){
   Meteor.startup(function(){
-    Meteor.setTimeout(function(){
-      var shareUrl = window.location.href;
-      shareUrl = shareUrl.split('#')[0];
-      if(Session.get('productContent')){
-        var shopId = localStorage.getItem('shopId');
-        shareUrl = 'http://market.raidcdn.cn/product/'+Session.get('productContent')._id;
-        if(shopId){
-          shareUrl = shareUrl + '?s='+ shopId;
-        }
-      }
-      calcWeChatSignature(shareUrl);
-    },300);
+    // Meteor.setTimeout(function(){
+    //   var shareUrl = window.location.href;
+    //   shareUrl = shareUrl.split('#')[0];
+    //   if(Session.get('productContent')){
+    //     var shopId = localStorage.getItem('shopId');
+    //     shareUrl = 'http://market.raidcdn.cn/product/'+Session.get('productContent')._id;
+    //     if(shopId){
+    //       shareUrl = shareUrl + '?s='+ shopId;
+    //     }
+    //   }
+    //   calcWeChatSignature(shareUrl);
+    // },300);
     
     window.isWeiXinFunc = function(){
       var ua = window.navigator.userAgent.toLowerCase();
@@ -56,20 +56,33 @@ if(Meteor.isClient){
       var description = '0成本快速开店';
       var shareUrl = window.location.href;
       shareUrl = shareUrl.split('#')[0];
-      if(Session.get('productContent')){
-        var seller_id = Router.current().params.query.s || localStorage.getItem('seller_id') || 'JWyJfabzzpq9grw4Q';
-        shareUrl = 'http://market.raidcdn.cn/shareProduct/'+Session.get('productContent')._id+'/?s=' + seller_id;
+
+      var shopId = localStorage.getItem('shopId');
+      if(shopId){
+        shareUrl = 'http://market.raidcdn.cn/shop/' + shopId;
+        description = '[有人@你] 这个店铺的东西不错哦~ 你也来看看吧';
       }
-      
-      if(Session.get('productContent') && Session.get('productContent').desc){
-        description = Session.get('productContent').desc;
-      }
+
       description = description.slice(0,90);
-      var timelineData = {
-        title: Session.get('documentTitle'),
+      var appMessageData  = {
+        title: localStorage.getItem('shopName') || title,
         desc: description,
         link: shareUrl,
-        imgUrl: Session.get('mainImage') || '/home/nav_4.png',
+        imgUrl: localStorage.getItem('shopIcon') || Session.get('mainImage') || '/home/nav_4.png',
+        success: function(){
+          console.log('share success!');
+        },
+        cancel: function(){
+          console.log('user cancel share');
+        }
+      };
+
+      var timelineTitle = localStorage.getItem('shopName') || title;
+      timelineTitle = '['+ timelineTitle + '@你] 这个店铺的东西不错哦~ 你也来看看吧';
+      var timelineData = {
+        title: timelineTitle,
+        link: shareUrl,
+        imgUrl: localStorage.getItem('shopIcon') || Session.get('mainImage') || '/home/nav_4.png',
         success: function(){
           console.log('share success!');
         },
@@ -79,10 +92,10 @@ if(Meteor.isClient){
       };
 
       wx.onMenuShareTimeline(timelineData);
-      wx.onMenuShareAppMessage(timelineData);
-      wx.onMenuShareQQ(timelineData);
-      wx.onMenuShareWeibo(timelineData);
-      wx.onMenuShareQZone(timelineData);
+      wx.onMenuShareAppMessage(appMessageData);
+      wx.onMenuShareQQ(appMessageData);
+      wx.onMenuShareWeibo(appMessageData);
+      wx.onMenuShareQZone(appMessageData);
 
     }
 
