@@ -3,6 +3,9 @@ var orderInsertHookHandle = function(doc){
   console.log(JSON.stringify(doc));
   Meteor.defer(function(){
     doc.products.forEach(function(item){
+      var profit_price = 0;
+      profit_price = item.profit_price * item.product_num;
+      profit_price = profit_price.toFixed(2);
       var obj = {
         "order_no": doc.order_no, // 订单号
         "product_id": item.product_id, // 订单商品id
@@ -19,9 +22,11 @@ var orderInsertHookHandle = function(doc){
         "profit_price": item.profit_price, // 分销商每销售成功一件可获利金额
         // 订单信息
         "price": item.product_price, // 订单单价
-        "product_number": 1, // 订单商品数量
+        "product_number": item.product_num, // 订单商品数量
         "total_price": doc.total_price, // 订单总价
         "createdAt": new Date(), // 下单时间
+
+        "profit_price": profit_price,// 分成金额
         
         "status": 'waiting', // 状态： 'complate'(已完成) || 'waiting'(进行中) || 'failed'(用户退款)
 
@@ -36,25 +41,43 @@ var orderInsertHookHandle = function(doc){
 }
 // 更新订单的同时，更新分销商相应的佣金记录
 var orderUpdateHookHandle = function(doc,fieldNames,modifier){
-  console.log(JSON.stringify(doc));
-  var fail_reson = '';
-  var status = '';
+
   if(modifier.$set.status == 0){
-    status = 'failed';
-    fail_reson = '用户取消了订单';
+    Meteor.defer(function(){
+      SalesOrders.update({order_no: doc.order_no},{
+        $set:{
+          'status':'failed',
+          'fail_reson':'用户取消了订单'
+        }
+      },{multi: true});
+    });
   }
   if(modifier.$set.status == 5){
-    status = 'complate';
-    fail_reson = '';
+    Meteor.defer(function(){
+      SalesOrders.update({order_no: doc.order_no},{
+        $set:{
+          'status':'complate'
+        }
+      },{multi: true});
+    });
+    // 更新用户下的佣金总额已经用户店铺下的佣金总额
+    SalesOrders.find({order_no: doc.order_no}).forEach(function(item){
+      // console.log(item);
+      var amount= parseFloat(item.profit_price); // 金额
+      Meteor.users.update({_id: item.shop_id},{
+        $inc:{
+          'profile.brokerage': amount, //佣金
+          'profile.balance': amount // 余额
+        }
+      });
+      Shops.update({_id: item.shop_id},{
+        $inc:{
+          brokerage:amount //佣金
+        }
+      });
+    });
   }
-  Meteor.defer(function(){
-    SalesOrders.update({order_no: doc.order_no},{
-      $set:{
-        'status':status,
-        'fail_reson':fail_reson
-      }
-    },{multi: true});
-  })
+  
 };
 
 // 数据权限
