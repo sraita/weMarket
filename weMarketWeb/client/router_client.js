@@ -33,13 +33,13 @@ Router.onBeforeAction(function () {
     localStorage.setItem('shopId', Router.current().params._id)
   }
 
-  // if(!Meteor.userId()){
-  //   if(localStorage.getItem('Meteor.userId')){
-  //     loginByOpenId();
-  //   } else {
-  //     window.open(auth_url,'_self');
-  //   }
-  // } 
+  if(!Meteor.userId()){
+    if(localStorage.getItem('Meteor.userId')){
+      loginByOpenId();
+    } else {
+      window.open(auth_url,'_self');
+    }
+  } 
   if(!Meteor.userId() || !localStorage.getItem('Meteor.userId')){
     console.log('user not login');
 
