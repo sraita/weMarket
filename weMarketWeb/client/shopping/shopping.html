@@ -9,13 +9,16 @@
     <li class="shopping-item">
       <img src="{{product_img}}"/>
       <h4>{{product_name}}</h4>
-      <p class="price">￥ {{getTotalPrice}}</p>
+      <p class="price" id="totalSalePrice_{{_id}}">￥ {{getTotalPrice}}</p>
       <div class="div-num" style="margin-bottom: 0;">
-        <a class="num-less" onclick="changePrice('1')"></a>
-        <input type="text" value="{{product_num}}" name="number" id="goods_number" autocomplete="off">
-        <a class="num-plus" onclick="changePrice('3')"></a>
+        <a class="num-less" onclick="changePrice('1','{{_id}}')"></a>
+        <input type="text" value="{{product_num}}" name="number" id="goods_number_{{_id}}" autocomplete="off">
+        <a class="num-plus" onclick="changePrice('3','{{_id}}')"></a>
       </div>
       <div class="remove-product" id="{{_id}}"><i class="fa fa-trash-o"></i></div>
+      
+      <div id="salePrice_{{_id}}" data-price="{{product_price}}" style="height: 0;visibility: hidden;"></div>
+      <span id="productStock_{{_id}}" data-stock="{{number}}" style="height: 0;visibility: hidden;">库存： {{number}}</span>
     </li>
   {{/each}}
   </ul>

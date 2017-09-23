@@ -1,7 +1,12 @@
-window.changePrice = function (type) {
+window.changePrice = function (type, shopping_id) {
   var qty = Number($('#goods_number').val()) || 1;
   var sale_price = parseFloat($('#salePrice').data('price'));
   var stock = parseInt($('#productStock').data('stock')); // 库存
+  if(shopping_id){
+    qty = Number($('#goods_number_'+shopping_id).val()) || 1;
+    sale_price = parseFloat($('#salePrice_'+shopping_id).data('price'));
+    stock = parseInt($('#productStock_'+shopping_id).data('stock')); // 库存
+  }
   //var qty = 0;
 
   if (type == 1) {
@@ -20,9 +25,24 @@ window.changePrice = function (type) {
     qty = 1;
   }
   var totalPrice = parseFloat(qty * sale_price);
-  $('#goods_number').val(qty);
-  // 同时增减相应的总价
-  $('#totalSalePrice').html('￥ '+totalPrice);
+  if(shopping_id){
+    $('#goods_number_'+shopping_id).val(qty);
+    // 需要更新相应的Shopping表
+    Shopping.update({_id: shopping_id},{
+      $set:{
+        'product_num': qty,
+        'product_total_price': totalPrice
+      }
+    },function(err){
+      if(err){
+        console.log(err);
+      }
+    })
+  } else {
+    $('#goods_number').val(qty);
+    // 同时增减相应的总价
+    $('#totalSalePrice').html('￥ '+totalPrice);
+  }
 }
 Template.product.onRendered(function(){
   var swiper = new Swiper('.swiper-container', {
@@ -76,11 +96,13 @@ Template.product.events({
       product_name: this.name,
       product_img: this.mainImage,
       product_num: Number($('#goods_number').val()),
-      product_price: this.sale_price,
+      product_price: this.sale_price,// 销售单价
+      product_total_price: parseFloat($('#totalSalePrice').val()),
       profit_price: this.profit_price, // 分成佣金
       user_id: user._id,
       user_name: '',
       user_icon:'',
+      stock: this.number, // 库存
       seller_icon: this.seller_icon,
       seller_id: this.seller_id,
       seller_name: this.seller_name,
