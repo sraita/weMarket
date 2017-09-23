@@ -16,6 +16,10 @@ Template.addrList.events({
       },{
         text: "删除",
         onClick: function() {
+          var count = Contact.find({user_id: Meteor.userId()},{sort:{createdAt: -1}}).count();
+          if(count < 2){
+            return $.alert('请至少保留一个收货地址！');
+          }
           $.showLoading('处理中');
           Contact.remove({_id: _id}, function(err, result){
             if(err){

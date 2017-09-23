@@ -1,7 +1,11 @@
 Template.createOrder.onRendered(function(){
   Meteor.subscribe('contact_list', function(){
     var contact = Contact.findOne({user_id: Meteor.userId()},{sort:{createdAt:-1}});
-    Session.set('selectedAddr', contact);
+    if(contact){
+      Session.set('selectedAddr', contact);
+    } else {
+      PUB.page('/addr/new');
+    }
   });
 });
 
