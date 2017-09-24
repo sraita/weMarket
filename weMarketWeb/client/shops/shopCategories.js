@@ -22,6 +22,7 @@ Template.shopCategories.helpers({
 Template.shopCategories.events({
   'click .category-item': function(e){
     var _id = e.currentTarget.id;
-    PUB.page('/shop/c/'+Meteor.userId()+'/'+_id);
+    var shopId = localStorage.getItem('shopId')
+    PUB.page('/shop/c/'+shopId+'/'+_id);
   }
 })
