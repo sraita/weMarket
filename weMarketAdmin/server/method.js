@@ -27,18 +27,18 @@ Meteor.methods({
     console.log(JSON.stringify(user));
     var categories = [];
     if(!shop){
-      Meteor.defer(function(){
-        var categories = [];
-        Categories.find({}).forEach(function(item){
-          categories.push(item._id);
-        });
-        Shops.insert({
-          _id: userId,
-          icon: (user.profile && user.profile.icon)?user.profile.icon :'/img/userPicture.png',
-          name: (user.profile && user.profile.nickname)?user.profile.nickname + '的店铺':'',
-          categories: categories
-        });
+      var categories = [];
+      Categories.find({}).forEach(function(item){
+        categories.push(item._id);
       });
+     return Shops.insert({
+        _id: userId,
+        icon: (user.profile && user.profile.icon)?user.profile.icon :'/img/userPicture.png',
+        name: (user.profile && user.profile.nickname)?user.profile.nickname + '的店铺':'',
+        categories: categories
+      });
+    } else {
+      return true;
     }
   }
 });

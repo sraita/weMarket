@@ -302,3 +302,11 @@ Router.route('/addCategories/:_id',{
   }
 });
 
+Router.route('/createShop',{
+  name: 'createShop',
+  layoutTemplate: 'headLayout',
+  yieldRegions:{
+    'createShopHeader':{to:'header'}
+  }
+});
+
