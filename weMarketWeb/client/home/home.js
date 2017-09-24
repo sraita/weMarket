@@ -10,14 +10,12 @@ Template.home.onRendered(function(){
 
   if(Meteor.userId()){
     // 成功登录主页后自动成为分销商， 同时创建相应的店铺
-    Meteor.setTimeout(function(){
-      var user = Meteor.user();
-      var role = user.profile.role || [];
-      if(role.indexOf('distributor') < 0){
-        role.push('distributor');
-        Meteor.call('updateUserRole',user._id, role);
-      }
-    },1000);
+    var user = Meteor.user();
+    var role = user.profile.role || [];
+    if(role.indexOf('distributor') < 0){
+      role.push('distributor');
+      Meteor.call('updateUserRole',user._id, role);
+    }
   }
 });
 
