@@ -37,6 +37,11 @@ Router.onBeforeAction(function () {
     if(localStorage.getItem('Meteor.userId')){
       loginByOpenId();
     } else {
+      var redirect_uri = encodeURIComponent('http://market.raidcdn.cn/oauth/wechat?original='+originalUrl);
+      var auth_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+appid+
+                    '&redirect_uri='+redirect_uri+
+                    '&response_type=code&scope='+scope+
+                    '&state='+state+'#wechat_redirect';
       window.open(auth_url,'_self');
     }
   } 

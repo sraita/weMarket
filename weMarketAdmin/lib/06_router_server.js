@@ -16,11 +16,11 @@ if(Meteor.isServer){
       var parts = Cookie.split("=");
       Cookies[ parts[0].trim() ] = ( parts[1] || '').trim();
     });
-
-    if(Cookies.originalUrl){
-      returnUrl = Cookies.originalUrl;
+    console.log('cookies ===',JSON.stringify(Cookies));
+    if(this.request.query.original){
+      returnUrl = this.request.query.original;
     }
-
+    console.log('returnUrl is '+returnUrl);
     returnUrl = decodeURIComponent(returnUrl);
 
     var code = this.request.query.code;

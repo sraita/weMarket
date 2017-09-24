@@ -28,7 +28,7 @@ Template.myShopSetting.events({
     Shops.update({_id: Router.current().params._id},{
       $set:{
         'name':shopName,
-        'user.name':name,
+        'user.realname':name,
         'user.mobile':mobile,
         'user.alipay':alipay
       }
@@ -43,7 +43,7 @@ Template.myShopSetting.events({
         Meteor.users.update({_id: Meteor.userId()},{
           $set:{
             'profile.shopName':shopName,
-            'profile.name':name,
+            'profile.realname':name,
             'profile.mobile':mobile,
             'profile.alipay':alipay
           }
